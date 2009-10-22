@@ -1,0 +1,13 @@
+Package: Guerry
+Type: Package
+Title: Guerry: maps, data and methods related to Guerry (1833) "Moral Statistics of France"
+Version: 1.0
+Date: 2009-10-20
+Author: Michael Friendly and Stephane Dray
+Maintainer: Michael Friendly <friendly@yorku.ca>
+Depends: sp
+Suggests: spdep
+Description: This package comprises maps of France in 1830, data from A.-M. Guerry and others and statistical and 
+	graphic methods related to Guerry's "Moral Statistics of France".
+License: GPL
+LazyLoad: yes

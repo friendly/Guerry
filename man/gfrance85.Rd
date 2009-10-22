@@ -1,0 +1,45 @@
+\name{gfrance85}
+\Rdversion{1.1}
+\alias{gfrance85}
+\docType{data}
+\title{
+Map of France in 1830 with the Guerry data, excluding Corsica
+}
+\description{
+\code{gfrance85} is a SpatialPolygonsDataFrame object created with the
+\code{sp} package, containing the polygon boundaries of the map of
+France as it was in 1830, together with the \code{\link{Guerry}}
+data frame.  This version excludes Corsica, which is an outlier
+both in the map and in many analyses.
+}
+\usage{data(gfrance85)}
+\format{
+  The format is:
+Formal class 'SpatialPolygonsDataFrame' [package "sp"] with 5 slots: \code{gfrance85@data},
+\code{gfrance85@polygons}, \code{gfrance85@plotOrder}, \code{gfrance85@bbox}, \code{gfrance85@proj4string}.
+See: \code{\link[sp]{SpatialPolygonsDataFrame}} for descriptions of some components.
+
+The analysis variables  are described in  \code{\link{Guerry}}.
+}
+\details{
+In the present version, the PROJ4 projection is not specified.
+}
+\source{
+Friendly, M. (2007).
+Supplementary materials for André-Michel Guerry's Moral Statistics of France:
+Challenges for Multivariate Spatial Analysis,
+\url{http://www.math.yorku.ca/SCS/Gallery/guerry/}.
+
+}
+\references{
+Dray, S. and Jombart, T. (2009). A Revisit Of Guerry's Data: Introducing
+Spatial Constraints In Multivariate Analysis. Unpublished manuscript.
+
+Friendly, M. (2007). A.-M. Guerry's Moral Statistics of France: Challenges for Multivariable Spatial Analysis.
+ \emph{Statistical Science}, 22, 368-399.
+}
+\examples{
+data(gfrance85)
+plot(gfrance85)
+}
+\keyword{datasets}
