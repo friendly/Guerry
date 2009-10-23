@@ -5,9 +5,11 @@ Version: 1.0
 Date: 2009-10-20
 Author: Michael Friendly and Stephane Dray
 Maintainer: Michael Friendly <friendly@yorku.ca>
+Encoding: latin1
 Depends: sp
-Suggests: spdep
+Suggests: spdep, ade4
 Description: This package comprises maps of France in 1830, data from A.-M. Guerry and others and statistical and 
 	graphic methods related to Guerry's "Moral Statistics of France".
 License: GPL
 LazyLoad: yes
+LazyData: yes

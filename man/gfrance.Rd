@@ -38,8 +38,14 @@ Friendly, M. (2007). A.-M. Guerry's Moral Statistics of France: Challenges for M
 \examples{
 data(gfrance)
 names(gfrance)  ## list @data variables
-plot(gfrance)
+plot(gfrance)   ## just show the map outline
 
-# TODO: Show basic choropleth plots of some of the variables
+# Show basic choropleth plots of some of the variables
+spplot(gfrance, "Crime_pers")
+spplot(gfrance, "Crime_prop")
+
+# Note that spplot assumes all variables are on the same scale for comparative plots
+# These plots do that, but it would be more appropriate to scale each separately, as in the above
+spplot(gfrance, c("Crime_pers", "Crime_prop"))
 }
 \keyword{datasets}
