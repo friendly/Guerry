@@ -1,3 +1,4 @@
+\encoding{latin1}
 \name{Guerry-package}
 \Rdversion{1.1}
 \alias{Guerry-package}
@@ -51,7 +52,7 @@ A Revisit Of Guerry's Data: Introducing Spatial Constraints In Multivariate Anal
 Unpublished manuscript.
 
 Brunsdon, C. and Dykes, J. (2007).
-Geographically weighted visualization – interactive graphics
+Geographically weighted visualization: interactive graphics
 for scale-varying exploratory analysis.
 Geographical Information Science Research Conference (GISRUK 2007).
 NUI Maynooth, Ireland, April, 2007.
@@ -73,10 +74,7 @@ English translation: Hugh P. Whitt and Victor W. Reinking, Lewiston, N.Y.: Edwin
 %~~ Optionally other standard keywords, one per line, from file KEYWORDS in ~~
 %~~ the R documentation directory ~~
 \keyword{ package }
-\seealso{
-~~ Optional links to other man pages, e.g. ~~
-~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
-}
+
 \examples{
 #~~ simple examples of the most important functions ~~
 }

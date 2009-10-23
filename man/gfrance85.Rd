@@ -1,3 +1,4 @@
+\encoding{latin1}
 \name{gfrance85}
 \Rdversion{1.1}
 \alias{gfrance85}
