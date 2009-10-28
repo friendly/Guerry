@@ -35,6 +35,10 @@ Challenges for Multivariate Spatial Analysis,
 Friendly, M. (2007). A.-M. Guerry's Moral Statistics of France: Challenges for Multivariable Spatial Analysis.
  \emph{Statistical Science}, 22, 368-399.
 }
+\seealso{
+\code{\link{Guerry}} for description of the analysis variables
+\code{\link{Angeville}} for other analysis variables
+}
 \examples{
 data(gfrance)
 names(gfrance)  ## list @data variables

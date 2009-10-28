@@ -1,8 +1,8 @@
 Package: Guerry
 Type: Package
 Title: Guerry: maps, data and methods related to Guerry (1833) "Moral Statistics of France"
-Version: 1.0
-Date: 2009-10-20
+Version: 1.1
+Date: 2009-10-28
 Author: Michael Friendly and Stephane Dray
 Maintainer: Michael Friendly <friendly@yorku.ca>
 Encoding: latin1

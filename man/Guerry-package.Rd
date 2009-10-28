@@ -24,8 +24,8 @@ geo-spatial context.
 \tabular{ll}{
 Package: \tab Guerry\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2009-10-20\cr
+Version: \tab 1.1\cr
+Date: \tab 2009-10-28\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }
