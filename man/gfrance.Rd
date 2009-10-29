@@ -52,4 +52,7 @@ spplot(gfrance, "Crime_prop")
 # These plots do that, but it would be more appropriate to scale each separately, as in the above
 spplot(gfrance, c("Crime_pers", "Crime_prop"))
 }
-\keyword{datasets}
+\keyword{
+datasets
+spatial
+}

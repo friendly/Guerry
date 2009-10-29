@@ -73,7 +73,10 @@ English translation: Hugh P. Whitt and Victor W. Reinking, Lewiston, N.Y.: Edwin
 }
 %~~ Optionally other standard keywords, one per line, from file KEYWORDS in ~~
 %~~ the R documentation directory ~~
-\keyword{ package }
+\keyword{ 
+package 
+spatial
+}
 
 \examples{
 #~~ simple examples of the most important functions ~~
