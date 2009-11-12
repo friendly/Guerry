@@ -11,11 +11,21 @@ Guerry: maps, data and methods related to A.-M. Guerry's "Moral Statistics of Fr
 \description{
 Andre-Michel Guerry (1833) was the first to systematically collect and analyze
 social data on such things as crime, literacy and suicide with the view
-to determining social laws and the relations among these variables.
+to determining social laws and the relations among these variables.  
+He provided the first essentially multivariate and georeferenced spatial data
+on socially important questions, e.g., Is the rate of crime related to education
+or literacy?  How does this vary over the departments of France?
+Are the rates of crime or suicide within departments stable over time?
 
-This package comprises maps of France in 1830, data from A.-M. Guerry and others, and 
-statistical and graphic methods related to Guerry's "Moral Statistics of France".
+In an age well before the idea of correlation had been invented, Guerry
+used graphics and statistical maps to try to shed light on such questions.
+In a later work (Guerry, 1864), he explicitly tried to entertain larger questions,
+but with still-limited statistical tools:  Can rates of various crimes be related
+to multiple causes or predictors? Are the rates and ascribable causes in France 
+similar or different to those found in England?
 
+The \pkg{Guerry} package comprises maps of France in 1830, data from A.-M. Guerry and others, and 
+statistical and graphic methods related to Guerry's \emph{Moral Statistics of France}.
 The goal of providing these as an R package is to facilitate the exploration and
 development of statistical and graphic methods for multivariate data in a
 geo-spatial context.
@@ -24,8 +34,8 @@ geo-spatial context.
 \tabular{ll}{
 Package: \tab Guerry\cr
 Type: \tab Package\cr
-Version: \tab 1.1\cr
-Date: \tab 2009-10-28\cr
+Version: \tab 1.2\cr
+Date: \tab 2009-11-12\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }
@@ -69,6 +79,10 @@ Challenges for Multivariate Spatial Analysis,
 
 Guerry, A.-M. (1833). \emph{Essai sur la statistique morale de la France} Paris: Crochard.
 English translation: Hugh P. Whitt and Victor W. Reinking, Lewiston, N.Y.: Edwin Mellen Press, 2002.
+
+Guerry, A.-M. (1864).
+\emph{Statistique morale de l'Angleterre comparée avec la statistique morale de la France, d'après les comptes de l'administration de la justice criminelle en Angleterre et en France, etc.} 
+Paris: J.-B. Baillière et fils.
 
 }
 %~~ Optionally other standard keywords, one per line, from file KEYWORDS in ~~
