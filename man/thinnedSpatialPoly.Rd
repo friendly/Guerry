@@ -25,7 +25,8 @@ A SpatialPolygons or SpatialPolygonsDataFrame object
   \item{tolerance}{
 tolerance used by the \code{\link[shapefiles]{dp}} function.  
 The scale used for tolerance corresponds to the range of map coordinates, but
-is not documented precisely.  
+is not documented precisely.  If not supplied, the function uses the minimum range
+of the bounding box of the map / 100.
 }
   \item{minarea}{
 The minimum area of polygons to keep in the resulting object.  The default,
@@ -33,10 +34,8 @@ The minimum area of polygons to keep in the resulting object.  The default,
 Typically, you will want to set this to something larger.
 }
 }
-\details{
-A reasonable default for \code{tolerance} might be the minimum range
-of the bounding box of the map / 100, but this is not set in the function.
-}
+%\details{
+%}
 \value{
 Returns an object of the same class as the input, \code{SP}.
 }
