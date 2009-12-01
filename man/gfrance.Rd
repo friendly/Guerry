@@ -49,8 +49,19 @@ spplot(gfrance, "Crime_pers")
 spplot(gfrance, "Crime_prop")
 
 # Note that spplot assumes all variables are on the same scale for comparative plots
-# These plots do that, but it would be more appropriate to scale each separately, as in the above
-spplot(gfrance, c("Crime_pers", "Crime_prop"))
+# transform variables to ranks (as Guerry did)
+ 
+local({
+  gfrance$Crime_pers <- rank(gfrance$Crime_pers)
+  gfrance$Crime_prop <- rank(gfrance$Crime_prop)
+  gfrance$Literacy <- rank(gfrance$Literacy)
+  gfrance$Donations <- rank(gfrance$Donations)
+  gfrance$Infants <- rank(gfrance$Infants)
+  gfrance$Suicides <- rank(gfrance$Suicides)
+   	
+  spplot(gfrance, c("Crime_pers", "Crime_prop", "Literacy", "Donations", "Infants", "Suicides"), 
+    layout=c(3,2), as.table=TRUE, main="Guerry's main moral variables")
+}) 
 }
 \keyword{
 datasets
