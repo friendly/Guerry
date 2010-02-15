@@ -12,6 +12,7 @@ Version 1.3 (2009-11-19)
 	Added thinnedSpatialPoly to calculate thinned maps
 	Added MultiSpat.Rnw vignette
 
-
+Version 1.4 (2010-02-15)
+	Remove temporarily MultiSpat.Rnw vignette
 
 
