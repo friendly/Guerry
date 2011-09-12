@@ -1,9 +1,9 @@
 Package: Guerry
 Type: Package
 Title: Maps, data and methods related to Guerry (1833) "Moral Statistics of France"
-Version: 1.4
-Date: 2010-02-15
-Author@R: c(person(given = "Michael", family = "Friendly", role=c("aut", "cre"), email="friendly@yorku.ca"),
+Version: 1.4-1
+Date: 2011-09-12
+Authors@R: c(person(given = "Michael", family = "Friendly", role=c("aut", "cre"), email="friendly@yorku.ca"),
             person(given = "Stephane", family = "Dray", role="aut"))
 Author: Michael Friendly and Stephane Dray
 Maintainer: Michael Friendly <friendly@yorku.ca>
