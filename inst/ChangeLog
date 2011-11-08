@@ -17,4 +17,6 @@ Version 1.4 (2010-02-15)
 
 Version 1.5 (2011-11-08)
 	Added back MultiSpat.Rnw vignette with MultiSpat.tex disguised as MultiSpat.Rnw
+	Added NAMESPACE for R 2.14+
+
 
