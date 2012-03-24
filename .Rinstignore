@@ -1,0 +1,3 @@
+doc/figs/.*[.]pdf$
+doc/figs
+doc/figs/.*[.]png$
