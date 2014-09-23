@@ -3,6 +3,8 @@ Version 1.6 (2014-09-23)
 	PDF version will be made available on the R-Forge project page.
 	
 	Removed Suggests: spacemakeR (not on CRAN); moved sp, shapefiles to Suggests:
+	
+	Removed thinSpatialPoly, as this is now provided in maptools
 
 Version 1.5 (2011-11-08)
 	Added back MultiSpat.Rnw vignette with MultiSpat.tex disguised as MultiSpat.Rnw

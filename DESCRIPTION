@@ -5,7 +5,7 @@ Version: 1.6-0
 Date: 2014-09-23
 Authors@R: c(person(given = "Michael", family = "Friendly", role=c("aut", "cre"), email="friendly@yorku.ca"),
             person(given = "Stephane", family = "Dray", role="aut"))
-Author: Michael Friendly [aut, cre] and Stephane Dray [aut]
+Author: Michael Friendly [aut, cre], Stephane Dray [aut]
 Maintainer: Michael Friendly <friendly@yorku.ca>
 Encoding: latin1
 Depends: R (>= 2.10)
@@ -13,6 +13,7 @@ Suggests: sp, shapefiles, spdep, ade4, maptools
 Description: This package comprises maps of France in 1830, multivariate data from A.-M. Guerry and others, and statistical and 
 	graphic methods related to Guerry's "Moral Statistics of France". The goal is to facilitate the exploration and
 	development of statistical and graphic methods for multivariate data in a geo-spatial context of historical interest.
-License: GPL 
+License: GPL
+URL: http://guerry.r-forge.r-project.org/
 LazyLoad: yes
 LazyData: yes
