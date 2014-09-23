@@ -41,6 +41,7 @@ Friendly, M. (2007). A.-M. Guerry's Moral Statistics of France: Challenges for M
 }
 \examples{
 data(gfrance85)
+require(sp)
 plot(gfrance85)   # plot the empty outline map
 
 # extract some useful components

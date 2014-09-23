@@ -34,8 +34,8 @@ geo-spatial context.
 \tabular{ll}{
 Package: \tab Guerry\cr
 Type: \tab Package\cr
-Version: \tab 1.5-0\cr
-Date: \tab 2011-11-02\cr
+Version: \tab 1.6-0\cr
+Date: \tab 2014-09-23\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }
@@ -92,6 +92,6 @@ package
 spatial
 }
 
-\examples{
-#~~ simple examples of the most important functions ~~
-}
+%\examples{
+%#~~ simple examples of the most important functions ~~
+%}
