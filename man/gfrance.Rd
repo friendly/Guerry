@@ -51,6 +51,7 @@ spplot(gfrance, "Crime_prop")
 # Note that spplot assumes all variables are on the same scale for comparative plots
 # transform variables to ranks (as Guerry did)
  
+\dontrun{
 local({
   gfrance$Crime_pers <- rank(gfrance$Crime_pers)
   gfrance$Crime_prop <- rank(gfrance$Crime_prop)
@@ -62,6 +63,7 @@ local({
   spplot(gfrance, c("Crime_pers", "Crime_prop", "Literacy", "Donations", "Infants", "Suicides"), 
     layout=c(3,2), as.table=TRUE, main="Guerry's main moral variables")
 }) 
+}
 }
 \keyword{
 datasets
