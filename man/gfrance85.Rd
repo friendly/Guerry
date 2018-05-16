@@ -27,9 +27,9 @@ In the present version, the PROJ4 projection is not specified.
 }
 \source{
 Friendly, M. (2007).
-Supplementary materials for André-Michel Guerry's Moral Statistics of France:
+Supplementary materials for Andr?-Michel Guerry's Moral Statistics of France:
 Challenges for Multivariate Spatial Analysis,
-\url{http://www.math.yorku.ca/SCS/Gallery/guerry/}.
+\url{http://datavis.ca/gallery/guerry/}.
 
 }
 \references{
