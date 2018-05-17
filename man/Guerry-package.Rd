@@ -1,13 +1,12 @@
 \encoding{latin1}
 \name{Guerry-package}
-\Rdversion{1.1}
 \alias{Guerry-package}
-%\alias{Guerry}
+\alias{Guerry}
 \docType{package}
 \title{
-Guerry: maps, data and methods related to A.-M. Guerry's "Moral Statistics of France" (1833)
-
+\packageTitle{Guerry}
 }
+
 \description{
 Andre-Michel Guerry (1833) was the first to systematically collect and analyze
 social data on such things as crime, literacy and suicide with the view
@@ -31,14 +30,10 @@ development of statistical and graphic methods for multivariate data in a
 geo-spatial context.
 }
 \details{
-\tabular{ll}{
-Package: \tab Guerry\cr
-Type: \tab Package\cr
-Version: \tab 1.6-0\cr
-Date: \tab 2014-09-23\cr
-License: \tab GPL\cr
-LazyLoad: \tab yes\cr
-}
+
+The DESCRIPTION file:
+\packageDESCRIPTION{Guerry}
+\packageIndices{Guerry}
 
 Data from Guerry and others is contained in the data frame \code{\link{Guerry}}.
 Because Corsica is often considered an outlier both spatially and
@@ -51,10 +46,9 @@ and \code{\link{gfrance85}}, for the 85 departments excluding Corsica.
 
 }
 \author{
-Michael Friendly and Stephane Dray
+\packageAuthor{Guerry}
 
-Maintainer: Michael Friendly <friendly AT yorku.ca>
-
+Maintainer: \packageMaintainer{Guerry}
 }
 \references{
 Dray, S. and Jombart, T. (2009).
@@ -73,7 +67,7 @@ Friendly, M. (2007). A.-M. Guerry's Moral Statistics of France: Challenges for M
  \emph{Statistical Science}, 22, 368-399.
 
 Friendly, M. (2007).
-Supplementary materials for André-Michel Guerry's Moral Statistics of France:
+Supplementary materials for Andr?-Michel Guerry's Moral Statistics of France:
 Challenges for Multivariate Spatial Analysis,
 \url{http://www.math.yorku.ca/SCS/Gallery/guerry/}.
 
@@ -81,8 +75,8 @@ Guerry, A.-M. (1833). \emph{Essai sur la statistique morale de la France} Paris:
 English translation: Hugh P. Whitt and Victor W. Reinking, Lewiston, N.Y.: Edwin Mellen Press, 2002.
 
 Guerry, A.-M. (1864).
-\emph{Statistique morale de l'Angleterre comparée avec la statistique morale de la France, d'après les comptes de l'administration de la justice criminelle en Angleterre et en France, etc.} 
-Paris: J.-B. Baillière et fils.
+\emph{Statistique morale de l'Angleterre compar?e avec la statistique morale de la France, d'apr?s les comptes de l'administration de la justice criminelle en Angleterre et en France, etc.} 
+Paris: J.-B. Bailli?re et fils.
 
 }
 %~~ Optionally other standard keywords, one per line, from file KEYWORDS in ~~

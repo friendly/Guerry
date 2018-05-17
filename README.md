@@ -6,6 +6,14 @@ The `Guerry` package comprises maps of France in 1830, multivariate data from A.
 
 ## Installation
 
+
+You can install Guerry from CRAN with:
+
+
+``` r
+install.packages("Guerry")
+```
+
 You can install Guerry from github with:
 
 
