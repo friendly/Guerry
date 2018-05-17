@@ -1,6 +1,7 @@
 Version 1.6-2
 
 * Package development has been moved from R-forge to github, https://github.com/friendly/Guerry
+* Updated Guerry-package.Rd from `utils::promptPackage()`
 
 Version 1.6 (2014-09-23)
 	Removed MultiSpat vignette because it is no longer compatible with CRAN policies. The old
