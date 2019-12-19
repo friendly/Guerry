@@ -24,5 +24,23 @@ devtools::install_github("friendly/Guerry")
 
 ## Example
 
-None yet
+Plotting crimes against persons vs. Literacy ("% who can read & write").
+In this base R version, we might want to code the point symbols 
+and colors by regions of France.
+
+``` r
+data(Guerry)
+
+plot(Crime_pers ~ Literacy, data=Guerry,
+	col=Region, 
+	pch=(15:19)[Region],
+	ylab = "Pop. per crime against persons",
+	xlab = "Percent who can read & write"
+	)
+
+legend(x="bottomright", 
+	legend = c("Center", "East", "North", "South", "West"), 
+	pch = 15:19,
+	col = as.factor(levels(Guerry$Region)))
+```
 
