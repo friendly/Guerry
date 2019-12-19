@@ -69,7 +69,7 @@ Friendly, M. (2007). A.-M. Guerry's Moral Statistics of France: Challenges for M
 Friendly, M. (2007).
 Supplementary materials for Andr?-Michel Guerry's Moral Statistics of France:
 Challenges for Multivariate Spatial Analysis,
-\url{http://www.math.yorku.ca/SCS/Gallery/guerry/}.
+\url{http://www.datavis.ca/gallery/guerry/}.
 
 Guerry, A.-M. (1833). \emph{Essai sur la statistique morale de la France} Paris: Crochard.
 English translation: Hugh P. Whitt and Victor W. Reinking, Lewiston, N.Y.: Edwin Mellen Press, 2002.
