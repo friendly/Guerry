@@ -5,7 +5,7 @@
 [![Rdoc](https://www.rdocumentation.org/badges/version/Guerry)](http://www.rdocumentation.org/packages/Guerry)
 <!-- badges: end -->
 
-# Guerry
+# Guerry <img src="Guerry-logo.png" align="right" height="200px" />
 
 The `Guerry` package comprises maps of France in 1830, multivariate data from A.-M. Guerry and others, and statistical and 
 	graphic methods related to Guerry's "Moral Statistics of France". The goal is to facilitate the exploration and
