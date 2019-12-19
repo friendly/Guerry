@@ -46,6 +46,12 @@ plot(gfrance)   ## just show the map outline
 
 # Show basic choropleth plots of some of the variables
 spplot(gfrance, "Crime_pers")
+
+# use something like Guerry's pallete, where dark = Worse
+my.palette <- rev(RColorBrewer::brewer.pal(n = 9, name = "PuBu"))
+spplot(gfrance, "Crime_pers", col.regions = my.palette, cuts = 8)
+
+
 spplot(gfrance, "Crime_prop")
 
 # Note that spplot assumes all variables are on the same scale for comparative plots
