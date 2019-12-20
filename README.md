@@ -10,6 +10,7 @@
 The `Guerry` package comprises maps of France in 1830, multivariate data from A.-M. Guerry and others, and statistical and 
 	graphic methods related to Guerry's *Moral Statistics of France*. The goal is to facilitate the exploration and
 	development of statistical and graphic methods for multivariate data in a geo-spatial context of historical interest.
+	The package stems from Friendly (2007).
 
 <img src="Guerry-vars.png" align="center" />
 
@@ -94,3 +95,13 @@ with(Guerry,{
 ## Vignettes
 
 An old vignette for this package, [Spatial Multivariate Analysis of Guerry's Data in R](http://guerry.r-forge.r-project.org/doc/MultiSpat.pdf), written by Stephan Dray was removed from the package because it no longer complies with CRAN policies.
+
+## References
+
+Friendly, M. (2007). A.-M. Guerry's Moral Statistics of France: Challenges for Multivariable Spatial Analysis.
+ *Statistical Science*, **22**, 368-399. http://www.datavis.ca/papers/guerry-STS241.pdf
+
+Friendly, M. (2007).
+Supplementary materials for Andre-Michel Guerry's *Moral Statistics of France*:
+Challenges for Multivariate Spatial Analysis,
+http://www.datavis.ca/gallery/guerry/.

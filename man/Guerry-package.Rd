@@ -23,7 +23,8 @@ but with still-limited statistical tools:  Can rates of various crimes be relate
 to multiple causes or predictors? Are the rates and ascribable causes in France 
 similar or different to those found in England?
 
-The \pkg{Guerry} package comprises maps of France in 1830, multivariate data from A.-M. Guerry and others, and 
+The \pkg{Guerry} package comprises maps of France in 1830, multivariate data from A.-M. Guerry and 
+others (Angeville, 1836), and 
 statistical and graphic methods related to Guerry's \emph{Moral Statistics of France}.
 The goal of providing these as an R package is to facilitate the exploration and
 development of statistical and graphic methods for multivariate data in a
@@ -51,6 +52,9 @@ and \code{\link{gfrance85}}, for the 85 departments excluding Corsica.
 Maintainer: \packageMaintainer{Guerry}
 }
 \references{
+Angeville, A. d' (1836).
+\emph{Essai sur la Statistique de la Population francaise}, Paris: F. Darfour.
+
 Dray, S. and Jombart, T. (2009).
 A Revisit Of Guerry's Data: Introducing Spatial Constraints In Multivariate Analysis. 
 Unpublished manuscript.
@@ -65,9 +69,10 @@ NUI Maynooth, Ireland, April, 2007.
 
 Friendly, M. (2007). A.-M. Guerry's Moral Statistics of France: Challenges for Multivariable Spatial Analysis.
  \emph{Statistical Science}, 22, 368-399.
+ \url{http://www.datavis.ca/papers/guerry-STS241.pdf}
 
 Friendly, M. (2007).
-Supplementary materials for Andr?-Michel Guerry's Moral Statistics of France:
+Supplementary materials for Andre-Michel Guerry's Moral Statistics of France:
 Challenges for Multivariate Spatial Analysis,
 \url{http://www.datavis.ca/gallery/guerry/}.
 
