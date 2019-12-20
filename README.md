@@ -74,10 +74,10 @@ with(Guerry,{
       col="gray",
       center.pch = FALSE
       )
-  
+
   abline( lm(Crime_pers ~ Literacy), lwd=2)	
   lines(loess.smooth(Literacy, Crime_pers), col="red", lwd=3)
   }
-)
+  	)
 ```
 <img src="ex-bivar2.png" align="center" height="400px" />
