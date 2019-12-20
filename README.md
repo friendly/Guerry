@@ -50,4 +50,34 @@ legend(x="bottomright",
 	pch = 15:19,
 	col = as.factor(levels(Guerry$Region)))
 ```
+<img src="ex-bivar1.png" align="center" height="400px" />
 
+
+Now try this with a data ellipse, and regression lines.
+``` r
+library(car)
+with(Guerry,{
+	dataEllipse(Literacy, Crime_pers,
+		levels = 0.68,
+  	ylim = c(0,40000), xlim = c(0, 80),
+  	ylab="Pop. per crime against persons",
+  	xlab="Percent who can read & write",
+  	pch = 16,
+  	grid = FALSE,
+  	id = list(method="mahal", n = 8, labels=Department, location="avoid", cex=1.2),
+  	center.pch = 3, center.cex=5,
+  	cex.lab=1.5)
+	dataEllipse(Literacy, Crime_pers,
+		levels = 0.95, add=TRUE,
+  	ylim = c(0,40000), xlim = c(0, 80),
+  	lwd=2, lty="longdash",
+  	col="gray",
+  	center.pch = FALSE
+  	)
+  
+  abline( lm(Crime_pers ~ Literacy), lwd=2)	
+  lines(loess.smooth(Literacy, Crime_pers), col="red", lwd=3)
+  }
+  	)
+```
+<img src="ex-bivar2.png" align="center" height="400px" />
