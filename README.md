@@ -8,7 +8,7 @@
 # Guerry <img src="Guerry-logo.png" align="right" height="200px" />
 
 The `Guerry` package comprises maps of France in 1830, multivariate data from A.-M. Guerry and others, and statistical and 
-	graphic methods related to Guerry's "Moral Statistics of France". The goal is to facilitate the exploration and
+	graphic methods related to Guerry's *Moral Statistics of France*. The goal is to facilitate the exploration and
 	development of statistical and graphic methods for multivariate data in a geo-spatial context of historical interest.
 
 <img src="Guerry-vars.png" align="center" />
@@ -33,6 +33,11 @@ devtools::install_github("friendly/Guerry")
 
 ## Examples
 
+Guerry was most interested in determining whether the occurrence of crimes
+was related to literacy or other "moral variables".  But the idea of
+correlation had not been invented, and he was not aware of the
+idea of a scatterplot. 
+
 Plotting crimes against persons vs. Literacy ("% who can read & write").
 In this base R version, we might want to code the point symbols 
 and colors by regions of France.
@@ -55,7 +60,9 @@ legend(x="bottomright",
 <img src="ex-bivar1.png" align="center" height="400px" />
 
 
-Now try this with a data ellipse, and regression lines.
+Now try this with a data ellipse, and a regression line. This version also uses a
+a `loess` smooth and labels the 8 most outlying departments.
+
 ``` r
 library(car)
 with(Guerry,{
