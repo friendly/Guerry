@@ -11,6 +11,8 @@ The `Guerry` package comprises maps of France in 1830, multivariate data from A.
 	graphic methods related to Guerry's "Moral Statistics of France". The goal is to facilitate the exploration and
 	development of statistical and graphic methods for multivariate data in a geo-spatial context of historical interest.
 
+<img src="Guerry-vars.png" align="center" />
+
 ## Installation
 
 
@@ -29,7 +31,7 @@ You can install Guerry from github with:
 devtools::install_github("friendly/Guerry")
 ```
 
-## Example
+## Examples
 
 Plotting crimes against persons vs. Literacy ("% who can read & write").
 In this base R version, we might want to code the point symbols 
@@ -67,7 +69,7 @@ with(Guerry,{
       id = list(method="mahal", n = 8, labels=Department, location="avoid", cex=1.2),
       center.pch = 3, center.cex=5,
       cex.lab=1.5)
-      dataEllipse(Literacy, Crime_pers,
+  dataEllipse(Literacy, Crime_pers,
       levels = 0.95, add=TRUE,
       ylim = c(0,40000), xlim = c(0, 80),
       lwd=2, lty="longdash",
@@ -81,3 +83,7 @@ with(Guerry,{
   	)
 ```
 <img src="ex-bivar2.png" align="center" height="400px" />
+
+## Vignettes
+
+An old vignette for this package, [Spatial Multivariate Analysis of Guerry's Data in R](http://guerry.r-forge.r-project.org/doc/MultiSpat.pdf), written by Stephan Dray was removed from the package because it no longer complies with CRAN policies.
