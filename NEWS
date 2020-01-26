@@ -2,7 +2,8 @@ Version 1.7.0
 
 * Update links to Guerry supplementary stuff to resolve CRAN nits
 * move `sp` to `Imports:` to resolve CRAN nits
-
+* Removed Suggests: shapefiles
+* added a hexsticker to README.md
 
 Version 1.6-2
 
