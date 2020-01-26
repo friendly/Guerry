@@ -1,6 +1,8 @@
 Version 1.7.0
 
-* Update links to Guerry supplementary stuff
+* Update links to Guerry supplementary stuff to resolve CRAN nits
+* move `sp` to `Imports:` to resolve CRAN nits
+
 
 Version 1.6-2
 
