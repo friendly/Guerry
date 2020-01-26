@@ -1,7 +1,6 @@
 \encoding{latin1}
 \name{Guerry-package}
 \alias{Guerry-package}
-\alias{Guerry}
 \docType{package}
 \title{
 \packageTitle{Guerry}
