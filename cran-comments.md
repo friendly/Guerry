@@ -1,7 +1,6 @@
 ## Test environments
 * local Windows, R 3.5.3
-* ubuntu 14.04 (on travis-ci), R 3.5.3
-* win-builder (devel and release)
+* win-builder (R version 3.6.2 (2019-12-12))
 
 ## R CMD check results
 
