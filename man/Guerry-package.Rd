@@ -87,7 +87,6 @@ Paris: J.-B. Bailli?re et fils.
 %~~ the R documentation directory ~~
 \keyword{spatial}
 
-
 %\examples{
 %#~~ simple examples of the most important functions ~~
 %}
