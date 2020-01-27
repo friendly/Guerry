@@ -85,9 +85,7 @@ Paris: J.-B. Bailli?re et fils.
 }
 %~~ Optionally other standard keywords, one per line, from file KEYWORDS in ~~
 %~~ the R documentation directory ~~
-\keyword{ 
-package 
-spatial
+\keyword{spatial}
 }
 
 %\examples{

@@ -1,6 +1,7 @@
 ## Test environments
 * local Windows, R 3.5.3
 * win-builder (R version 3.6.2 (2019-12-12))
+* R Under development (unstable) (2020-01-24 r77710)
 
 ## R CMD check results
 
