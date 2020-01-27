@@ -71,7 +71,5 @@ local({
 }) 
 }
 }
-\keyword{
-datasets
-spatial
-}
+\keyword{datasets}
+\keyword{spatial}

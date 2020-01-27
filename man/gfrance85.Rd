@@ -63,7 +63,5 @@ par(op)
 
 
 }
-\keyword{
-datasets
-spatial
-}
+\keyword{datasets}
+\keyword{spatial}
