@@ -3,3 +3,4 @@
 README.md
 ^.*\.png$
 ^cran-comments\.md$
+^CRAN-RELEASE$
