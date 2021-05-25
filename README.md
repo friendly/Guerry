@@ -7,6 +7,8 @@
 
 # Guerry <img src="Guerry-logo.png" align="right" height="200px" />
 
+**Version**: 1.7.1
+
 The `Guerry` package comprises maps of France in 1830, multivariate data from A.-M. Guerry and others, and statistical and 
 	graphic methods related to Guerry's *Moral Statistics of France*. The goal is to facilitate the exploration and
 	development of statistical and graphic methods for multivariate data in a geo-spatial context of historical interest.
