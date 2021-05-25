@@ -31,6 +31,16 @@ You can install Guerry from github with:
 # install.packages("devtools")
 devtools::install_github("friendly/Guerry")
 ```
+## Data sets
+
+The Guerry package contains the following data sets:
+
+|<div style="width:60px">Name</div>| Description |
+|:-----|:------------|
+| `gfrance`  | Map of France in 1830 with the `Guerry` data. It is a `SpatialPolygonsDataFrame` object created with the `sp` package.|
+| `gfrance85`| The same for the 85 departments excluding Corsica|
+| `Guerry`   | A collection of 'moral variables' on the 86 departments of France around 1830 from Guerry (1833) and other sources.|
+| `Angeville`| Data from d'Angeville (1836) on the population of France.|
 
 ## Examples
 
