@@ -7,7 +7,7 @@
 Map of France in 1830 with the Guerry data
 }
 \description{
-\code{gfrance} is a SpatialPolygonsDataFrame object created with the
+\code{gfrance} is a \code{SpatialPolygonsDataFrame} object created with the
 \code{sp} package, containing the polygon boundaries of the map of
 France as it was in 1830, together with the \code{\link{Guerry}}
 data frame.
@@ -40,6 +40,7 @@ Friendly, M. (2007). A.-M. Guerry's Moral Statistics of France: Challenges for M
 \code{\link{Angeville}} for other analysis variables
 }
 \examples{
+library(sp)
 data(gfrance)
 names(gfrance)  ## list @data variables
 plot(gfrance)   ## just show the map outline

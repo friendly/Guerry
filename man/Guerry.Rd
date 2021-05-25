@@ -91,7 +91,45 @@ Friendly, M. (2007). Data from A.-M. Guerry, Essay on the Moral Statistics of Fr
 }
 
 \examples{
+library(car)
 data(Guerry)
-## maybe str(Guerry) ; plot(Guerry) ...
+
+# Is there a relation between crime and literacy?
+
+# Plot personal crime rate vs. literacy, using data ellipses. 
+#    Identify the departments that stand out
+set.seed(12315)
+with(Guerry,{
+	dataEllipse(Literacy, Crime_pers,
+		levels = 0.68,
+  	ylim = c(0,40000), xlim = c(0, 80),
+  	ylab="Pop. per crime against persons",
+  	xlab="Percent who can read & write",
+  	pch = 16,
+  	grid = FALSE,
+  	id = list(method="mahal", n = 8, labels=Department, location="avoid", cex=1.2),
+  	center.pch = 3, center.cex=5,
+  	cex.lab=1.5)
+  # add a 95% ellipse
+	dataEllipse(Literacy, Crime_pers,
+		levels = 0.95, add=TRUE,
+  	ylim = c(0,40000), xlim = c(0, 80),
+  	lwd=2, lty="longdash",
+  	col="gray",
+  	center.pch = FALSE
+  	)
+  
+  # add the LS line and a loess smooth.
+  abline( lm(Crime_pers ~ Literacy), lwd=2)	
+  lines(loess.smooth(Literacy, Crime_pers), col="red", lwd=3)
+  }
+  	)
+
+# A corrgram to show the relations among the main moral variables
+# Re-arrange variables by PCA ordering.
+
+library(corrgram)
+corrgram(Guerry[,4:9], upper=panel.ellipse, order=TRUE)
+
 }
 \keyword{datasets}
