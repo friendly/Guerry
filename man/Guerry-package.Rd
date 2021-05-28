@@ -51,7 +51,7 @@ and \code{\link{gfrance85}}, for the 85 departments excluding Corsica.
 Maintainer: \packageMaintainer{Guerry}
 }
 \references{
-Angeville, A. d' (1836).
+d'Angeville, A.  (1836).
 \emph{Essai sur la Statistique de la Population francaise}, Paris: F. Darfour.
 
 Dray, S. and Jombart, T. (2009).
