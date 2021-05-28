@@ -1,7 +1,5 @@
 library(Guerry)
 library(sp)
-#library(car)
-library(here)
 library(RColorBrewer)
 library(rgeos)
 
@@ -21,11 +19,6 @@ gf$Donations <- rank(gfrance$Donations)
 gf$Infants <- rank(gfrance$Infants)
 gf$Suicides <- rank(gfrance$Suicides)
 
-path <- "ch03-data/fig"
-png(filename=here(path, "guerrymap.png"), res=300, width=9, height=6, units="in")
-
-svg(filename=here(path, "guerrymap.svg"), width=9, height=6)
-
 
 spplot(gf, 
        c("Crime_pers", "Crime_prop", "Literacy", "Donations", "Infants", "Suicides"),
@@ -34,8 +27,6 @@ spplot(gf,
   layout=c(3,2), as.table=TRUE, 
   col.regions = my.palette, cuts = 8, # col = "transparent",
   main="Guerry's main moral variables")
-
-dev.off()
 
 
 names$gfrance
