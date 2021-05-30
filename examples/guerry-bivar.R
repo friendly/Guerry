@@ -27,6 +27,31 @@ with(Guerry,{
   }
   	)
 
+with(Guerry,{
+  dataEllipse(Literacy, Crime_prop,
+              levels = 0.68,
+              ylim = c(0,20000), xlim = c(0, 80),
+              ylab="Pop. per crime against poperty",
+              xlab="Percent who can read & write",
+              pch = 16,
+              grid = FALSE,
+              id = list(method="mahal", n = 8, labels=Department, location="avoid", cex=1.2),
+              center.pch = 3, center.cex=5,
+              cex.lab=1.5)
+  dataEllipse(Literacy, Crime_prop,
+              levels = 0.95, add=TRUE,
+              ylim = c(0,40000), xlim = c(0, 80),
+              lwd=2, lty="longdash",
+              col="gray",
+              center.pch = FALSE
+  )
+  
+  abline( lm(Crime_prop ~ Literacy), lwd=2)	
+  lines(loess.smooth(Literacy, Crime_prop), col="red", lwd=3)
+}
+)
+
+
 
 # redo this as crimes per 100,000 persons
 
