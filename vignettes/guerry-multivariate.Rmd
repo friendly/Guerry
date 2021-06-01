@@ -78,6 +78,21 @@ Other potential explanatory variables are:
 : `Donations` (a measure of donations to the poor),
 : `Clergy` (the rank of number of Catholic priests in active service, per population)
 
+## Load the data and packages
+
+```{r load}
+library(Guerry)
+library(car)
+data(Guerry)
+```
+
+
+## Bivariate relationships
+
+Let's start with plots of crime (`Crime_pers` and `Crime_prop`) in relation to `Literacy`.
+
+
+
 
 ## Bivariate relationships
 

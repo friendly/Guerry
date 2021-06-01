@@ -33,6 +33,7 @@ ggplot(aes(x=Literacy, y=Crime_pers/1000 , label=Department), data=gdf) +
   geom_smooth(method="lm", formula=y~x, fill="lightblue") +
   geom_smooth(method="loess", formula=y~x, color="red", se=FALSE) +
   geom_label_repel(data = gdf[gdf$dsq > 4.6,]) +
+#  stat_dens2d_filter(geom = "text_repel", keep.fraction = 0.1) +
   theme_bw()
 
 
