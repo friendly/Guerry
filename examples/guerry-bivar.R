@@ -4,7 +4,7 @@ data(Guerry)
 
 set.seed(12315)
 with(Guerry,{
-	dataEllipse(Literacy, Crime_pers,
+	dataEllipse(Literacy, Crime_pers/1000,
 		levels = 0.68,
   	ylim = c(0,40000), xlim = c(0, 80),
   	ylab="Pop. per crime against persons",
@@ -14,9 +14,9 @@ with(Guerry,{
   	id = list(method="mahal", n = 8, labels=Department, location="avoid", cex=1.2),
   	center.pch = 3, center.cex=5,
   	cex.lab=1.5)
-	dataEllipse(Literacy, Crime_pers,
+	dataEllipse(Literacy, Crime_pers/1000,
 		levels = 0.95, add=TRUE,
-  	ylim = c(0,40000), xlim = c(0, 80),
+#  	ylim = c(0,40000), xlim = c(0, 80),
   	lwd=2, lty="longdash",
   	col="gray",
   	center.pch = FALSE

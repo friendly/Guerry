@@ -13,13 +13,14 @@ vignette: >
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
+  warning = FALSE,
   comment = "#>"
 )
 ```
 
 André-Michel Guerry's (1833) _Essai sur la Statistique Morale de la France_
-collected data on crimes, suicide, literacy and other "moral statistics" for various départements  
-in France. He provided the first real social data analysis, using graphics and maps to summarize this 
+collected data on crimes, suicide, literacy and other "moral statistics" for various départements
+in France. He provided the first real social data analysis, using graphics and maps to summarize this
 multivariate dataset. One of his main goals in this ground-breaking study was to determine if the prevalence
 of crime in France could be explained by other social variables.
 
@@ -29,6 +30,16 @@ and argued how these could be seen as implying systematic, lawful relations amon
 
 In this analysis, we ignore the spatial context of the départements and focus on multivariate analyses of the
 the data set.
+
+## Load the data and packages
+
+```{r load}
+library(Guerry)
+library(car)
+library(ggplot2)
+library(ggrepel)
+data(Guerry)
+```
 
 ## `Guerry` data set
 
@@ -57,16 +68,71 @@ The `Guerry` data set also contains:
 names(Guerry)[-(1:9)]
 ```
 
+## Guerry's questions
 
-## Bivariate relationships
-
-The main questions that concerned Guerry were whether indices of crimes could be shown to be related to factors
+The main questions that concerned Guerry were whether indicators of crime could be shown to be related to factors
 which might be considered to ameliorate crime. Among these, Guerry focused most on `Literacy` defined as the
 number of military conscripts who could do more than mark an "X" on their enrollment form.
 Other potential explanatory variables are:
 
 : `Donations` (a measure of donations to the poor),
 : `Clergy` (the rank of number of Catholic priests in active service, per population)
+
+
+## Bivariate relationships
+
+Let's start with plots of crime (`Crime_pers` and `Crime_prop`) in relation to `Literacy`.
+A simple scatterplot is not very informative.
+
+```{r lit-pers-scat0}
+ggplot(aes(x=Literacy, y=Crime_pers/1000), data=Guerry) +
+  geom_point(size=2) 
+
+```
+
+
+More useful scatterplots are annotated with additional
+statistical summaries to aid interpretation:
+
+* linear regression line,
+* smoothed non-parametric (loess) curve, to diagnose potential non-linear relations,
+* data ellipses, to highlight the overall trend and variability,
+* point labels for potentially outlying or influential points.
+
+I use `ggplot2` here.  It provides most of these features, except that
+to label unusual points, I calculate the mahalanobis squared distance
+of all points from the grand means.
+
+```{r lit-pers-scat}
+gdf <- Guerry[, c("Literacy", "Crime_pers", "Department")]
+gdf$dsq <- mahalanobis(gdf[,1:2], colMeans(gdf[,1:2]), cov(gdf[,1:2]))
+
+ggplot(aes(x=Literacy, y=Crime_pers/1000, label=Department), data=gdf) +
+  geom_point(size=2) +
+  stat_ellipse(level=0.68, color="blue", size=1.2) +  
+  stat_ellipse(level=0.95, color="gray", size=1, linetype=2) + 
+  geom_smooth(method="lm", formula=y~x, fill="lightblue") +
+  geom_smooth(method="loess", formula=y~x, color="red", se=FALSE) +
+  geom_label_repel(data = gdf[gdf$dsq > 4.6,]) +
+  theme_bw()
+```
+
+Doing the same for crimes against property:
+```{r lit-prop-scat}
+gdf <- Guerry[, c("Literacy", "Crime_prop", "Department")]
+gdf$dsq <- mahalanobis(gdf[,1:2], colMeans(gdf[,1:2]), cov(gdf[,1:2]))
+
+ggplot(aes(x=Literacy, y=Crime_prop/1000, label=Department), data=gdf) +
+  geom_point(size=2) +
+  stat_ellipse(level=0.68, color="blue", size=1.2) +  
+  stat_ellipse(level=0.95, color="gray", size=1, linetype=2) + 
+  geom_smooth(method="lm", formula=y~x, fill="lightblue") +
+  geom_smooth(method="loess", formula=y~x, color="red", se=FALSE) +
+  geom_label_repel(data = gdf[gdf$dsq > 4.6,]) +
+  theme_bw()
+```
+
+
 
 
 
