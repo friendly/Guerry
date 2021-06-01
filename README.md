@@ -108,6 +108,26 @@ with(Guerry,{
 
 An old vignette for this package, [Spatial Multivariate Analysis of Guerry's Data in R](http://guerry.r-forge.r-project.org/doc/MultiSpat.pdf), written by Stephan Dray was removed from the package because it no longer complies with CRAN policies.
 
+## Citation
+
+``` r
+To cite package ‘Guerry’ in publications use:
+
+  Michael Friendly and Stephane Dray (2020). Guerry: Maps, Data and Methods Related to Guerry (1833) "Moral
+  Statistics of France". R package version 1.7.0. https://CRAN.R-project.org/package=Guerry
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {Guerry: Maps, Data and Methods Related to Guerry (1833) "Moral
+Statistics of France"},
+    author = {Michael Friendly and Stephane Dray},
+    year = {2020},
+    note = {R package version 1.7.0},
+    url = {https://CRAN.R-project.org/package=Guerry},
+  }
+```
+
 ## References
 
 Friendly, M. (2007). A.-M. Guerry's Moral Statistics of France: Challenges for Multivariable Spatial Analysis.
