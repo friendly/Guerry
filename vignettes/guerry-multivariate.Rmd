@@ -83,7 +83,7 @@ Other potential explanatory variables are:
 
 ## Load the data and packages
 
-```{r load}
+```{r load2}
 library(Guerry)
 library(car)
 data(Guerry)
