@@ -6,3 +6,5 @@ README.md
 ^CRAN-RELEASE$
 ^examples/
 ^vignette-old/
+^doc$
+^Meta$

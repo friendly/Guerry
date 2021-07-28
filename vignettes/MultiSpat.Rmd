@@ -233,7 +233,7 @@ The results are very close to those obtained by PCA: the first axis contrasted t
 
 ## Spatial explanatory variables
 
-Principal component analysis with respect to the instrumental variables \citep[PCAIV, @SD540], and related methods, have been often used in community ecology to identify spatial relationships. The spatial information is introduced in the form of spatial predictors and the analysis maximized the "spatial variance" (i.e., the variance explained by spatial predictors).  Note that BCA can also be considered as a particular case of PCAIV, where the explanatory variables are dummy variables indicating group membership.
+Principal component analysis with respect to the instrumental variables [@PCAIV, @SD540], and related methods, have been often used in community ecology to identify spatial relationships. The spatial information is introduced in the form of spatial predictors and the analysis maximized the "spatial variance" (i.e., the variance explained by spatial predictors).  Note that BCA can also be considered as a particular case of PCAIV, where the explanatory variables are dummy variables indicating group membership.
 
 ### Trend surface of geographic coordinates
 
