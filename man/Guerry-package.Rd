@@ -63,7 +63,7 @@ Geographically weighted visualization: interactive graphics
 for scale-varying exploratory analysis.
 Geographical Information Science Research Conference (GISRUK 2007).
 NUI Maynooth, Ireland, April, 2007.
-\url{http://ncg.nuim.ie/gisruk/materials/proceedings/PDF/3C1.pdf}.
+\url{https://www.maynoothuniversity.ie/national-centre-geocomputation-ncg}.
 
 
 Friendly, M. (2007). A.-M. Guerry's Moral Statistics of France: Challenges for Multivariable Spatial Analysis.
