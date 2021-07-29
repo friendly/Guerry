@@ -33,18 +33,19 @@ analysis is supplemented by `adegraphics` (for associated graphical methods) and
 
 
 ```{r}
-library(Guerry) # Guerry's data
-library(sp) # management of spatial data
-library(ade4) # multivariate analysis
-library(adegraphics) # graphical representation
-library(spdep) # spatial dependency
-library(adespatial) # multivariate spatial analysis
+library(Guerry)       # Guerry's data
+library(sp)           # management of spatial data
+library(ade4)         # multivariate analysis
+library(adegraphics)  # graphical representation
+library(spdep)        # spatial dependency
+library(adespatial)   # multivariate spatial analysis
 ```
 
-Guerry gathered data on crimes, suicide, literacy and other moral statistics for various départements (i.e., counties) in France. He provided the first real social data analysis, using graphics and maps to summarize this georeferenced multivariate dataset. We use the dataset `gfrance85` and consider six key quantitative variables (shown in the table below) for each of the 85 départements of France in 1830 (Corsica, an island and often an outlier, was excluded). Data are recorded on aligned scales so that 
-**larger numbers** consistently
-reflected "morally better". Thus, four of the variables are recorded in the inverse form,
-"Population per ...".
+Guerry gathered data on crimes, suicide, literacy and other moral statistics for various départements (i.e., counties) in France. He provided the first real social data analysis, using graphics and maps to summarize this georeferenced multivariate dataset. We use the dataset `gfrance85` and consider six key quantitative variables (shown in the table below) for each of the 85 départements of France in 1830 (Corsica, an island and often an outlier, was excluded). 
+
+Data are recorded on aligned scales so that **larger numbers** consistently
+reflect "morally better". Thus, four of the "bad" variables are recorded in the inverse form, as
+"Population per ...". With this scaling, it would be expected that all correlations be $\ge 0$.
 
 
 | Name        | Description |
@@ -56,14 +57,23 @@ reflected "morally better". Thus, four of the variables are recorded in the inve
 |`Infants`    | Population per illegitimate birth|
 |`Suicides`   | Population per suicide|
 
+The dataset `gfrance85` is actually a `SpatialPolygonsDataFrame` object created with the `sp` package.
+It contains the polygon boundaries of the map of France in 1830, as well the variables in the `Guerry` data frame.
+As an ordinary data.frame, it has these components
+```{r}
+names(gfrance85)
+```
+
+To simplify analyses, we extract the components to be used below.  
+
 ```{r}
  data(gfrance85)
- df <- data.frame(gfrance85)[, 7:12] # the 6 variables
- france.map <- as(gfrance85, "SpatialPolygons") # the map
- xy <- coordinates(gfrance85) # spatial coordinates
- dep.names <- data.frame(gfrance85)[, 6] # departement names
- region.names <- data.frame(gfrance85)[, 5] # region names
- col.region <- colors()[c(149, 254, 468, 552, 26)] # colors for region
+ df           <- data.frame(gfrance85)[, 7:12]    # the 6 variables
+ france.map   <- as(gfrance85, "SpatialPolygons") # the map
+ xy           <- coordinates(gfrance85)           # spatial coordinates
+ dep.names    <- data.frame(gfrance85)[, 6]       # departement names
+ region.names <- data.frame(gfrance85)[, 5]       # region names
+ col.region   <- colors()[c(149, 254, 468, 552, 26)] # colors for region
 ```
 
 # Standard approaches
