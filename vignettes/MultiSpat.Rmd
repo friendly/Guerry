@@ -15,6 +15,7 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   warning = FALSE,
+  message = FALSE,   # suppress package loading messages
   comment = "#>",
   fig.height = 3,
   fig.width = 3,
@@ -27,7 +28,9 @@ It illustrates some classical methods for analysis of multivariate spatial data 
 
 # Preliminary steps
 
-Several packages are required to run the different analyses and should be loaded.
+Several packages are required to run the different analyses and should be loaded. The `ade4` package for multivariate
+analysis is supplemented by `adegraphics` (for associated graphical methods) and `adespatial` for multivariate spatial analysis.
+
 
 ```{r}
 library(Guerry) # Guerry's data
@@ -38,7 +41,8 @@ library(spdep) # spatial dependency
 library(adespatial) # multivariate spatial analysis
 ```
 
-Guerry gathered data on crimes, suicide, literacy and other moral statistics for various départements (i.e., counties) in France. He provided the first real social data analysis, using graphics and maps to summarize this georeferenced multivariate dataset. We use the dataset `gfrance85` and consider six key quantitative variables (shown in the table below) for each of the 85 départements of France in 1830 (Corsica, an island and often an outlier, was excluded). Data are recorded on aligned scales so that larger numbers consistently
+Guerry gathered data on crimes, suicide, literacy and other moral statistics for various départements (i.e., counties) in France. He provided the first real social data analysis, using graphics and maps to summarize this georeferenced multivariate dataset. We use the dataset `gfrance85` and consider six key quantitative variables (shown in the table below) for each of the 85 départements of France in 1830 (Corsica, an island and often an outlier, was excluded). Data are recorded on aligned scales so that 
+**larger numbers** consistently
 reflected "morally better". Thus, four of the variables are recorded in the inverse form,
 "Population per ...".
 

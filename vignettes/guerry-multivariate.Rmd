@@ -15,6 +15,7 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   warning = FALSE,
+  message = FALSE,   # suppress package loading messages
   comment = "#>",
   fig.height = 5,
   fig.width = 5
