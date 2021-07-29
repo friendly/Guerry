@@ -106,7 +106,17 @@ with(Guerry,{
 
 ## Vignettes
 
-An old vignette for this package, [Spatial Multivariate Analysis of Guerry's Data in R](http://guerry.r-forge.r-project.org/doc/MultiSpat.pdf), written by Stephan Dray was removed from the package because it no longer complies with CRAN policies.
+The vignette _Guerry data: Spatial Multivariate Analysis_, written by Stéphane Dray uses his packages
+`ade4` and `adegraphics` to illustrate methods for spatial multivariate data that focus on either
+the multivariate aspect or the spatial one, as well as some more modern methods that integrate
+these simultaneously.
+See:
+
+``` r
+vignette("MultiSpat", package="Guerry")
+```
+
+# An old vignette for this package, [Spatial Multivariate Analysis of Guerry's Data in R](http://guerry.r-forge.r-project.org/doc/MultiSpat.pdf), written by Stephan Dray was removed from the package because it no longer complies with CRAN policies.
 
 ## Citation
 
@@ -114,7 +124,7 @@ An old vignette for this package, [Spatial Multivariate Analysis of Guerry's Dat
 To cite package ‘Guerry’ in publications use:
 
   Michael Friendly and Stephane Dray (2020). Guerry: Maps, Data and Methods Related to Guerry (1833) "Moral
-  Statistics of France". R package version 1.7.0. https://CRAN.R-project.org/package=Guerry
+  Statistics of France". R package version 1.7.1. https://CRAN.R-project.org/package=Guerry
 
 A BibTeX entry for LaTeX users is
 
@@ -129,6 +139,9 @@ Statistics of France"},
 ```
 
 ## References
+
+Angeville, A. d' (1836).
+\emph{Essai sur la Statistique de la Population francaise}, Paris: F. Darfour.
 
 Friendly, M. (2007). A.-M. Guerry's Moral Statistics of France: Challenges for Multivariable Spatial Analysis.
  *Statistical Science*, **22**, 368-399. http://www.datavis.ca/papers/guerry-STS241.pdf
