@@ -37,4 +37,3 @@ ggplot(aes(x=Literacy, y=Crime_pers/1000 , label=Department), data=gdf) +
   theme_bw()
 
 
-

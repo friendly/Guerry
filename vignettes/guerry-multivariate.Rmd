@@ -145,6 +145,9 @@ ggplot(aes(x=Literacy, y=Crime_prop/1000, label=Department), data=gdf) +
   theme_bw()
 ```
 
+## Reconnaisance plots
 
+To see the relations among more than two variables we could turn to a
+scatterplot matrix to show all pairwise bivariate relations.
 
 
