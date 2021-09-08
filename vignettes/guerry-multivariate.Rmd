@@ -65,7 +65,7 @@ reflected "morally better". Thus, four of the variables are recorded in the inve
 The `Guerry` data set also contains:
 
 * `dept` and `Department`, the French ID numbers and names for the 86 départements of metropolitan France in 1830, including Corsica.
-* `Region`: a factor with main levels "N", "S", "E", "W". Corsica is coded as `NA`.
+* `Region`: a factor with main levels "N", "S", "E", "W", "C". Corsica is coded as `NA`.
 * A collection of 14 other related variables from other sources at the same time. See `?Guerry` for their precise definitions.
 
 ```{r guerry-more-vars}
@@ -90,9 +90,23 @@ library(car)
 data(Guerry)
 ```
 
+## Multivariate visualization methods
 
+Visualization methods for multivariate data take an enormous variety of forms simply because more than two dimensions of data offer exponentially increasingly possibilities.  It is useful to distinguish several broad categories:
 
-## Bivariate relationships
+* __data plots__ : primarily plot the raw data, often with annotations to aid interpretation (regression lines and smooths, data ellipses, marginal distributions)
+
+* __model plots__ : primarily plot the results of a fitted model, considering that
+the fitted model may involve more variables than can be shown in a static 2D plot.
+Some examples are: Added variable plots, ...
+
+* __diagnostic plots__ : indicating potential problems with the fitted model.
+
+* __dimension reduction plots__ : plot representations of the data projected into a space of fewer dimensions than the number of variables in the data set.
+
+## Data plots
+
+### Bivariate relationships
 
 Let's start with plots of crime (`Crime_pers` and `Crime_prop`) in relation to `Literacy`.
 A simple scatterplot is not very informative.
@@ -113,7 +127,7 @@ statistical summaries to aid interpretation:
 * point labels for potentially outlying or influential points.
 
 I use `ggplot2` here.  It provides most of these features, except that
-to label unusual points, I calculate the mahalanobis squared distance
+to label unusual points, I calculate the Mahalanobis squared distance
 of all points from the grand means.
 
 ```{r lit-pers-scat}
@@ -145,9 +159,21 @@ ggplot(aes(x=Literacy, y=Crime_prop/1000, label=Department), data=gdf) +
   theme_bw()
 ```
 
-## Reconnaisance plots
+### Reconnaisance plots
+
 
 To see the relations among more than two variables we could turn to a
-scatterplot matrix to show all pairwise bivariate relations.
+scatterplot matrix or some other display to show all pairwise bivariate relations. 
 
+
+For these, my preferred package is `car` with the `scatterplotMatrix` function.
+`GGally` works within the the `ggplot2` framework, but doesn't have the flexibility
+I'd like.
+
+```{r spm1, out.width=100%}
+library(car)
+scatterplotMatrix(Guerry[,4:9],
+                  ellipse=list(levels=0.68), 
+                  smooth=FALSE)
+```
 

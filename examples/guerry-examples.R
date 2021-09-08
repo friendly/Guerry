@@ -27,7 +27,9 @@ corrgram(Angeville[,-1], order=TRUE)
 
 # scatterplotmatrix
 library(GGally)
-ggpairs(Guerry, columns=4:9, aes(color=Region)) + 
+ggpairs(Guerry, columns=4:9, 
+        upper = list(continuous="points"),
+        aes(color=Region)) + 
   ggtitle("Guerry data")
 
 library(car)
