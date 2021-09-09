@@ -170,7 +170,7 @@ For these, my preferred package is `car` with the `scatterplotMatrix` function.
 `GGally` works within the the `ggplot2` framework, but doesn't have the flexibility
 I'd like.
 
-```{r spm1, out.width=100%}
+```{r spm1, out.width="100%"}
 library(car)
 scatterplotMatrix(Guerry[,4:9],
                   ellipse=list(levels=0.68), 
