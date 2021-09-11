@@ -1,8 +1,12 @@
 Version 1.7.3
 
-* revived MultiSpat vignette [Stephan Dray]
 * begin guerry-multivariate vignette
 * Fixed problem arising from new spdep when rgeos is not installed [thx: Roger Bivand]
+
+Version 1.7.1
+
+* translate/update/restore the main vignette, `MultiSpat.html` by Stephane Drey
+
 
 Version 1.7.0
 
