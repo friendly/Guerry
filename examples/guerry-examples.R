@@ -16,10 +16,10 @@ corrgram(Guerry[,4:9], upper=panel.ellipse)
 corrgram(Guerry[,4:9], order=TRUE)
 corrgram(Guerry[,4:9], upper=panel.pie, order=TRUE)
 
-vars <- c(4:9, 20)
-corrgram(Guerry[,vars], upper=panel.pie, order=TRUE)
+vars <- c(4:9, 11, 13, 14, 20)
+corrgram(Guerry[,vars], upper=panel.ellipse, cex.labels = 1.3)
 
-corrgram(Angeville[,-1], order=TRUE)
+corrgram(Angeville[,-1], order=TRUE, cex.labels=1.2)
 
 # library(ggplot2)
 # plotmatrix(Guerry[,4:9], colour="gray20") +
