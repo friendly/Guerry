@@ -26,7 +26,7 @@ points(guerry.pca$x, pch=(15:19)[Guerry$Region], col=cols[Guerry$Region])
 
 candisc::vectors(guerry.pca$rotation, scale=5,  
                  col="black", lwd=3, cex=1.5, 
-                 pos = c(NULL,NULL,NULL,NULL,NULL,NULL),
+                 pos = c(4,2,4,2,2,2),
                  xpd=TRUE)
 abline(h=0, v=0, col=gray(.70))
 par(op)
