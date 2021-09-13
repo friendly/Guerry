@@ -1,16 +1,17 @@
 ## Test environments
-* local Windows, R 3.6.3
+* local Windows, 4.0.2 (2020-06-22)
 * win-builder R Under development (unstable) (2021-07-25 r80663)
-
 
 ## R CMD check results
 
 0 errors | 0 warnings | 0 note
 
-* This is a minor release to restore the main package vignette.
+Version 1.7.3
 
-Version 1.7.1
+* This is a minor release to fix problem arising from new release of spdep when rgeos is not installed
 
-* translate/update/restore the main vignette, `MultiSpat.html` by Stephane Drey
+The present version passes CMD check both with and without rgeos. 
+It also passes with the development version of spdep with and without rgeos. 
+Released Guerry now passes CMD check with the development version of spdep, with and without rgeos, issuing a warning if rgeos is absent and falling back on inefficient legacy code not using spatial indexing.
 
 

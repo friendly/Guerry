@@ -170,10 +170,25 @@ For these, my preferred package is `car` with the `scatterplotMatrix` function.
 `GGally` works within the the `ggplot2` framework, but doesn't have the flexibility
 I'd like.
 
-```{r spm1, out.width=100%}
+```{r spm1, out.width="100%"}
 library(car)
 scatterplotMatrix(Guerry[,4:9],
                   ellipse=list(levels=0.68), 
                   smooth=FALSE)
 ```
 
+Sometimes, particularly with more variables than this, we want to see a more schematic overview.  The `corrgram` package provides a variety of rendering methods to show the correlations among all pairs of variables. The panels in the
+upper and lower triangles can be rendered differently.
+
+```{r corrgram1}
+library(corrgram)
+corrgram(Guerry[,4:9], upper=panel.pie)
+```
+Or, the data in each pairwise tile can be rendered with data ellipses and
+smoothed curves to show possible nonlinear relations.
+
+```{r corrgram2}
+corrgram(Guerry[,4:9], upper=panel.ellipse)
+```
+
+## Biplots
