@@ -48,8 +48,8 @@ data(Guerry)
 ## `Guerry` data set
 
 Guerry's (1833) data consisted of six main moral variables shown in the table below. 
-He wanted all of these to be recorded on aligned scales so that larger numbers consistently
-reflected "morally better". Thus, four of the variables are recorded in the inverse form,
+He wanted all of these to be recorded on aligned scales so that **larger** numbers consistently
+reflected "**morally better**". Thus, four of the variables are recorded in the inverse form,
 "Population per ...".
 
 
@@ -72,23 +72,22 @@ The `Guerry` data set also contains:
 names(Guerry)[-(1:9)]
 ```
 
+Among these, as other aspects of criminal behavior,  we see crime against parents,  `infanticide` and `prostitutes`. 
+
 ## Guerry's questions
 
 The main questions that concerned Guerry were whether indicators of crime could be shown to be related to factors
 which might be considered to ameliorate crime. Among these, Guerry focused most on `Literacy` defined as the
 number of military conscripts who could do more than mark an "X" on their enrollment form.
+A related variable is `Instruction`, the rank recorded from Guerry's map;
+as defined, it is inversely related to `Literacy`.
+
 Other potential explanatory variables are:
 
 : `Donations` (a measure of donations to the poor),
+
 : `Clergy` (the rank of number of Catholic priests in active service, per population)
 
-## Load the data and packages
-
-```{r load2}
-library(Guerry)
-library(car)
-data(Guerry)
-```
 
 ## Multivariate visualization methods
 
@@ -102,14 +101,17 @@ Some examples are: Added variable plots, ...
 
 * __diagnostic plots__ : indicating potential problems with the fitted model.
 
-* __dimension reduction plots__ : plot representations of the data projected into a space of fewer dimensions than the number of variables in the data set.
+* __dimension reduction plots__ : plot representations of the data into a space of fewer dimensions than the number of variables in the data set. Simple examples include principal components analysis (PCA) and the related biplots,
+and multidimensional scaling (MDS) methods.
 
 ## Data plots
+
+Data plots portray the data in a space where the coordinate axes are the observed variables.
 
 ### Bivariate relationships
 
 Let's start with plots of crime (`Crime_pers` and `Crime_prop`) in relation to `Literacy`.
-A simple scatterplot is not very informative.
+A simple scatterplot is not very informative. All that can be seen is that there is not much of a relation between personal crime and literacy.
 
 ```{r lit-pers-scat0}
 ggplot(aes(x=Literacy, y=Crime_pers/1000), data=Guerry) +
@@ -144,6 +146,8 @@ ggplot(aes(x=Literacy, y=Crime_pers/1000, label=Department), data=gdf) +
   theme_bw()
 ```
 
+The flat (blue) regression line and the nearly circular data ellipses show that the correlation is nearly zero; the smoothed (red) curve indicates that there is no tendency for a nonlinear relation.
+
 Doing the same for crimes against property:
 ```{r lit-prop-scat}
 gdf <- Guerry[, c("Literacy", "Crime_prop", "Department")]
@@ -161,8 +165,8 @@ ggplot(aes(x=Literacy, y=Crime_prop/1000, label=Department), data=gdf) +
 
 ### Reconnaisance plots
 
-
-To see the relations among more than two variables we could turn to a
+Reconnaisance plots attempt to give a bird's-eye overview of a multivariate data set.
+For example, to see the relations among more than two variables we could turn to a
 scatterplot matrix or some other display to show all pairwise bivariate relations. 
 
 
@@ -192,3 +196,8 @@ corrgram(Guerry[,4:9], upper=panel.ellipse)
 ```
 
 ## Biplots
+
+Rather than viewing the data in data space, a biplot shows the data in the reduced space that explains most of the variation of the observations.  This is essentially a plot of the observation scores on the first principal component overlaid with vectors representing the variables projected into PCA space.
+
+
+
