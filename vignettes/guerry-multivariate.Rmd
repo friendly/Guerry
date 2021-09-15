@@ -200,4 +200,3 @@ corrgram(Guerry[,4:9], upper=panel.ellipse)
 Rather than viewing the data in data space, a biplot shows the data in the reduced space that explains most of the variation of the observations.  This is essentially a plot of the observation scores on the first principal component overlaid with vectors representing the variables projected into PCA space.
 
 
-
