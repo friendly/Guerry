@@ -1,13 +1,16 @@
 # biplot using heplots functions
 
+data(Guerry, package="Guerry")
 library(heplots)
 
 
-gdata <- Guerry[,1:9]
-gdata <- Guerry[-86,]	# delete Corsica
+gdata <- Guerry[,1:9]   # keep main variables
+gdata <- Guerry[-86,] 	# delete Corsica (Region=NA)
 
 
 guerry.pca <- prcomp(gdata[,4:9], scale=TRUE)
+
+
 
 op <- par(mar=c(5,4,1,1)+.1)
 cols = colorspace::rainbow_hcl(5)

@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-André-Michel Guerry's (1833) _Essai sur la Statistique Morale de la France_
+André-Michel Guerry's _Essai sur la Statistique Morale de la France_ [@Guerry:1833]
 collected data on crimes, suicide, literacy and other "moral statistics" for various départements
 in France. He provided the first real social data analysis, using graphics and maps to summarize this
 multivariate dataset. One of his main goals in this ground-breaking study was to determine if the prevalence
@@ -197,6 +197,6 @@ corrgram(Guerry[,4:9], upper=panel.ellipse)
 
 ## Biplots
 
-Rather than viewing the data in data space, a biplot shows the data in the reduced space that explains most of the variation of the observations.  This is essentially a plot of the observation scores on the first principal component overlaid with vectors representing the variables projected into PCA space.
+Rather than viewing the data in **data space**, a biplot shows the data in the **reduced-rank PCA space** that explains most of the variation of the observations.  This is essentially a plot of the observation scores on the first principal component overlaid with vectors representing the variables projected into PCA space.
 
 
