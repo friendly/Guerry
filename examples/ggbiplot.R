@@ -2,15 +2,19 @@
 
 
 library(ggbiplot)
+library(patchwork)
 data(Guerry, package="Guerry")
 
-# keep only main variables; delete Corsica (region==NA)
-gdata <- Guerry[1:9]
-gdata <- Guerry[-86,]
+
+gdata <- Guerry[1:9]    # keep only main variables;
+gdata <- Guerry[-86,]   # delete Corsica (region==NA)
 
 guerry.pca <- prcomp(gdata[,4:9], scale=TRUE)
-ggscreeplot(guerry.pca) + theme_bw() + geom_point(size=4)
+print(guerry.pca, digits=3)
 
+ggs1 <- ggscreeplot(guerry.pca) + theme_bw() + geom_point(size=4)
+ggs2 <- ggscreeplot(guerry.pca, type="cev") + theme_bw() + geom_point(size=4)
+ggs1 + ggs2
 
 ggbiplot(guerry.pca, groups=gdata$Region, 
          ellipse=TRUE,
