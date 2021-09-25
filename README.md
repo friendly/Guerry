@@ -109,12 +109,13 @@ with(Guerry,{
 The vignette _Guerry data: Spatial Multivariate Analysis_, written by Stéphane Dray uses his packages
 `ade4` and `adegraphics` to illustrate methods for spatial multivariate data that focus on either
 the multivariate aspect or the spatial one, as well as some more modern methods that integrate
-these simultaneously.
+these simultaneously. [Not available in this release.]
 See:
 
-``` r
-vignette("MultiSpat", package="Guerry")
-```
+# 
+# ``` r
+# vignette("MultiSpat", package="Guerry")
+# ```
 
 ## Citation
 
