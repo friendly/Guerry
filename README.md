@@ -123,9 +123,9 @@ See:
 To cite package ‘Guerry’ in publications use:
 
   Michael Friendly and Stéphane Dray (2020). Guerry: Maps, Data and Methods Related to Guerry (1833) "Moral
-  Statistics of France". R package version 1.7.1. https://CRAN.R-project.org/package=Guerry
+  Statistics of France". R package version 1.7.3. https://CRAN.R-project.org/package=Guerry
 
-A BibTeX entry for LaTeX users is
+A BibTeX entry for LaTeX users is:
 
   @Manual{,
     title = {Guerry: Maps, Data and Methods Related to Guerry (1833) "Moral
