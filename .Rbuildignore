@@ -6,6 +6,7 @@ README.md
 ^CRAN-RELEASE$
 ^examples/
 ^vignette-old/
+^vignettes-new/
 ^doc$
 ^Meta$
 ^.build-steps.R$
