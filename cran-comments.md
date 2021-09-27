@@ -6,9 +6,10 @@
 
 0 errors | 0 warnings | 1 note
 
-## Version 1.7.3
+## Version 1.7.4
 
-* This is a minor release to fix a problem arising from the new release of `spdep` when `rgeos` is not installed.
+* This is a minor release to fix a problem arising from the new release of `spdep` when `rgeos` is not installed. It also fixes
+some minor problems that arose from CRAN testing of the previous submission, v 1.7.3.
 
 The present version passes CMD check both with and without `rgeos`. 
 It also passes with the development version of `spdep` with and without `rgeos`. 
@@ -21,3 +22,10 @@ CRAN repository db overrides:
   X-CRAN-Comment: Archived on 2021-09-23 as check problems were not
     corrected in time.
 
+In addition, I now get a useless false-positive note, below. This check ignores entries in `inst/WORDFILE` and should be abandonned.
+
+Possibly misspelled words in DESCRIPTION:
+  Guerry (3:42, 20:71)
+  Guerry's (21:29)
+  geospatial (22:76)
+  
