@@ -1,8 +1,8 @@
 Package: Guerry
 Type: Package
 Title: Maps, Data and Methods Related to Guerry (1833) "Moral Statistics of France"
-Version: 1.7.3
-Date: 2021-09-24
+Version: 1.7.4
+Date: 2021-09-27
 Authors@R: c(person(given = "Michael", family = "Friendly", role=c("aut", "cre"), email="friendly@yorku.ca"),
             person(given = "Stephane", family = "Dray", role="aut", email="stephane.dray@univ-lyon1.fr"),
             person(given = "Roger", family = "Bivand", role="ctb")
@@ -24,3 +24,4 @@ URL: https://github.com/friendly/Guerry
 BugReports: https://github.com/friendly/Guerry/issues
 LazyLoad: yes
 LazyData: yes
+VignetteBuilder: knitr
