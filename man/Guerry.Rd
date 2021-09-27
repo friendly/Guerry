@@ -50,7 +50,7 @@ Source: Parent-Duchatelet (1836), \emph{De la prostitution en Paris}}
     \item{\code{Distance}}{Distance to Paris (km). Distance of each department centroid to the centroid of the Seine (Paris)
 Source: calculated from department centroids }
     \item{\code{Area}}{Area (1000 km^2). Source: Angeville (1836) }
-    \item{\code{Pop1831}}{1831 population. Population in 1831, taken from Angeville (1836), \emph{Essai sur la Statistique de la Population fran?ais}, in 1000s }
+    \item{\code{Pop1831}}{1831 population. Population in 1831, taken from Angeville (1836), \emph{Essai sur la Statistique de la Population francais}, in 1000s }
   }
 }
 \details{
