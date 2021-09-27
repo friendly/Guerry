@@ -54,9 +54,10 @@ Maintainer: \packageMaintainer{Guerry}
 d'Angeville, A.  (1836).
 \emph{Essai sur la Statistique de la Population francaise}, Paris: F. Darfour.
 
-Dray, S. and Jombart, T. (2012).
-A Revisit Of Guerry's Data: Introducing Spatial Constraints In Multivariate Analysis. 
-\url{https://arxiv.org/abs/1202.6485}.
+Dray, S. and Jombart, T. (2011).
+A Revisit Of Guerry's Data: Introducing Spatial Constraints In Multivariate Analysis.
+\emph{The Annals of Applied Statistics}, 5(4).
+\url{http://dx.doi.org/10.1214/10-AOAS356}.
 
 Brunsdon, C. and Dykes, J. (2007).
 Geographically weighted visualization: interactive graphics
