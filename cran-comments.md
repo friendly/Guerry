@@ -6,7 +6,18 @@
 
 0 errors | 0 warnings | 1 note
 
-## Version 1.7.4
+## Version 1.7.4 (resubmission)
+
+* I apologise for the previous submission, dated 9/28/2021 which generated the note:
+
+  Found the following (possibly) invalid URLs:
+    URL: https://doi.org/10.1214/10-aoas356
+      From: man/Guerry-package.Rd
+      Status: 500
+      Message: Internal Server Error
+
+This did not appear in any of my checks, and has now been corrected.
+
 
 * This is a minor release to fix a problem arising from the new release of `spdep` when `rgeos` is not installed. It also fixes
 some minor problems that arose from CRAN testing of the previous submission, v 1.7.3.
