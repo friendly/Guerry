@@ -7,14 +7,15 @@ library(candisc)
 library(car)
 library(Guerry)
 library(dplyr)
+library(sp)
 data(Guerry, package="Guerry")
 
 # extract pieces
-df           <- data.frame(Guerry)[, 4:9]    # the 6 variables
+df           <- data.frame(Guerry)[, 4:9]        # the 6 variables
 france.map   <- as(gfrance85, "SpatialPolygons") # the map
-xy           <- coordinates(gfrance)           # spatial coordinates
-dep.names    <- data.frame(Guerry)[, 3]       # departement names
-region.names <- data.frame(Guerry)[, 2]       # region names
+xy           <- sp::coordinates(gfrance)         # spatial coordinates
+dep.names    <- data.frame(Guerry)[, 3]          # departement names
+region.names <- data.frame(Guerry)[, 2]          # region names
 col.region   <- colors()[c(149, 254, 468, 552, 26)] # colors for region
 
 # ranks

@@ -33,3 +33,12 @@ candisc::vectors(guerry.pca$rotation, scale=5,
                  xpd=TRUE)
 abline(h=0, v=0, col=gray(.70))
 par(op)
+
+
+# try stats::biplot
+
+biplot(guerry.pca, cex=c(.5, 1),
+       xlab = "Dimension 1 (35.7 %)", 
+       ylab = "Dimension 2 (20.0 %)",
+)
+
