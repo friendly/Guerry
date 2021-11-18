@@ -14,6 +14,8 @@ guerry.pca <- prcomp(gdata[,4:9], scale=TRUE)
 
 op <- par(mar=c(5,4,1,1)+.1)
 cols = colorspace::rainbow_hcl(5)
+cols   <- colors()[c(149, 254, 468, 552, 26)] # colors for region
+
 covEllipses(guerry.pca$x, group=gdata$Region, 
             pooled=FALSE, 
             fill=TRUE, fill.alpha=0.1,

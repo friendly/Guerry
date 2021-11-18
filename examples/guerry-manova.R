@@ -18,31 +18,48 @@ dep.names    <- data.frame(Guerry)[, 3]          # departement names
 region.names <- data.frame(Guerry)[, 2]          # region names
 col.region   <- colors()[c(149, 254, 468, 552, 26)] # colors for region
 
-# ranks
-
-#df %>% mutate_all(funs(dense_rank(desc(.))))
-
-df %>% mutate(
-             Crime_pers = dense_rank(Crime_pers),
-             Crime_prop = dense_rank(Crime_prop),
-             Literacy   = dense_rank(Literacy),
-             Donations  = dense_rank(Donations),
-             Infants    = dense_rank(Infants),
-             Suicides   = dense_rank(Suicides)
-) -> df_ranks
-
-
 
 # What variables predict crime?
 crime.mod <- lm(cbind(Crime_pers, Crime_prop) ~ 
-                  Region + Literacy + Donations +  Infants + Suicides, data=Guerry)
+                Region + Literacy + Donations +  Infants + Suicides, data=Guerry)
 Anova(crime.mod)
 
 heplot(crime.mod, fill=TRUE, fill.alpha=0.1)
 
 crime.can <- candisc(crime.mod)
 crime.can
-plot(crime.can)
+#plot(crime.can)
+
+heplot(crime.can)
+
+# Use ranks
+
+Guerry %>% 
+  select(1:9) %>%
+  mutate(
+    Crime_pers = dense_rank(Crime_pers),
+    Crime_prop = dense_rank(Crime_prop),
+    Literacy   = dense_rank(Literacy),
+    Donations  = dense_rank(Donations),
+    Infants    = dense_rank(Infants),
+    Suicides   = dense_rank(Suicides)
+  ) -> Guerry_ranks
+
+
+
+crime.rmod <- lm(cbind(Crime_pers, Crime_prop) ~ 
+                  Region + Literacy + Donations +  Infants + Suicides, data=Guerry_ranks)
+Anova(crime.rmod)
+
+heplot(crime.rmod, fill=TRUE, fill.alpha=0.1)
+
+crime.rcan <- candisc(crime.rmod)
+crime.rcan
+#plot(crime.can)
+
+heplot(crime.rcan)
+
+
 
 # What variables discriminate among Regions ?
 

@@ -1,5 +1,7 @@
 library(geofacet)
 library(ggplot2)
+library(dplyr)
+library(tidyr)
 library(Guerry)
 library(sp)
 
@@ -12,18 +14,29 @@ library(sp)
 grid_preview("fr_regions_grid1")  
 
 grid_preview("fr_departements_grid1")
-grid_preview("fr_departements_grid2")
+#grid_preview("fr_departements_grid2")
+
+zz <- grid_preview("fr_departements_grid2")
+zz + geom_text(aes(label=name), size=2, nudge_y=0.2)
 
 # modify grid to collapse Corsica (2A, 2B) and remove territories
 
 fr_departements_1830 <- fr_departements_grid1 %>%
 	filter(nchar(code) < 3) %>%
 	filter(code != "2B") %>%
-	mutate(code = ifelse(code == "2A", "200", code)) 
+	mutate(code = ifelse(code == "2A", "200", code))
+
+fr_departements_1830 <- fr_departements_grid2 %>%
+  filter(nchar(code) < 3) %>%
+  filter(code != "2B") %>%
+  mutate(code = ifelse(code == "2A", "200", code))
+
 
 str(fr_departements_1830)
-	
+grid_preview("fr_departements_1830")	
 
+# grid 'fr_departements_1830' not found in package, checking online...
+# Error in get_grid(x) : grid 'fr_departements_1830' not recognized...
 
 # extract pieces
 df           <- data.frame(Guerry)[, 4:9]    # the 6 variables
@@ -35,8 +48,6 @@ col.region   <- colors()[c(149, 254, 468, 552, 26)] # colors for region
 df <- Guerry[,1:9]
 # ranks
 
-#df %>% mutate_all(funs(dense_rank(desc(.))))
-
 
 df %>% mutate(
              Crime_pers = dense_rank(Crime_pers),
@@ -47,12 +58,17 @@ df %>% mutate(
              Suicides   = dense_rank(Suicides)
 ) -> df_ranks
 
-ggplot(df_ranks, aes(Crime, pers)) +
+ggplot(df_ranks, aes(Crime_pers)) +
 	geom_point() +
-	facet_geo(~dept, gr 
+	facet_geo(~dept, grid = "fr_departements_grid2")
+
+# Some values in the specified facet_geo column 'dept' do not match the 'code' column of the specified grid and will be removed: 1,
+# 2, 3, 4, 5, 7, 8, 9, 17, 22, 23, 29, 50, 55, 59, 61, 62, 69, 70, 78, 87, 89, 200
+# Error in `levels<-`(`*tmp*`, value = as.character(levels)) : 
+#   factor level [33] is duplicated
 
 # transform to long format
 
-gather(df_ranks, 
+tidyr::pivot_longer(df_ranks, cols = Crime_pers:Suicides, names_to = "variable") 
 
-ggplot(df_ranks, aes  
+#ggplot(df_ranks, aes  
