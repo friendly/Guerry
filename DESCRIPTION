@@ -11,7 +11,7 @@ Author: Michael Friendly [aut, cre], Stephane Dray [aut], Roger Bivand [ctb]
 Maintainer: Michael Friendly <friendly@yorku.ca>
 Encoding: latin1
 Language: en-US
-Depends: R (>= 2.10)
+Depends: R (>= 3.5.0)
 Suggests: knitr, spdep, ade4, adegraphics, adespatial, 
           maptools, RColorBrewer, corrgram, car, rmarkdown, 
           ggplot2, ggrepel, heplots, patchwork, candisc, colorspace
