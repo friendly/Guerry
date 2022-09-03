@@ -2,7 +2,8 @@
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/Guerry)](https://cran.r-project.org/package=Guerry)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/Guerry)](https://cran.r-project.org/package=Guerry)
-[![Rdoc](https://www.rdocumentation.org/badges/version/Guerry)](http://www.rdocumentation.org/packages/Guerry)
+[![DOI](https://zenodo.org/badge/133678938.svg)](https://zenodo.org/badge/latestdoi/133678938)
+
 <!-- badges: end -->
 
 # Guerry <img src="Guerry-logo.png" align="right" height="200px" />
