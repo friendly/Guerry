@@ -22,12 +22,10 @@ The `Guerry` package comprises maps of France in 1830, multivariate data from A.
 
 You can install Guerry from CRAN or the development version as follows:
 
-+-------------------+-------------------------------------------------+
-| CRAN version      | `install.packages("Guerry")`                   |
-+-------------------+-------------------------------------------------+
-| Development       | `remotes::install_github("friendly/Guerry")`   |
-| version           |                                                 |
-+-------------------+-------------------------------------------------+
+|:------------------|:------------------------------------------------|
+| CRAN version      | `install.packages("Guerry")`                    |
+| Devel version     | `remotes::install_github("friendly/Guerry")`    |
+|-------------------|-------------------------------------------------|
 
 
 ## Data sets
