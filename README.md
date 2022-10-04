@@ -20,20 +20,16 @@ The `Guerry` package comprises maps of France in 1830, multivariate data from A.
 ## Installation
 
 
-You can install Guerry from CRAN with:
+You can install Guerry from CRAN or the development version as follows:
+
++-------------------+-------------------------------------------------+
+| CRAN version      | `install.packages("Guerry")`                   |
++-------------------+-------------------------------------------------+
+| Development       | `remotes::install_github("friendly/Guerry")`   |
+| version           |                                                 |
++-------------------+-------------------------------------------------+
 
 
-``` r
-install.packages("Guerry")
-```
-
-You can install the development version from github with:
-
-
-``` r
-# install.packages("devtools")
-devtools::install_github("friendly/Guerry")
-```
 ## Data sets
 
 The Guerry package contains the following data sets:
@@ -130,17 +126,17 @@ vignette("guerry-multivariate", package="Guerry")
 ``` r
 To cite package ‘Guerry’ in publications use:
 
-  Michael Friendly and Stéphane Dray (2020). Guerry: Maps, Data and Methods Related to Guerry (1833) "Moral
-  Statistics of France". R package version 1.7.3. https://CRAN.R-project.org/package=Guerry
+  Friendly M, Dray S (2021). _Guerry: Maps, Data and Methods Related to Guerry (1833) "Moral Statistics
+  of France"_. R package version 1.7.4, <https://CRAN.R-project.org/package=Guerry>.
 
-A BibTeX entry for LaTeX users is:
+A BibTeX entry for LaTeX users is
 
   @Manual{,
     title = {Guerry: Maps, Data and Methods Related to Guerry (1833) "Moral
 Statistics of France"},
     author = {Michael Friendly and Stéphane Dray},
-    year = {2020},
-    note = {R package version 1.7.0},
+    year = {2021},
+    note = {R package version 1.7.4},
     url = {https://CRAN.R-project.org/package=Guerry},
   }
 ```
@@ -148,7 +144,7 @@ Statistics of France"},
 ## References
 
 Angeville, A. d' (1836).
-\emph{Essai sur la Statistique de la Population francaise}, Paris: F. Darfour.
+_Essai sur la Statistique de la Population francaise_, Paris: F. Darfour.
 
 Friendly, M. (2007). A.-M. Guerry's Moral Statistics of France: Challenges for Multivariable Spatial Analysis.
  *Statistical Science*, **22**, 368-399. http://www.datavis.ca/papers/guerry-STS241.pdf

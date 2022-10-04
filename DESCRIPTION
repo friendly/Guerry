@@ -9,10 +9,11 @@ Authors@R: c(
                    role=c("aut", "cre"), 
                    email="friendly@yorku.ca",
                    comment = c(ORCID = "0000-0002-3237-0941")),
-             person(given = "Stephane", 
+             person(given = "Stéphane", 
                    family = "Dray", 
                    role="aut", 
-                   email="stephane.dray@univ-lyon1.fr"),
+                   email="stephane.dray@univ-lyon1.fr",
+                   comment = c(ORCID = "0000-0003-0153-1105")),
              person(given = "Roger", 
                    family = "Bivand", 
                    role="ctb",
@@ -22,6 +23,7 @@ Maintainer: Michael Friendly <friendly@yorku.ca>
 Encoding: latin1
 Language: en-US
 Depends: R (>= 3.5.0)
+Imports: sp
 Suggests: knitr, 
   spdep, 
   ade4, adegraphics, adespatial, 
@@ -35,8 +37,13 @@ Suggests: knitr,
   heplots, 
   patchwork, 
   candisc, 
-  colorspace
-Imports: sp
+  colorspace,
+  scales,
+  remotes,
+  dplyr,
+  tidyr,
+  ggbiplot,
+  ggradar
 Description: Maps of France in 1830, multivariate datasets from A.-M. Guerry and others, and statistical and 
 	graphic methods related to Guerry's "Moral Statistics of France". The goal is to facilitate the exploration and
 	development of statistical and graphic methods for multivariate data in a geospatial context of historical interest.
