@@ -8,7 +8,7 @@
 
 # Guerry <img src="Guerry-logo.png" align="right" height="200px" />
 
-**Version**: 1.7.1
+**Version**: 1.8.0
 
 The `Guerry` package comprises maps of France in 1830, multivariate data from A.-M. Guerry and others, and statistical and 
 	graphic methods related to Guerry's *Moral Statistics of France*. The goal is to facilitate the exploration and
@@ -27,7 +27,7 @@ You can install Guerry from CRAN with:
 install.packages("Guerry")
 ```
 
-You can install Guerry from github with:
+You can install the development version from github with:
 
 
 ``` r
@@ -87,9 +87,11 @@ with(Guerry,{
       xlab="Percent who can read & write",
       pch = 16,
       grid = FALSE,
-      id = list(method="mahal", n = 8, labels=Department, location="avoid", cex=1.2),
+      id = list(method="mahal", 
+                n = 8, labels=Department, location="avoid", cex=1.2),
       center.pch = 3, center.cex=5,
       cex.lab=1.5)
+      
   dataEllipse(Literacy, Crime_pers,
       levels = 0.95, add=TRUE,
       ylim = c(0,40000), xlim = c(0, 80),
@@ -107,16 +109,20 @@ with(Guerry,{
 
 ## Vignettes
 
-The vignette _Guerry data: Spatial Multivariate Analysis_, written by Stéphane Dray uses his packages
+The vignette, _Guerry data: Spatial Multivariate Analysis_, written by Stéphane Dray uses his packages
 `ade4` and `adegraphics` to illustrate methods for spatial multivariate data that focus on either
 the multivariate aspect or the spatial one, as well as some more modern methods that integrate
 these simultaneously. 
+
+A new vignette, _Guerry data: Multivariate Analysis_, uses Guerry's data to illustrarte some graphical
+methods for multivariate visualization.
+
 See:
 
 
 ``` r
 vignette("MultiSpat", package="Guerry")
-```
+vignette("guerry-multivariate", package="Guerry")```
 
 ## Citation
 
