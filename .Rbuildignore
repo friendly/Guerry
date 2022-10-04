@@ -10,3 +10,4 @@ README.md
 ^doc$
 ^Meta$
 ^.build-steps.R$
+^README\.Rmd$
