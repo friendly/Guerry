@@ -154,6 +154,8 @@ ggplot(data = guerry_long,
         axis.text.y=element_blank())
 ```
 
+You can see that all variables are positively skewed, `Donations`, `Infants` and `Suicides` particularly so, but not so much as to cause alarm.
+
 It is also of interest to see whether and how these distributions differ according to `Region`.
 This is easy to do, using `aes(... fill=Region)`
 
@@ -172,7 +174,8 @@ ggplot(data = guerry_long,
         axis.text.y=element_blank())
 
 ```
-
+For some variables, like `Infants` and `Suicides` the differences do not seem particularly
+large.  However, both crime variables and `Literacy` show marked differences across region.
 
 ### Bivariate relations
 
@@ -242,6 +245,7 @@ I'd like.
 
 ```{r spm1, out.width="100%"}
 library(car)
+par(mar=rep(2,4))
 scatterplotMatrix(Guerry[,4:9],
                   ellipse=list(levels=0.68), 
                   smooth=FALSE)
@@ -340,6 +344,18 @@ candisc::vectors(guerry.pca$rotation, scale=5,
                  xpd=TRUE)
 abline(h=0, v=0, col=gray(.70))
 ```
+
+An interpretation can be read from both the directions of the variable arrows and the 
+relative positions of the ellipses representing the scatter of the component scores
+for the different regions.
+
+* The first component is largely aligned positively with `Literacy` and negatively with
+property crime, suicides and children born out of wedlock (`Infants`)
+* The second dimension reflects mainly the correlation of personal crime and donations to
+the poor.
+* The South region is generally lower on PC2, the West, generally higher.
+* The North stands out as being higher than the others on PC1; the West somewhat higher on PC2.
+
 
 
 ## More to come

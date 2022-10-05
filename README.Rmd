@@ -73,6 +73,34 @@ The Guerry package contains the following data sets:
 
 ## Examples
 
+### Maps
+
+In Guerry's time, the map of France and his data contained 86 departments.
+The two base maps in this package are `gfrance` and `gfrance85`. They differ only in that Corsica,
+outside the continental boundaries, is excluded in the later.
+
+These two datasets are `SpatialPolygonsDataFrame`s constructed with the `sp` package.  This means
+they contain S4 components and have S4 methods
+
+* `gfrance@polygons` the polygon boundaries of the of the 1830 map of France
+* `gfrance@data` equivalent to the variables contained in the `Guerry` data set
+
+Thus, you can can just use `plot(gfrance)` to plot the outlines of the departments,
+
+```{r gfrance}
+plot(gfrance)
+```
+
+The `spplot` method produces a choropleth map, shaded by a given variable in `gfrance@data`
+
+```{r}
+spplot(gfrance, "Crime_pers")
+
+```
+
+
+### Plots
+
 Guerry was most interested in determining whether the occurrence of crimes
 was related to literacy or other "moral variables".  But the idea of
 correlation had not been invented, and he was not aware of the
