@@ -1,5 +1,5 @@
 ## Test environments
-* local Windows, 4.0.2 (2020-06-22)
+* local Windows, 4.2.1 (2022-06-23 ucrt)
 * win-builder R Under development (unstable) (2021-09-23 r80951)
 
 ## R CMD check results

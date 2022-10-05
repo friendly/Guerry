@@ -44,7 +44,6 @@ library(car)            # better scatterplots
 library(ggplot2)        # Elegant Data Visualisations Using the Grammar of Graphics
 library(ggrepel)        # better handling of text labels
 library(patchwork)      # combine plots
-library(ggbiplot)       # biplots
 library(heplots)        # Hypothesis-Error plots
 library(dplyr)
 library(tidyr)
@@ -115,58 +114,64 @@ and multidimensional scaling (MDS) methods.
 
 Data plots portray the data in a space where the coordinate axes are the observed variables.
 
-### Univariate plots
+*   1D plots include histograms and density estimates
+*   2D plots are most often scatterplots
+*   for higher dimensions, biplots are often the most useful
 
-#### Plots of means
+### Density plots
 
-In his discussion, Guerry often referred to differences among the Regions of France.
-One useful display to address this is a **profile** plot of the means of the moral
-variables for each `Region`, typically shown as a line plot of the mean value
-over the variables. Another term used for this is a **parallel coordinates** plot.
+It is useful to examine the distributions of the variables and **density** plots are 
+quite informative. I want to do this for each of the 6 main variables, so I'll use
+this trick of tidy data analysis with `ggplot2`:
 
-**TODO**: Add a parallel coordinates plot
+1. Reshape the data from wide to long. This gives `guerry_long`, where the different variables are in a column labeled `variable` and the values are in `value`.
 
-A more attractive form for this display shows the axes for each variable in polar coordinates,
-known as a **radar chart**. Because the variables are on different scales, a first step is to
-normalize them, by scaling each to a range of (0,1). The `scales::rescale()` function handles this.
 
-```{r}
-guerry_sumry <- Guerry[,c(2,4:9)] |>
+```{r guerry-long}
+data("Guerry", package="Guerry")
+guerry_long <- Guerry |>
   filter(!is.na(Region)) |>
-  group_by(Region) |>
-  summarise(Crime_pers=  mean(Crime_pers),
-            Crime_prop = mean(Crime_prop),
-            Literacy =   mean(Literacy),
-            Donations =  mean(Donations),
-            Infants =    mean(Infants),
-            Suicides =   mean(Suicides),
-            ) |>
-  ungroup() |>
-  mutate_at(vars(-Region), scales::rescale)
-
-guerry_sumry
-```
-Even in this simple table, the regions that stand out as best (1) and worst (0)
-can be seen
-
-Here, I use the `ggradar` package by Ricardo Bion. It is not on CRAN, so you may need to install
-it to reproduce the figure here.
-
-```{r ggradar}
-#| fig.width = 7
-if(!require(ggradar)) remotes::install_github("ricardo-bion/ggradar")
-library(ggradar)   # Create radar charts using ggplot2
-
-guerry_sumry |>
-  ggradar(
-    grid.label.size = 4, 
-    axis.label.size = 4,
-    group.point.size = 4,
-    legend.position = "bottom",
-    legend.title = "Region",
-    plot.title = "Guerry data: Means by Region")
+  select(dept:Suicides) |>
+  pivot_longer(cols = Crime_pers:Suicides,
+               names_to = "variable",
+               values_to = "value")
+guerry_long
 ```
 
+2. Plot the density, but make a different subplot by `facet_wrap(~ variable)`. These plots all have different scales for the X and Y (density) values, so it is important to use `scales="FREE"`.
+Moreover, I'm primarily interested in the **shape** of these distributions, so I suppress the Y
+axis tick marks and labels.
+
+```{r guerry-density1}
+#| out.width = "100%"
+ggplot(data = guerry_long,
+       aes(x=value, fill=TRUE)) +
+  geom_density(alpha=0.2) +
+  facet_wrap(~variable, scales="free") +
+  theme_bw(base_size = 16) +
+  theme(legend.position = "none",
+        axis.ticks.y=element_blank(),
+        axis.text.y=element_blank())
+```
+
+It is also of interest to see whether and how these distributions differ according to `Region`.
+This is easy to do, using `aes(... fill=Region)`
+
+```{r guerry-density2}
+#| out.width = "100%",
+#| fig.height = 6
+col.region   <- colors()[c(149, 254, 468, 552, 26)] # colors for region
+ggplot(data = guerry_long,
+       aes(x=value, fill=Region)) +
+  geom_density(alpha=0.2) +
+  facet_wrap(~variable, scales="free") +
+  scale_fill_manual(values=col.region) +
+  theme_bw(base_size = 16) +
+  theme(legend.position = "bottom",
+        axis.ticks.y=element_blank(),
+        axis.text.y=element_blank())
+
+```
 
 
 ### Bivariate relations
@@ -281,17 +286,22 @@ guerry.pca <- prcomp(gdata[,4:9], scale=TRUE)
 print(guerry.pca, digits=3)
 ```
 
-A screeplot shows the proportions of variance accounted for by each component. The results show that only 65%
-of the variance is accounted for in two dimensions.
+<!-- A screeplot shows the proportions of variance accounted for by each component. The results show that only 65% -->
+<!-- of the variance is accounted for in two dimensions. -->
 
-```{r fig.height=4, fig.width=7}
-ggs1 <- ggscreeplot(guerry.pca) + theme_bw() + geom_point(size=4)
-ggs2 <- ggscreeplot(guerry.pca, type="cev") + theme_bw() + geom_point(size=4)
-ggs1 + ggs2
-```
+<!-- ```{r fig.height=4, fig.width=7} -->
+<!-- ggs1 <- ggscreeplot(guerry.pca) + theme_bw() + geom_point(size=4) -->
+<!-- ggs2 <- ggscreeplot(guerry.pca, type="cev") + theme_bw() + geom_point(size=4) -->
+<!-- ggs1 + ggs2 -->
+<!-- ``` -->
 
-In the `ggplot2` framework, biplots are produced by the `ggbiplot` package.
+In the `ggplot2` framework, biplots can be produced by the `ggbiplot` package, but this package is not on
+CRAN, so cannot be directly used here. Instead, the code below was run locally and the result
+included.
 ```{r biplot1}
+#| eval=FALSE
+if(!require(ggbiplot)) remotes::install_github("vqv/ggbiplot")
+library(ggbiplot)
 ggbiplot(guerry.pca, groups=gdata$Region, 
          ellipse=TRUE,
          var.scale = 3, varname.size = 5) + 
@@ -299,14 +309,19 @@ ggbiplot(guerry.pca, groups=gdata$Region,
   labs(color="Region") +
   theme(legend.position = c(0.1, 0.8))
 ```
+```{r ggbiplot}
+knitr::include_graphics("figures/ggbiplot.png")
+```
+
 
 This is OK, but there are many features of such plots that cannot be customized (line widths, colors, ... ). I prefer
 those created using the `heplots` package.
 
-```{r biplot2, out.width="75%"}
+```{r biplot2, out.width="95%"}
 op <- par(mar=c(5,4,1,1)+.1)
 cols = colorspace::rainbow_hcl(5)
-covEllipses(guerry.pca$x, group=gdata$Region, 
+covEllipses(guerry.pca$x, 
+            group=gdata$Region, 
             pooled=FALSE, 
             fill=TRUE, fill.alpha=0.1,
             col=cols, 
@@ -316,7 +331,7 @@ covEllipses(guerry.pca$x, group=gdata$Region,
             xlab = "Dimension 1 (35.7 %)", 
             ylab = "Dimension 2 (20.0 %)",
             cex.lab=1.4
-)
+            )
 points(guerry.pca$x, pch=(15:19)[Guerry$Region], col=cols[Guerry$Region])
 
 candisc::vectors(guerry.pca$rotation, scale=5,  
@@ -326,12 +341,23 @@ candisc::vectors(guerry.pca$rotation, scale=5,
 abline(h=0, v=0, col=gray(.70))
 ```
 
+
 ## More to come
 
 This is just a start.  More to come includes:
 
 * Model based plots for linear regression models predicting personal crime and property crime
 * Multivariate analysis of variance (MANOVA) and HEplots for the joint relation of the crime variables to other predictors. 
+
+## Models
+
+### Predicting crime: Multiple regression
+
+### Predicting crime: MANOVA
+
+
+
+
 
 ## References
 

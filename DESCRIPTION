@@ -27,7 +27,6 @@ Imports: sp
 Suggests: knitr, 
   spdep, 
   ade4, adegraphics, adespatial, 
-  maptools, 
   RColorBrewer, 
   corrgram, 
   car, 
