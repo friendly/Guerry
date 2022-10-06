@@ -69,6 +69,7 @@ The Guerry package contains the following data sets:
 | `gfrance85`| The same for the 85 departments excluding Corsica|
 | `Guerry`   | A collection of 'moral variables' on the 86 departments of France around 1830 from Guerry (1833) and other sources.|
 | `Angeville`| Data from d'Angeville (1836) on the population of France.|
+| `propensity` | Distribution of crimes against persons at different ages |
 
 
 
