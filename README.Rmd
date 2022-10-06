@@ -130,6 +130,24 @@ spplot(gfrance, c("Crime_pers", "Crime_prop", "Literacy" ),
        layout=c(3,1), as.table=TRUE, main="Guerry's moral variables")
 ```
 
+For other purposes, you might want to produce the map, shaded by `Region` and adding labels
+for the names of the departments.  This is illustrated using the `gfrance85` map (excluding Corsica), where
+`coordinates()` gets the (X, Y) coordinates of the centroids for each department, 
+and `text()` for the `sp` object plots the labels.
+
+```{r gfrance85-labels}
+#| echo=-1
+op <-par(mar=rep(0.1,4))
+data(gfrance85)
+# extract region and dept names & assign colors
+xy            <- coordinates(gfrance85)            # department centroids
+dep.names     <- data.frame(gfrance85)[,6]
+region.names  <- data.frame(gfrance85)[,5]
+col.region    <- colors()[c(149,254,468,552,26)]   # assign colors
+
+plot(gfrance85, col=col.region[region.names])
+text(xy, labels=dep.names, cex=0.5)
+```
 
 
 ### Plots

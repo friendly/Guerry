@@ -48,12 +48,13 @@ You can install Guerry from CRAN or the development version as follows:
 
 The Guerry package contains the following data sets:
 
-| Name        | Description                                                                                                            |
-|:------------|:-----------------------------------------------------------------------------------------------------------------------|
-| `gfrance`   | Map of France in 1830 with the `Guerry` data. It is a `SpatialPolygonsDataFrame` object created with the `sp` package. |
-| `gfrance85` | The same for the 85 departments excluding Corsica                                                                      |
-| `Guerry`    | A collection of ‘moral variables’ on the 86 departments of France around 1830 from Guerry (1833) and other sources.    |
-| `Angeville` | Data from d’Angeville (1836) on the population of France.                                                              |
+| Name         | Description                                                                                                            |
+|:-------------|:-----------------------------------------------------------------------------------------------------------------------|
+| `gfrance`    | Map of France in 1830 with the `Guerry` data. It is a `SpatialPolygonsDataFrame` object created with the `sp` package. |
+| `gfrance85`  | The same for the 85 departments excluding Corsica                                                                      |
+| `Guerry`     | A collection of ‘moral variables’ on the 86 departments of France around 1830 from Guerry (1833) and other sources.    |
+| `Angeville`  | Data from d’Angeville (1836) on the population of France.                                                              |
+| `propensity` | Distribution of crimes against persons at different ages                                                               |
 
 ## Examples
 
@@ -132,6 +133,26 @@ spplot(gfrance, c("Crime_pers", "Crime_prop", "Literacy" ),
 ```
 
 <img src="man/figures/README-gfrance4-1.png" width="100%" />
+
+For other purposes, you might want to produce the map, shaded by
+`Region` and adding labels for the names of the departments. This is
+illustrated using the `gfrance85` map (excluding Corsica), where
+`coordinates()` gets the (X, Y) coordinates of the centroids for each
+department, and `text()` for the `sp` object plots the labels.
+
+``` r
+data(gfrance85)
+# extract region and dept names & assign colors
+xy            <- coordinates(gfrance85)            # department centroids
+dep.names     <- data.frame(gfrance85)[,6]
+region.names  <- data.frame(gfrance85)[,5]
+col.region    <- colors()[c(149,254,468,552,26)]   # assign colors
+
+plot(gfrance85, col=col.region[region.names])
+text(xy, labels=dep.names, cex=0.5)
+```
+
+<img src="man/figures/README-gfrance85-labels-1.png" width="100%" />
 
 ### Plots
 
