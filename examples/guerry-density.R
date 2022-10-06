@@ -21,8 +21,9 @@ guerry_long
 ggplot(data = guerry_long,
        aes(x=value, fill=TRUE)) +
   geom_density(alpha=0.2) +
+  geom_rug() +
   facet_wrap(~variable, scales="free") +
-  theme_bw(base_size = 16) +
+  theme_bw(base_size = 14) +
   theme(legend.position = "none",
         axis.ticks.y=element_blank(),
         axis.text.y=element_blank())
@@ -32,9 +33,10 @@ col.region   <- colors()[c(149, 254, 468, 552, 26)] # colors for region
 ggplot(data = guerry_long,
        aes(x=value, fill=Region)) +
   geom_density(alpha=0.2) +
+  geom_rug() +
   facet_wrap(~variable, scales="free") +
   scale_fill_manual(values=col.region) +
-  theme_bw(base_size = 16) +
+  theme_bw(base_size = 14) +
   theme(legend.position = "bottom",
         axis.ticks.y=element_blank(),
         axis.text.y=element_blank())

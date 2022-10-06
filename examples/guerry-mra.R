@@ -21,8 +21,8 @@ plot(crime.mod2)
 par(op)
 
 
-plot(allEffects(crime.mod1))
+#plot(allEffects(crime.mod1))
 
-plot(predictorEffects(crime.mod1, ~ Region + Literacy + Infants + Suicides))
-plot(predictorEffects(crime.mod2, ~ Region + Literacy + Infants + Suicides))
+plot(predictorEffects(crime.mod1, ~ Region + Literacy + Infants + Suicides), lwd=2, main="")
+plot(predictorEffects(crime.mod2, ~ Region + Literacy + Infants + Suicides), lwd=2)
 

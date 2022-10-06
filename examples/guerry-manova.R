@@ -1,4 +1,6 @@
-# MANOVA, candisc models for Guerry data
+#' ---
+#' title: MANOVA, candisc models for Guerry data
+#' ---
 
 
 # manova / candisc
@@ -7,7 +9,7 @@ library(candisc, warn.conflicts = FALSE)
 library(car)
 library(Guerry)
 library(dplyr)
-library(sp)
+#library(sp)
 data(Guerry, package="Guerry")
 
 # extract pieces
@@ -23,7 +25,16 @@ col.region   <- colors()[c(149, 254, 468, 552, 26)] # colors for region
 crime.mod <- lm(cbind(Crime_pers, Crime_prop) ~ 
                 Region + Literacy + Donations +  Infants + Suicides, data=Guerry)
 Anova(crime.mod)
-cqplot(crime.mod, id.n=4)
+
+# bivariate confidence intervals for coefficients
+coefplot(crime.mod, fill = TRUE, fill.alpha = 0.1, level=0.68)
+
+coefplot(crime.mod, fill = TRUE, fill.alpha = 0.1, level=0.68, parm = 6:9)
+
+
+# diagnostic plot for multivariate normality and outliers
+labels <- paste0(Guerry$dept,":", Guerry$Department)
+cqplot(crime.mod, id.n=4, labels=labels)
 
 heplot(crime.mod, 
        fill=TRUE, fill.alpha=0.05, 
@@ -38,8 +49,7 @@ crime.can
 heplot(crime.can, fill=TRUE, fill.alpha=0.1,
        var.col = "black", 
        var.cex = 1.3,
-       cex=1.4, cex.lab=1.3
-       )
+       cex=1.4, cex.lab=1.3)
 
 # Use ranks
 

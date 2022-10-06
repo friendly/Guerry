@@ -2,8 +2,13 @@
 title: "Guerry data: Multivariate Analysis"
 author: "Michael Friendly"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+package: Guerry
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 2
 bibliography: refs.bib
+link-citations: yes
 vignette: >
   %\VignetteIndexEntry{Guerry data: Multivariate Analysis}
   %\VignetteKeywords{crime, literacy, suicide, France, multivariate analysis}
@@ -18,7 +23,8 @@ knitr::opts_chunk$set(
   message = FALSE,   # suppress package loading messages
   comment = "#>",
   fig.height = 5,
-  fig.width = 5
+  fig.width = 5,
+  dpi = 96
 )
 ```
 
@@ -35,18 +41,20 @@ and argued how these could be seen as implying systematic, lawful relations amon
 In this analysis, we ignore the spatial context of the départements and focus on multivariate analyses of the
 the data set.
 
-## Load the data and packages
+## Load data and packages
 
-We will primarily used the following packages.
+We will primarily use the following packages, so load them now.
 ```{r load}
 library(Guerry)         # Guerry data
 library(car)            # better scatterplots
+library(effects)        # Effect Displays for Linear Models
 library(ggplot2)        # Elegant Data Visualisations Using the Grammar of Graphics
 library(ggrepel)        # better handling of text labels
 library(patchwork)      # combine plots
 library(heplots)        # Hypothesis-Error plots
-library(dplyr)
-library(tidyr)
+library(candisc)        # Visualizing Generalized Canonical Discriminant Analysis
+library(dplyr)          # A Grammar of Data Manipulation
+library(tidyr)          # Tidy Messy Data
 data(Guerry)
 ```
 
@@ -58,8 +66,8 @@ reflected "**morally better**". Thus, four of the variables are recorded in the 
 as "Population per ...".
 
 
-| Name        | Description |
-|:------------|:------------|
+| Name        | Description                                          |
+|:------------|:-----------------------------------------------------|
 |`Crime_pers` | Population per crime against persons                 |
 |`Crime_prop` | Population per crime against property                |
 |`Literacy`   | Percent of military conscripts who can read and write|
@@ -147,8 +155,9 @@ axis tick marks and labels.
 ggplot(data = guerry_long,
        aes(x=value, fill=TRUE)) +
   geom_density(alpha=0.2) +
+  geom_rug() +
   facet_wrap(~variable, scales="free") +
-  theme_bw(base_size = 16) +
+  theme_bw(base_size = 14) +
   theme(legend.position = "none",
         axis.ticks.y=element_blank(),
         axis.text.y=element_blank())
@@ -166,9 +175,10 @@ col.region   <- colors()[c(149, 254, 468, 552, 26)] # colors for region
 ggplot(data = guerry_long,
        aes(x=value, fill=Region)) +
   geom_density(alpha=0.2) +
+  geom_rug() +
   facet_wrap(~variable, scales="free") +
   scale_fill_manual(values=col.region) +
-  theme_bw(base_size = 16) +
+  theme_bw(base_size = 14) +
   theme(legend.position = "bottom",
         axis.ticks.y=element_blank(),
         axis.text.y=element_blank())
@@ -244,7 +254,7 @@ For these, my preferred package is `car` with the `scatterplotMatrix` function.
 I'd like.
 
 ```{r spm1, out.width="100%"}
-library(car)
+library(car) # Companion to Applied Regression
 par(mar=rep(2,4))
 scatterplotMatrix(Guerry[,4:9],
                   ellipse=list(levels=0.68), 
@@ -255,7 +265,7 @@ Sometimes, particularly with more variables than this, we want to see a more sch
 upper and lower triangles can be rendered differently.
 
 ```{r corrgram1}
-library(corrgram)
+library(corrgram) # Plot a Correlogram
 corrgram(Guerry[,4:9], upper=panel.pie)
 ```
 
@@ -305,7 +315,7 @@ included.
 ```{r biplot1}
 #| eval=FALSE
 if(!require(ggbiplot)) remotes::install_github("vqv/ggbiplot")
-library(ggbiplot)
+library(ggbiplot) # A ggplot2 based biplot
 ggbiplot(guerry.pca, groups=gdata$Region, 
          ellipse=TRUE,
          var.scale = 3, varname.size = 5) + 
@@ -358,22 +368,139 @@ the poor.
 
 
 
-## More to come
-
-This is just a start.  More to come includes:
-
-* Model based plots for linear regression models predicting personal crime and property crime
-* Multivariate analysis of variance (MANOVA) and HEplots for the joint relation of the crime variables to other predictors. 
-
 ## Models
 
-### Predicting crime: Multiple regression
+Here we illustrate:
 
-### Predicting crime: MANOVA
+* Model based plots for linear regression models predicting personal crime and property crime
+* Multivariate analysis of variance (MANOVA) and HE plots for the joint relation of the crime variables to other predictors. 
+
+### Predicting crime: Univariate regression
+
+The simplest approach to predicting the crime variables would be to fit a separate
+multiple regression to each.
+
+```{r mra-models}
+crime.mod1 <- lm(Crime_pers ~  Region + Literacy + Donations +  Infants + Suicides, data=Guerry)
+crime.mod2 <- lm(Crime_prop ~  Region + Literacy + Donations +  Infants + Suicides, data=Guerry)
+```
+
+Tests for the predictors are best obtained using `car::Anova()` which gives **partial** (Type II)
+tests, adjusting for other predictors, 
+rather than the **sequential** (Type I) tests provided by `stats::anova()`
+
+```{r mra-anova}
+Anova(crime.mod1)
+Anova(crime.mod2)
+```
+
+These are somewhat disappointing if you look only at the significance stars:
+Only `Region` is significant for personal crime and only `Suicides` for property crime.
+There is no evidence for the argument, supported by
+the liberal hygenicists of Guerry's time, that increased `Literacy` would reduce crime.
+
+For such models, we can understand the nature of the predicted effects using the
+`effects` package. The (marginal) effect for a given term gives the predicted values,
+averaging over all other terms in the model.
+
+```{r mra-effect1-code}
+#| eval=FALSE
+plot(predictorEffects(crime.mod1, ~ Region + Literacy + Infants + Suicides), 
+     lwd=2, main="")
+```
+```{r mra-effect1}
+#| echo = FALSE
+knitr::include_graphics("figures/mra-effect1.png")
+```
+
+Doing the same for property crime, we get:
+
+```{r mra-effect2-code}
+#| eval=FALSE
+plot(predictorEffects(crime.mod2, ~ Region + Literacy + Infants + Suicides), 
+     lwd=2, main="")
+```
+```{r mra-effect2}
+#| echo = FALSE
+knitr::include_graphics("figures/mra-effect2.png")
+```
 
 
+### Predicting crime: Multivariate regression
 
+The two regression models can be fit together in a multivariate regression for both
+crime variables jointly.
 
+```{r manova1}
+crime.mod <- lm(cbind(Crime_pers, Crime_prop) ~ 
+                Region + Literacy + Donations +  Infants + Suicides, data=Guerry)
+Anova(crime.mod)
+```
+
+As a quick check on the assumption that the residuals are bivariate normally distributed
+and a check for outliers, a $\chi^2$ Q-Q plot graphs the squared Mahalanobis distances
+of the residuals against the corresponding $\chi^2_2$ quantiles these would have in a
+bivariate normal distribution. The data for Creuse stands out as a potential outlier.
+
+```{r cqplot}
+#| echo=-1
+par(mar=c(3,3,1,1)+.1)
+labels <- paste0(Guerry$dept,":", Guerry$Department)
+cqplot(crime.mod, id.n=4, labels=labels)
+```
+
+#### HE plots
+Hypothesis-Error (HE) plots [@Friendly:2007:heplots; @FoxFriendlyMonette:09:compstat; @heplots] provide a convenient graphical summary of hypothesis tests in multivariate linear model. They plot a data ellipse for the residuals in the model, representing the $\mathbf{E}$ matrix in the test statistics (Roy's maximum root test,
+Pillai and Hotelling trace criteria and Wilks' Lambda). Overlaid on this are $\mathbf{H}$
+ellipses for each term in the model, representing the data ellipses for the fitted values.
+Using Roy's test, these have a convenient interpretation: a term is significant _iff_ the
+H ellipse projects anywhere outside the E ellipse. For a 1 df (regression) variable, the
+H ellipse collapses to a line.
+
+```{r heplot}
+#| echo=-1
+par(mar = c(3,3,1,1)+.1)
+heplot(crime.mod, 
+       fill=TRUE, fill.alpha=0.05, 
+       cex=1.4, cex.lab=1.3 )
+```
+
+In this plot, the effect of `Suicides` is completely aligned with crimes against property.
+The effect of `Region` is positively correlated with both types of crime. The means
+for the regions show that the South of France is lower (worse) on personal crime; the other
+regions vary most in property crime, with the North being lower and the Center being higher.
+
+#### Canonical plots
+The HE plot displays these relations in **data space**. An alternative is provided by 
+canonical discriminant analysis, which finds the weighted sums of the response variables
+leading to the largest test statistics for the terms, which can be visualized in
+**canonical space**.
+
+The analysis below reflects the effect of `Region` in relation to both crime variables.
+
+```{r candisc}
+crime.can <- candisc(crime.mod)
+crime.can
+```
+
+The HE plot for this analysis is shown below. Variable vector represent the correlations
+of the crime variables with the canonical dimension.
+```{r hecan}
+#| echo=-1
+par(mar = c(3,3,1,1)+.1)
+heplot(crime.can, fill=TRUE, fill.alpha=0.1,
+       var.col = "black", 
+       var.cex = 1.3,
+       cex=1.4, cex.lab=1.3)
+```
+
+This gives a simple interpretation of the differences in `Region` on the crime variables.
+The first canonical dimension accounts for 83% of differences among the regions,
+and this is nearly perfectly aligned with personal crime, with the largest difference
+between the South and the other regions. The second canonical dimension, accounting
+for the remaing 17%, is perfectly aligned with property crime.  On this dimension,
+the North stands out compared to the other regions.
 
 ## References
+
 
