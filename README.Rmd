@@ -12,6 +12,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "man/figures/README-",
   out.width = "100%",
+  width = 90,        # line width for text output
   dpi = 96
 )
 
@@ -85,18 +86,49 @@ they contain S4 components and have S4 methods
 * `gfrance@polygons` the polygon boundaries of the of the 1830 map of France
 * `gfrance@data` equivalent to the variables contained in the `Guerry` data set
 
+```{r}
+#| width=100
+data(gfrance)
+names(gfrance)  # list the @data variables
+```
+
 Thus, you can can just use `plot(gfrance)` to plot the outlines of the departments,
 
-```{r gfrance}
+```{r gfrance1}
+library(sp)
 plot(gfrance)
 ```
 
 The `spplot` method produces a choropleth map, shaded by a given variable in `gfrance@data`
 
-```{r}
+```{r gfrance2}
 spplot(gfrance, "Crime_pers")
-
 ```
+
+You can plot the maps for several variables together simply by listing their names in a vector.
+
+```{r gfrance3}
+# plot several together
+spplot(gfrance, c("Crime_pers", "Crime_prop", "Literacy" ), 
+       layout=c(3,1), as.table=TRUE, main="Guerry's moral variables")
+```
+
+But there's a problem here.  `spplot` assumes all variables are on the same scale for comparative plots, so
+it is best to transform variables to ranks (as Guerry did).
+As well, use something like Guerry's pallete, where dark = Worse.
+
+```{r gfrance4}
+gfrance$Crime_pers <- rank(gfrance$Crime_pers)
+gfrance$Crime_prop <- rank(gfrance$Crime_prop)
+gfrance$Literacy   <- rank(gfrance$Literacy)
+
+my.palette <- rev(RColorBrewer::brewer.pal(n = 9, name = "PuBu"))
+spplot(gfrance, c("Crime_pers", "Crime_prop", "Literacy" ), 
+       names.attr = c("Personal crime", "Property crime", "Literacy"),
+       col.regions = my.palette, cuts = 8,
+       layout=c(3,1), as.table=TRUE, main="Guerry's moral variables")
+```
+
 
 
 ### Plots
