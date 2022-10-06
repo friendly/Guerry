@@ -57,6 +57,84 @@ The Guerry package contains the following data sets:
 
 ## Examples
 
+### Maps
+
+In Guerry’s time, the map of France and his data contained 86
+departments. The two base maps in this package are `gfrance` and
+`gfrance85`. They differ only in that Corsica, outside the continental
+boundaries, is excluded in the later.
+
+These two datasets are `SpatialPolygonsDataFrame`s constructed with the
+`sp` package. This means they contain S4 components and have S4 methods
+
+-   `gfrance@polygons` the polygon boundaries of the of the 1830 map of
+    France
+-   `gfrance@data` equivalent to the variables contained in the `Guerry`
+    data set
+
+``` r
+data(gfrance)
+names(gfrance)  # list the @data variables
+#>  [1] "CODE_DEPT"       "COUNT"           "AVE_ID_GEO"      "dept"           
+#>  [5] "Region"          "Department"      "Crime_pers"      "Crime_prop"     
+#>  [9] "Literacy"        "Donations"       "Infants"         "Suicides"       
+#> [13] "MainCity"        "Wealth"          "Commerce"        "Clergy"         
+#> [17] "Crime_parents"   "Infanticide"     "Donation_clergy" "Lottery"        
+#> [21] "Desertion"       "Instruction"     "Prostitutes"     "Distance"       
+#> [25] "Area"            "Pop1831"
+```
+
+Thus, you can can just use `plot(gfrance)` to plot the outlines of the
+departments,
+
+``` r
+library(sp)
+plot(gfrance)
+```
+
+<img src="man/figures/README-gfrance1-1.png" width="100%" />
+
+The `spplot` method produces a choropleth map, shaded by a given
+variable in `gfrance@data`
+
+``` r
+spplot(gfrance, "Crime_pers")
+```
+
+<img src="man/figures/README-gfrance2-1.png" width="100%" />
+
+You can plot the maps for several variables together simply by listing
+their names in a vector.
+
+``` r
+# plot several together
+spplot(gfrance, c("Crime_pers", "Crime_prop", "Literacy" ), 
+       layout=c(3,1), main="Guerry's moral variables")
+```
+
+<img src="man/figures/README-gfrance3-1.png" width="100%" />
+
+But there’s a problem here. `spplot` assumes all variables are on the
+same scale for comparative plots, so it is best to transform variables
+to ranks (as Guerry did). As well, use something like Guerry’s pallet,
+where dark = Worse.
+
+``` r
+gfrance$Crime_pers <- rank(gfrance$Crime_pers)
+gfrance$Crime_prop <- rank(gfrance$Crime_prop)
+gfrance$Literacy   <- rank(gfrance$Literacy)
+
+my.palette <- rev(RColorBrewer::brewer.pal(n = 9, name = "PuBu"))
+spplot(gfrance, c("Crime_pers", "Crime_prop", "Literacy" ), 
+       names.attr = c("Personal crime", "Property crime", "Literacy"),
+       col.regions = my.palette, cuts = 8,
+       layout=c(3,1), as.table=TRUE, main="Guerry's moral variables")
+```
+
+<img src="man/figures/README-gfrance4-1.png" width="100%" />
+
+### Plots
+
 Guerry was most interested in determining whether the occurrence of
 crimes was related to literacy or other “moral variables”. But the idea
 of correlation had not been invented, and he was not aware of the idea
