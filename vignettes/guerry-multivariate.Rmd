@@ -41,7 +41,7 @@ and argued how these could be seen as implying systematic, lawful relations amon
 In this analysis, we ignore the spatial context of the départements and focus on multivariate analyses of the
 the data set.
 
-## Load data and packages
+# Load data and packages
 
 We will primarily use the following packages, so load them now.
 ```{r load}
@@ -103,7 +103,7 @@ Other potential explanatory variables are:
 : `Clergy` (the rank of number of Catholic priests in active service, per population)
 
 
-## Multivariate visualization methods
+# Multivariate visualization methods
 
 Visualization methods for multivariate data take an enormous variety of forms simply because more than two dimensions of data offer exponentially increasingly possibilities.  It is useful to distinguish several broad categories:
 
@@ -118,7 +118,7 @@ Some examples are: Added variable plots, effect plots, coefficient plots, ...
 * __dimension reduction plots__ : plot representations of the data into a space of fewer dimensions than the number of variables in the data set. Simple examples include principal components analysis (PCA) and the related biplots,
 and multidimensional scaling (MDS) methods.
 
-## Data plots
+# Data plots
 
 Data plots portray the data in a space where the coordinate axes are the observed variables.
 
@@ -126,7 +126,7 @@ Data plots portray the data in a space where the coordinate axes are the observe
 *   2D plots are most often scatterplots
 *   for higher dimensions, biplots are often the most useful
 
-### Density plots
+## Density plots
 
 It is useful to examine the distributions of the variables and **density** plots are 
 quite informative. I want to do this for each of the 6 main variables, so I'll use
@@ -187,7 +187,7 @@ ggplot(data = guerry_long,
 For some variables, like `Infants` and `Suicides` the differences do not seem particularly
 large.  However, both crime variables and `Literacy` show marked differences across region.
 
-### Bivariate relations
+## Bivariate relations
 
 Let's start with plots of crime (`Crime_pers` and `Crime_prop`) in relation to `Literacy`.
 A simple scatterplot is not very informative. All that can be seen is that there is not much of a relation between personal crime and literacy.
@@ -247,7 +247,7 @@ So, somewhat surprisingly, increased literacy is associated with an increase in 
 to literacy.
 Creuse again stands out as an unusual point, one that is likely to be influential in regression models.
 
-### Reconnaisance plots
+## Reconnaisance plots
 
 Reconnaisance plots attempt to give a bird's-eye overview of a multivariate data set.
 For example, to see the relations among more than two variables we could turn to a
@@ -268,7 +268,7 @@ scatterplotMatrix(Guerry[,4:9],
                   smooth=FALSE)
 ```
 
-#### Corrgrams
+### Corrgrams
 
 Sometimes, particularly with more variables than this, we want to see a more schematic overview.  
 A _correlation diagram_ or "corrgram" [@Friendly:02:corrgram] is a graphic display of a correlation
@@ -398,14 +398,14 @@ the poor.
 
 
 
-## Models
+# Models
 
 Here we illustrate:
 
 * Model based plots for linear regression models predicting personal crime and property crime
 * Multivariate analysis of variance (MANOVA) and HE plots for the joint relation of the crime variables to other predictors. 
 
-### Predicting crime: Univariate regression
+## Predicting crime: Univariate regression
 
 The simplest approach to predicting the crime variables would be to fit a separate
 multiple regression to each.
@@ -456,7 +456,7 @@ knitr::include_graphics("figures/mra-effect2.png")
 ```
 
 
-### Predicting crime: Multivariate regression
+## Predicting crime: Multivariate regression
 
 The two regression models can be fit together in a multivariate regression for both
 crime variables jointly.
@@ -479,7 +479,7 @@ labels <- paste0(Guerry$dept,":", Guerry$Department)
 cqplot(crime.mod, id.n=4, labels=labels)
 ```
 
-#### HE plots
+### HE plots
 Hypothesis-Error (HE) plots [@Friendly:2007:heplots; @FoxFriendlyMonette:09:compstat; @heplots] provide a convenient graphical summary of hypothesis tests in multivariate linear model. They plot a data ellipse for the residuals in the model, representing the $\mathbf{E}$ matrix in the test statistics (Roy's maximum root test,
 Pillai and Hotelling trace criteria and Wilks' Lambda). Overlaid on this are $\mathbf{H}$
 ellipses for each term in the model, representing the data ellipses for the fitted values.
@@ -500,7 +500,7 @@ The effect of `Region` is positively correlated with both types of crime. The me
 for the regions show that the South of France is lower (worse) on personal crime; the other
 regions vary most in property crime, with the North being lower and the Center being higher.
 
-#### Canonical plots
+### Canonical plots
 The HE plot displays these relations in **data space**. An alternative is provided by 
 canonical discriminant analysis, which finds the weighted sums of the response variables
 leading to the largest test statistics for the terms, which can be visualized in
@@ -531,6 +531,6 @@ between the South and the other regions. The second canonical dimension, account
 for the remaing 17%, is perfectly aligned with property crime.  On this dimension,
 the North stands out compared to the other regions.
 
-## References
+# References
 
 
