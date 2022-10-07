@@ -242,6 +242,11 @@ ggplot(aes(x=Literacy, y=Crime_prop/1000, label=Department), data=gdf) +
   theme_bw()
 ```
 
+So, somewhat surprisingly, increased literacy is associated with an increase in property crime
+(greater population per crime) as opposed to the situation with personal crime, which seems unrelated
+to literacy.
+Creuse again stands out as an unusual point, one that is likely to be influential in regression models.
+
 ### Reconnaisance plots
 
 Reconnaisance plots attempt to give a bird's-eye overview of a multivariate data set.
@@ -253,31 +258,56 @@ For these, my preferred package is `car` with the `scatterplotMatrix` function.
 `GGally` works within the the `ggplot2` framework, but doesn't have the flexibility
 I'd like.
 
-```{r spm1, out.width="100%"}
-library(car) # Companion to Applied Regression
+```{r spm1}
+#| out.width="100%",
+#| echo=-1
 par(mar=rep(2,4))
+library(car)          # Companion to Applied Regression
 scatterplotMatrix(Guerry[,4:9],
                   ellipse=list(levels=0.68), 
                   smooth=FALSE)
 ```
 
-Sometimes, particularly with more variables than this, we want to see a more schematic overview.  The `corrgram` package provides a variety of rendering methods to show the correlations among all pairs of variables. The panels in the
+#### Corrgrams
+
+Sometimes, particularly with more variables than this, we want to see a more schematic overview.  
+A _correlation diagram_ or "corrgram" [@Friendly:02:corrgram] is a graphic display of a correlation
+matrix, allowing different renderings of the correlation between each pair of variables:
+as a shaded box, a pie symbol, a schematic data ellipse, and other options.
+This is implemented in the `corrgram` package [@corrgram].
+The panels in the
 upper and lower triangles can be rendered differently.
 
 ```{r corrgram1}
-library(corrgram) # Plot a Correlogram
+#| echo=-1
+par(mar=rep(1,4)+.1)
+library(corrgram)             # Plot a Correlogram
 corrgram(Guerry[,4:9], upper=panel.pie)
 ```
 
 Or, the data in each pairwise tile can be rendered with data ellipses and
-smoothed curves to show possible nonlinear relations.  Here, there are a number of
+smoothed curves to show possible nonlinear relations.
+
+Another feature is that the rows/column variables can be permuted to 
+put similar variables together, using the `order` option, which arranges the
+variables according to similarity of their correlations. 
+
+
+```{r corrgram2}
+#| echo=-1
+par(mar=rep(1,4)+.1)
+corrgram(Guerry[,4:9], 
+         upper=panel.ellipse, 
+         order=TRUE,
+         lwd=2)
+```
+
+Here, there are a number of
 pairwise plots that appear markedly nonlinear. For the main crime variables, the most
 nonlinear are that of personal crime vs. donations to the poor, and property crime vs.
 infants born out of wedlock and suicides.
+`Literacy` stands out here as having negative relations with all other variables.
 
-```{r corrgram2}
-corrgram(Guerry[,4:9], upper=panel.ellipse)
-```
 
 An alternative analysis might include:
 
