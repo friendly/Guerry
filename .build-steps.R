@@ -24,5 +24,5 @@ devtools::check_win_devel(args=args)
 
 
 # submit to cran
-devtools::release(args=args)
+devtools::release()
 
