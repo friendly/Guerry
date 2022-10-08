@@ -78,14 +78,14 @@ Spatial Constraints In Multivariate Analysis. Unpublished manuscript.
 Brunsdon, C. and Dykes, J. (2007). 
 Geographically weighted visualization: interactive graphics
 for scale-varying exploratory analysis. 
-Geographical Information Science Research Conference (GISRUK 07),
+\emph{Geographical Information Science Research Conference (GISRUK 07)},
 NUI Maynooth, Ireland, April, 2007.
 
 Friendly, M. (2007). A.-M. Guerry's Moral Statistics of France: Challenges for Multivariable Spatial Analysis.
  \emph{Statistical Science}, 22, 368-399.
 
 Friendly, M. (2007). Data from A.-M. Guerry, Essay on the Moral Statistics of France (1833),
- \url{http://www.datavis.ca/gallery/guerry/guerrydat.html}.
+ \url{https://www.datavis.ca/gallery/guerry/guerrydat.html}.
 }
 \seealso{
 \code{\link{Angeville}} for other analysis variables
