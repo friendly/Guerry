@@ -66,7 +66,8 @@ departments. The two base maps in this package are `gfrance` and
 boundaries, is excluded in the later.
 
 These two datasets are `SpatialPolygonsDataFrame`s constructed with the
-`sp` package. This means they contain S4 components and have S4 methods
+[`sp`](https://cran.r-project.org/package=sp) package. This means they
+contain S4 components and have S4 methods
 
 -   `gfrance@polygons` the polygon boundaries of the of the 1830 map of
     France
