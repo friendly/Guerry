@@ -1,7 +1,7 @@
 ## Test environments
 * local Windows, 4.2.2 (2022-10-31 ucrt)
 * win-builder R Under development (unstable) (2023-05-03 r84386 ucrt)
-* Debian R Under development (unstable) (2022-10-06 r83040)
+* R-hub: Windows Server 2022, R-devel, 64 bit; Ubuntu Linux 20.04.1 LTS, R-release, GCC
 
 ## R CMD check results
 
@@ -20,8 +20,8 @@ Only one package depends on Guerry as a `Suggests:`, because it uses the Guerry 
 
 ## Version 1.8.1 (2023-05-05)
 
-This is largely a maintenance release to correct a problem with latin1 encoding used in the DESCRIPTION.
-and in man/Guerry.Rd.
+This is a re-submission of a maintenance release to correct a problem with latin1 encoding used in the DESCRIPTION.
+and in man/ files. All non-ascii characters have now been removed.
 
 * Fix latin1 encoding issue
 * Add reference to Friendly (2022)

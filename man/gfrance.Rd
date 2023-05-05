@@ -1,4 +1,4 @@
-\encoding{latin1}
+%\encoding{latin1}
 \name{gfrance}
 \Rdversion{1.1}
 \alias{gfrance}
@@ -33,7 +33,7 @@ In the present version, the PROJ4 projection is not specified.
 }
 \source{
 Friendly, M. (2007).
-Supplementary materials for André-Michel Guerry's Moral Statistics of France:
+Supplementary materials for Andre-Michel Guerry's Moral Statistics of France:
 Challenges for Multivariate Spatial Analysis,
 \url{http://www.datavis.ca/gallery/guerry/}.
 

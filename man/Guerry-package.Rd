@@ -1,4 +1,4 @@
-\encoding{latin1}
+%\encoding{latin1}
 \name{Guerry-package}
 \alias{Guerry-package}
 \docType{package}
@@ -75,7 +75,7 @@ Supplementary materials for Andre-Michel Guerry's Moral Statistics of France:
 Challenges for Multivariate Spatial Analysis,
 \url{http://www.datavis.ca/gallery/guerry/}.
 
-Friendly, M. (2022). The life and works of André-Michel Guerry, revisited. \emph{Sociological Spectrum}, \bold{42}, 233–259.
+Friendly, M. (2022). The life and works of Andre-Michel Guerry, revisited. \emph{Sociological Spectrum}, \bold{42}, 233–259.
 \doi{10.1080/02732173.2022.2078450}
 
 Guerry, A.-M. (1833). \emph{Essai sur la statistique morale de la France} Paris: Crochard.
