@@ -1,7 +1,7 @@
 Version 1.8.1 (2023-05-05)
 
 This is largely a maintenance release to correct a problem with latin1 encoding used in the DESCRIPTION.
-One remaining use of latin1 remains in the man/Guerry.Rd file, corrected by declaring \encoding{latin1}
+and in man/Guerry.Rd.
 
 * Fix latin1 encoding issue
 * Add reference to Friendly (2022)
