@@ -1,6 +1,6 @@
 ## Test environments
 * local Windows, 4.2.2 (2022-10-31 ucrt)
-* win-builder R Under development (unstable) (2022-10-05 r83033 ucrt)
+* win-builder R Under development (unstable) (2023-05-03 r84386 ucrt)
 * Debian R Under development (unstable) (2022-10-06 r83040)
 
 ## R CMD check results
