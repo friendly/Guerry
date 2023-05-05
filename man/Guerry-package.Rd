@@ -75,17 +75,21 @@ Supplementary materials for Andre-Michel Guerry's Moral Statistics of France:
 Challenges for Multivariate Spatial Analysis,
 \url{http://www.datavis.ca/gallery/guerry/}.
 
+Friendly, M. (2022). The life and works of André-Michel Guerry, revisited. \emph{Sociological Spectrum}, \bold{42}, 233–259.
+\doi{10.1080/02732173.2022.2078450}
+
 Guerry, A.-M. (1833). \emph{Essai sur la statistique morale de la France} Paris: Crochard.
 English translation: Hugh P. Whitt and Victor W. Reinking, Lewiston, N.Y.: Edwin Mellen Press, 2002.
 
 Guerry, A.-M. (1864).
-\emph{Statistique morale de l'Angleterre compar?e avec la statistique morale de la France, d'apr?s les comptes de l'administration de la justice criminelle en Angleterre et en France, etc.} 
-Paris: J.-B. Bailli?re et fils.
+\emph{Statistique morale de l'Angleterre compar?e avec la statistique morale de la France, d'apres les comptes de l'administration de la justice criminelle en Angleterre et en France, etc.} 
+Paris: J.-B. Bailliere et fils.
 
 }
 %~~ Optionally other standard keywords, one per line, from file KEYWORDS in ~~
 %~~ the R documentation directory ~~
 \keyword{spatial}
+\keyword{data}
 
 %\examples{
 %#~~ simple examples of the most important functions ~~
