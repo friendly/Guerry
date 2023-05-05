@@ -24,4 +24,13 @@ ggbiplot(guerry.pca, groups=gdata$Region,
   theme(legend.position = c(0.1, 0.8))
 
 
+#--------------------
 
+fviz_pca(guerry.pca, 
+         addEllipses = TRUE,
+         ellipse.level=0.68,
+         habillage = gdata$Region,
+         # repel = TRUE, 
+         # labelsize = 3
+         ) + 
+  theme_bw() 

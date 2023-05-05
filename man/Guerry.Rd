@@ -1,10 +1,10 @@
 %\encoding{latin1}
-\encoding{UTF-8}
+%\encoding{UTF-8}
 \name{Guerry}
 \Rdversion{1.1}
 \alias{Guerry}
 \docType{data}
-%\encoding{latin1}
+\encoding{latin1}
 \title{
 Data from A.-M. Guerry, "Essay on the Moral Statistics of France"
 }

@@ -9,7 +9,7 @@ Authors@R: c(
                    role=c("aut", "cre"), 
                    email="friendly@yorku.ca",
                    comment = c(ORCID = "0000-0002-3237-0941")),
-             person(given = "Stéphane", 
+             person(given = "Stephane", 
                    family = "Dray", 
                    role="aut", 
                    email="stephane.dray@univ-lyon1.fr",
@@ -53,3 +53,5 @@ BugReports: https://github.com/friendly/Guerry/issues
 LazyLoad: yes
 LazyData: yes
 VignetteBuilder: knitr
+Encoding: UTF-8
+
