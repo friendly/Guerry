@@ -3,36 +3,36 @@
 #' ---
 
 
-# manova / candisc
+#' Load packages
+
 library(heplots)
 library(candisc, warn.conflicts = FALSE)
 library(car)
 library(Guerry)
 library(dplyr)
 #library(sp)
+
 data(Guerry, package="Guerry")
 
-# extract pieces
+#' ## extract pieces
 df           <- data.frame(Guerry)[, 4:9]        # the 6 variables
-#france.map   <- as(gfrance85, "SpatialPolygons") # the map
-#xy           <- sp::coordinates(gfrance)         # spatial coordinates
 dep.names    <- data.frame(Guerry)[, 3]          # departement names
 region.names <- data.frame(Guerry)[, 2]          # region names
 col.region   <- colors()[c(149, 254, 468, 552, 26)] # colors for region
 
 
-# What variables predict crime?
+#' ## MANOVA: What variables predict crime?
 crime.mod <- lm(cbind(Crime_pers, Crime_prop) ~ 
                 Region + Literacy + Donations +  Infants + Suicides, data=Guerry)
 Anova(crime.mod)
 
-# bivariate confidence intervals for coefficients
+#' ## bivariate confidence intervals for coefficients
 coefplot(crime.mod, fill = TRUE, fill.alpha = 0.1, level=0.68)
 
 coefplot(crime.mod, fill = TRUE, fill.alpha = 0.1, level=0.68, parm = 6:9)
 
 
-# diagnostic plot for multivariate normality and outliers
+#' ## diagnostic plot for multivariate normality and outliers
 labels <- paste0(Guerry$dept,":", Guerry$Department)
 cqplot(crime.mod, id.n=4, labels=labels)
 
@@ -42,6 +42,7 @@ heplot(crime.mod,
       )
 
 
+#' ## Canonical discriminant analysis
 crime.can <- candisc(crime.mod)
 crime.can
 #plot(crime.can)
@@ -51,7 +52,8 @@ heplot(crime.can, fill=TRUE, fill.alpha=0.1,
        var.cex = 1.3,
        cex=1.4, cex.lab=1.3)
 
-# Use ranks
+#' ## Use ranks
+#' Guerry recognized the extreme skewness of some variables and so used ranks on these measures
 
 Guerry_ranks <- Guerry |>
   select(1:9) |>
@@ -86,7 +88,7 @@ heplot(crime.canr)
 
 
 
-# What variables discriminate among Regions ?
+#' ## What variables discriminate among Regions ?
 
 region.mod <- lm(cbind(Crime_pers, Crime_prop, Literacy, Donations, Infants, Suicides) ~ 
                    Region, data=Guerry)

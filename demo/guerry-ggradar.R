@@ -10,6 +10,7 @@ if(!require(ggradar)) remotes::install_github("ricardo-bion/ggradar")
 library(ggradar)   # Create radar charts using ggplot2
 data(Guerry)
 
+#' ## Find means of main variables by region of France
 guerry_sumry <- Guerry[,c(2,4:9)] |>
   filter(!is.na(Region)) |>
   group_by(Region) |>
@@ -25,6 +26,7 @@ guerry_sumry <- Guerry[,c(2,4:9)] |>
 
 guerry_sumry
 
+#' ## Create a nice theme
 my_theme <-
   theme(
     legend.text = element_text(size=9, family = ""),
@@ -47,6 +49,7 @@ my_theme <-
     plot.background = element_rect(fill = '#fbf9f4', color = '#fbf9f4')
   )
 
+#' ## make the radar chart
 guerry_sumry |>
   ggradar(
     grid.label.size = 4, 

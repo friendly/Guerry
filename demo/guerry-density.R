@@ -3,12 +3,14 @@
 #' ---
 
 library(dplyr)     # A Grammar of Data Manipulation
-library(tidyr)
+library(tidyr)     # tidy methods
 library(ggplot2)   # Create Elegant Data Visualisations Using the Grammar of Graphics
 library(scales)    # Scale Functions for Visualization
 library(Guerry)    # Maps, Data and Methods Related to Guerry (1833) "Moral Statistics of France"
 
 data("Guerry", package="Guerry")
+
+#' ## Convert to long format
 guerry_long <- Guerry |>
   filter(!is.na(Region)) |>
   select(dept:Suicides) |>
@@ -17,7 +19,7 @@ guerry_long <- Guerry |>
                values_to = "value")
 guerry_long
 
-# density plot of each variable
+#' ## density plot of each variable
 ggplot(data = guerry_long,
        aes(x=value, fill=TRUE)) +
   geom_density(alpha=0.2) +
@@ -28,7 +30,7 @@ ggplot(data = guerry_long,
         axis.ticks.y=element_blank(),
         axis.text.y=element_blank())
 
-# by region
+#' ## by region
 col.region   <- colors()[c(149, 254, 468, 552, 26)] # colors for region
 ggplot(data = guerry_long,
        aes(x=value, fill=Region)) +
