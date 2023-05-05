@@ -1,42 +1,42 @@
 ## Test environments
-* local Windows, 4.0.2 (2020-06-22)
-* win-builder R Under development (unstable) (2021-09-23 r80951)
+* local Windows, 4.2.1 (2022-06-23 ucrt)
+* win-builder R Under development (unstable) (2022-10-05 r83033 ucrt)
+* Debian R Under development (unstable) (2022-10-06 r83040)
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 0 note
 
-## Version 1.7.4 (resubmission)
+On Debian, there was one Note never seen before:
 
-* I apologise for the previous submission, dated 9/28/2021 which generated the note:
+* checking package subdirectories ... NOTE
+Problems with news in ‘NEWS’:
+  Cannot process chunk/lines:
+    Version 1.6 (2014-09-23)
+    	Removed MultiSpat vignette because it is no longer compatible with CRAN policies. The old
+    	PDF version will be made available on the R-Forge project page.
+    	Removed Suggests: spacemakeR (not on CRAN); moved sp, shapefiles to Suggests:
+    	Removed thinSpatialPoly, as this is now provided in maptools
+    	Made some examples in gfrance.Rd \dontrun{} to reduce check time
+   ...
+   
+This has been fixed by making the indented lines * items.  
 
-  Found the following (possibly) invalid URLs:
-    URL: https://doi.org/10.1214/10-aoas356
-      From: man/Guerry-package.Rd
-      Status: 500
-      Message: Internal Server Error
+Package checks for v. 1.7.4 all OK: https://cran.r-project.org/web/checks/check_results_Guerry.html
 
-This did not appear in any of my checks, and has now been corrected.
+## Reverse dependencies
+
+Only one package depends on Guerry as a `Suggests:`, because it uses the Guerry data in examples.
+
+> devtools::revdep()
+[1] "adegraphics"
 
 
-* This is a minor release to fix a problem arising from the new release of `spdep` when `rgeos` is not installed. It also fixes
-some minor problems that arose from CRAN testing of the previous submission, v 1.7.3.
+## Version 1.8.0 (2022-10-04)
 
-The present version passes CMD check both with and without `rgeos`. 
-It also passes with the development version of `spdep` with and without `rgeos`. 
+This is a major release of the Guerry package, occasioned by the planned retirement of the `mapstools` package,
+previously listed as a "Suggests".
 
-Released `Guerry` now passes CMD check with the development version of `spdep`, with and without `rgeos`, issuing a warning if `rgeos` is absent and falling back on inefficient legacy code not using `spatial` indexing.
-
-The 1 NOTE results because I was away on vacation and failed to fix this problem in time:
-
-CRAN repository db overrides:
-  X-CRAN-Comment: Archived on 2021-09-23 as check problems were not
-    corrected in time.
-
-In addition, I now get a useless false-positive note, below. This check ignores entries in `inst/WORDFILE` and should be abandonned.
-
-Possibly misspelled words in DESCRIPTION:
-  Guerry (3:42, 20:71)
-  Guerry's (21:29)
-  geospatial (22:76)
-  
+* Fixed problems related to retirement of `maptools` #4, deleting Suggests: maptools
+* Added a new vignette, `guerry-multivariate`, illustrating some multivariate methods
+* Extensively revised README to give a better sense of the package datasets and some plots.

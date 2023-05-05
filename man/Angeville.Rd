@@ -70,7 +70,36 @@ against persons in France, 1825-1830.  Unpublished ms.
 
 }
 \examples{
+library(Guerry)
+library(sp)
+library(RColorBrewer)
+
+data(Guerry)
+data(gfrance)
 data(Angeville)
-## maybe str(Angeville) ; plot(Angeville) ...
+
+gf <- gfrance     # the SpatialPolygonsDataFrame
+
+# Add some Angeville variables, transform them to ranks
+gf$Mortality       <- rank(Angeville$Mortality)
+gf$Marriages       <- rank(Angeville$Marriages)
+gf$Legit_births    <- rank(Angeville$Legit_births)
+gf$Illeg_births    <- rank(Angeville$Illeg_births)
+gf$Farmers         <- rank(Angeville$Farmers)
+gf$Schoolchildren  <- rank(Angeville$Schoolchildren)
+
+# plot them on map of France
+my.palette <- rev(brewer.pal(n = 9, name = "PuBu"))
+spplot(gf, 
+       c("Mortality", "Marriages", "Legit_births",  "Illeg_births", "Farmers", "Schoolchildren"),
+       names.attr = c("Mortality", "Marriages", "Legit_births",  
+                      "Illeg_births", "Farmers", "Schoolchildren"),
+       layout=c(3,2), 
+       as.table=TRUE, 
+       col.regions = my.palette, 
+       cuts = 8, # col = "transparent",
+       main="Angeville variables")
+
+
 }
 \keyword{datasets}

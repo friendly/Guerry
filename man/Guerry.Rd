@@ -72,20 +72,21 @@ English translation: Hugh P. Whitt and Victor W. Reinking, Lewiston, N.Y. : Edwi
 Parent-Duchatelet, A. (1836). \emph{De la prostitution dans la ville de Paris}, 3rd ed, 1857,  p. 32, 36
 }
 \references{
-Dray, S. and Jombart, T. (2009). A Revisit Of Guerry's Data: Introducing
-Spatial Constraints In Multivariate Analysis. Unpublished manuscript.
+Dray, S., & Jombart, T. (2011). 
+Revisiting Guerry’s data: Introducing spatial constraints in multivariate analysis. 
+\emph{Annals of Applied Statistics}, \bold{5}, 2278–2299
 
 Brunsdon, C. and Dykes, J. (2007). 
-Geographically weighted visualization: interactive graphics
+Geographically weighted visualization: Interactive graphics
 for scale-varying exploratory analysis. 
-Geographical Information Science Research Conference (GISRUK 07),
+\emph{Geographical Information Science Research Conference (GISRUK 07)},
 NUI Maynooth, Ireland, April, 2007.
 
 Friendly, M. (2007). A.-M. Guerry's Moral Statistics of France: Challenges for Multivariable Spatial Analysis.
  \emph{Statistical Science}, 22, 368-399.
 
 Friendly, M. (2007). Data from A.-M. Guerry, Essay on the Moral Statistics of France (1833),
- \url{http://www.datavis.ca/gallery/guerry/guerrydat.html}.
+ \url{https://www.datavis.ca/gallery/guerry/guerrydat.html}.
 }
 \seealso{
 \code{\link{Angeville}} for other analysis variables
