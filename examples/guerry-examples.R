@@ -3,6 +3,7 @@
 library(Guerry)
 library(sp)
 library(ggplot2)
+library(corrgram)
 data(Guerry)
 
 spplot(gfrance, "Crime_pers")
@@ -11,13 +12,15 @@ spplot(gfrance, "Literacy")
 
 data(Angeville)
 
-library(corrgram)
-corrgram(Guerry[,4:9], upper=panel.ellipse)
+corrgram(Guerry[,4:9], upper=panel.ellipse, order=TRUE)
 corrgram(Guerry[,4:9], order=TRUE)
 corrgram(Guerry[,4:9], upper=panel.pie, order=TRUE)
 
-vars <- c(4:9, 11, 13, 14, 20)
-corrgram(Guerry[,vars], upper=panel.ellipse, cex.labels = 1.3)
+vars <- c(4:9, 11, 13, 14)
+corrgram(Guerry[,vars], 
+         upper=panel.ellipse, 
+         cex.labels = 1.3, lwd=2,
+         order = TRUE)
 
 corrgram(Angeville[,-1], order=TRUE, cex.labels=1.2)
 

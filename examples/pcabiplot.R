@@ -3,7 +3,14 @@
 # https://stackoverflow.com/questions/6578355/plotting-pca-biplot-with-ggplot2
 library(ggplot2)
 
-PCbiplot <- function(PC, x="PC1", y="PC2", scale=.7) {
+PCbiplot <- function(PC, 
+                     x="PC1", y="PC2", 
+                     scale=.7,
+                     var.text.size = 5,
+                     var.color = "red",
+                     var.lwd = 1.25,
+                     var.alpha = 0.8
+                     ) {
     # PC being a prcomp object
     data <- data.frame(obsnames=row.names(PC$x), PC$x)
     plot <- ggplot(data, aes_string(x=x, y=y)) + 
@@ -24,11 +31,14 @@ PCbiplot <- function(PC, x="PC1", y="PC2", scale=.7) {
 
     plot <- plot + coord_equal() + 
         geom_text(data=datapc, aes(x=v1, y=v2, label=varnames), 
-                  size = 5, vjust=1, color="red")
+                  size = var.text.size, 
+                  vjust=1, color=var.color)
     plot <- plot + 
         geom_segment(data=datapc, aes(x=0, y=0, xend=v1, yend=v2), 
-                     arrow=arrow(length=unit(0.2,"cm")), alpha=0.75, 
-                     color="red")
+                     arrow = arrow(length=unit(0.2,"cm")), 
+                     alpha = var.alpha, 
+                     color=var.color,
+                     size = var.lwd)
     plot <- plot + theme_bw()
     plot
 }

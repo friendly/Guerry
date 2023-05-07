@@ -2,8 +2,12 @@
 title: "Guerry data: Spatial Multivariate Analysis"
 author: "Stéphane Dray"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 2
 bibliography: reference.bib
+link-citations: yes
 vignette: >
   %\VignetteIndexEntry{Guerry data: Spatial Multivariate Analysis}
   %\VignetteKeywords{crime, literacy, suicide, France, spatial multivariate analysis}
@@ -29,7 +33,8 @@ It illustrates some classical methods for analysis of multivariate spatial data 
 # Preliminary steps
 
 Several packages are required to run the different analyses and should be loaded. The `ade4` package for multivariate
-analysis is supplemented by `adegraphics` (for associated graphical methods) and `adespatial` for multivariate spatial analysis.
+analysis is supplemented by `adegraphics` (for associated graphical methods) and `adespatial` for multivariate spatial analysis. For further information on this spatial analysis approach, see
+`vignette(package="adespatial", "tutorial")`.
 
 
 ```{r}
@@ -60,13 +65,13 @@ reflect "morally better". Thus, four of the "bad" variables are recorded in the 
 The dataset `gfrance85` is actually a `SpatialPolygonsDataFrame` object created with the `sp` package.
 It contains the polygon boundaries of the map of France in 1830, as well the variables in the `Guerry` data frame.
 As an ordinary data.frame, it has these components
-```{r}
+```{r names}
 names(gfrance85)
 ```
 
 To simplify analyses, we extract the components to be used below.  
 
-```{r}
+```{r components}
  data(gfrance85)
  df           <- data.frame(gfrance85)[, 7:12]    # the 6 variables
  france.map   <- as(gfrance85, "SpatialPolygons") # the map
@@ -84,7 +89,7 @@ In this section, we focus on classical approaches that consider either the multi
 
 Here we consider $p=6$ variables measured for $n=85$ individuals (départements of France). As only quantitative variables have been recorded, principal component analysis [PCA, @SD308] is well adapted. PCA summarizes the data by maximizing simultaneously the variance of the projection of the individuals onto the principal axes and the sum of the squared correlations between the principal component and the variables.
 
-```{r}
+```{r dudi-pca}
 pca <- dudi.pca(df, scannf = FALSE, nf = 3)
 ```
 

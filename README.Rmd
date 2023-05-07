@@ -12,6 +12,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "man/figures/README-",
   out.width = "100%",
+  width = 90,        # line width for text output
   dpi = 96
 )
 
@@ -30,7 +31,7 @@ par(mar=c(3,3,1,1)+.1)
 
 # Guerry <img src="man/figures/Guerry-logo.png" align="right" height="200px" />
 
-**Version**: 1.8.0
+**Version**: 1.8.1
 
 The `Guerry` package comprises maps of France in 1830, multivariate data from A.-M. Guerry and others, and statistical and 
 	graphic methods related to Guerry's *Moral Statistics of France*. The goal is to facilitate the exploration and
@@ -68,10 +69,89 @@ The Guerry package contains the following data sets:
 | `gfrance85`| The same for the 85 departments excluding Corsica|
 | `Guerry`   | A collection of 'moral variables' on the 86 departments of France around 1830 from Guerry (1833) and other sources.|
 | `Angeville`| Data from d'Angeville (1836) on the population of France.|
+| `propensity` | Distribution of crimes against persons at different ages |
 
 
 
 ## Examples
+
+### Maps
+
+In Guerry's time, the map of France and his data contained 86 departments.
+The two base maps in this package are `gfrance` and `gfrance85`. They differ only in that Corsica,
+outside the continental boundaries, is excluded in the later.
+
+These two datasets are `SpatialPolygonsDataFrame`s constructed with the [`sp`](https://cran.r-project.org/package=sp) 
+package.  This means
+they contain S4 components and have S4 methods
+
+* `gfrance@polygons` the polygon boundaries of the of the 1830 map of France
+* `gfrance@data` equivalent to the variables contained in the `Guerry` data set
+
+```{r}
+#| width=100
+data(gfrance)
+names(gfrance)  # list the @data variables
+```
+
+Thus, you can can just use `plot(gfrance)` to plot the outlines of the departments,
+
+```{r gfrance1}
+library(sp)
+plot(gfrance)
+```
+
+The `spplot` method produces a choropleth map, shaded by a given variable in `gfrance@data`
+
+```{r gfrance2}
+spplot(gfrance, "Crime_pers")
+```
+
+You can plot the maps for several variables together simply by listing their names in a vector.
+
+```{r gfrance3}
+# plot several together
+spplot(gfrance, c("Crime_pers", "Crime_prop", "Literacy" ), 
+       layout=c(3,1), main="Guerry's moral variables")
+```
+
+But there's a problem here.  `spplot` assumes all variables are on the same scale for comparative plots, so
+it is best to transform variables to ranks (as Guerry did).
+As well, use something like Guerry's pallet, where dark = Worse.
+
+```{r gfrance4}
+gfrance$Crime_pers <- rank(gfrance$Crime_pers)
+gfrance$Crime_prop <- rank(gfrance$Crime_prop)
+gfrance$Literacy   <- rank(gfrance$Literacy)
+
+my.palette <- rev(RColorBrewer::brewer.pal(n = 9, name = "PuBu"))
+spplot(gfrance, c("Crime_pers", "Crime_prop", "Literacy" ), 
+       names.attr = c("Personal crime", "Property crime", "Literacy"),
+       col.regions = my.palette, cuts = 8,
+       layout=c(3,1), as.table=TRUE, main="Guerry's moral variables")
+```
+
+For other purposes, you might want to produce the map, shaded by `Region` and adding labels
+for the names of the departments.  This is illustrated using the `gfrance85` map (excluding Corsica), where
+`coordinates()` gets the (X, Y) coordinates of the centroids for each department, 
+and `text()` for the `sp` object plots the labels.
+
+```{r gfrance85-labels}
+#| echo=-1
+op <-par(mar=rep(0.1,4))
+data(gfrance85)
+# extract region and dept names & assign colors
+xy            <- coordinates(gfrance85)            # department centroids
+dep.names     <- data.frame(gfrance85)[,6]
+region.names  <- data.frame(gfrance85)[,5]
+col.region    <- colors()[c(149,254,468,552,26)]   # assign colors
+
+plot(gfrance85, col=col.region[region.names])
+text(xy, labels=dep.names, cex=0.5)
+```
+
+
+### Plots
 
 Guerry was most interested in determining whether the occurrence of crimes
 was related to literacy or other "moral variables".  But the idea of

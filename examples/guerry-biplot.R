@@ -39,8 +39,8 @@ par(op)
 
 # try stats::biplot
 
-biplot(guerry.pca, cex=c(.5, 1),
+biplot(guerry.pca, cex=c(.5, 1), lwd=2,
        xlab = "Dimension 1 (35.7 %)", 
        ylab = "Dimension 2 (20.0 %)",
-)
+       )
 

@@ -1,0 +1,53 @@
+### Univariate plots
+
+#### Plots of means
+
+In his discussion, Guerry often referred to differences among the Regions of France.
+One useful display to address this is a **profile** plot of the means of the moral
+variables for each `Region`, typically shown as a line plot of the mean value
+over the variables. Another term used for this is a **parallel coordinates** plot.
+
+**TODO**: Add a parallel coordinates plot
+
+
+A more attractive form for this display shows the axes for each variable in polar coordinates,
+known as a **radar chart**. Because the variables are on different scales, a first step is to
+normalize them, by scaling each to a range of (0,1). The `scales::rescale()` function handles this.
+
+```{r}
+guerry_sumry <- Guerry[,c(2,4:9)] |>
+  filter(!is.na(Region)) |>
+  group_by(Region) |>
+  summarise(Crime_pers=  mean(Crime_pers),
+            Crime_prop = mean(Crime_prop),
+            Literacy =   mean(Literacy),
+            Donations =  mean(Donations),
+            Infants =    mean(Infants),
+            Suicides =   mean(Suicides),
+            ) |>
+  ungroup() |>
+  mutate_at(vars(-Region), scales::rescale)
+
+guerry_sumry
+```
+Even in this simple table, the regions that stand out as best (1) and worst (0)
+can be seen
+
+Here, I use the `ggradar` package by Ricardo Bion. It is not on CRAN, so you may need to install
+it to reproduce the figure here.
+
+```{r ggradar}
+#| fig.width = 7
+if(!require(ggradar)) remotes::install_github("ricardo-bion/ggradar")
+library(ggradar)   # Create radar charts using ggplot2
+
+guerry_sumry |>
+  ggradar(
+    grid.label.size = 4, 
+    axis.label.size = 4,
+    group.point.size = 4,
+    legend.position = "bottom",
+    legend.title = "Region",
+    plot.title = "Guerry data: Means by Region")
+```
+

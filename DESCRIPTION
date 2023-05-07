@@ -1,15 +1,15 @@
 Package: Guerry
 Type: Package
 Title: Maps, Data and Methods Related to Guerry (1833) "Moral Statistics of France"
-Version: 1.8.0
-Date: 2022-10-04
+Version: 1.8.1
+Date: 2023-05-05
 Authors@R: c(
              person(given = "Michael", 
                    family = "Friendly", 
                    role=c("aut", "cre"), 
                    email="friendly@yorku.ca",
                    comment = c(ORCID = "0000-0002-3237-0941")),
-             person(given = "Stéphane", 
+             person(given = "Stephane", 
                    family = "Dray", 
                    role="aut", 
                    email="stephane.dray@univ-lyon1.fr",
@@ -20,17 +20,17 @@ Authors@R: c(
                    email = "Roger.Bivand@nhh.no")
             )
 Maintainer: Michael Friendly <friendly@yorku.ca>
-Encoding: latin1
+Encoding: UTF-8
 Language: en-US
 Depends: R (>= 3.5.0)
 Imports: sp
 Suggests: knitr, 
   spdep, 
   ade4, adegraphics, adespatial, 
-  maptools, 
   RColorBrewer, 
   corrgram, 
   car, 
+  effects,
   rmarkdown, 
   ggplot2, 
   ggrepel, 
@@ -41,9 +41,7 @@ Suggests: knitr,
   scales,
   remotes,
   dplyr,
-  tidyr,
-  ggbiplot,
-  ggradar
+  tidyr
 Description: Maps of France in 1830, multivariate datasets from A.-M. Guerry and others, and statistical and 
 	graphic methods related to Guerry's "Moral Statistics of France". The goal is to facilitate the exploration and
 	development of statistical and graphic methods for multivariate data in a geospatial context of historical interest.
@@ -53,3 +51,4 @@ BugReports: https://github.com/friendly/Guerry/issues
 LazyLoad: yes
 LazyData: yes
 VignetteBuilder: knitr
+

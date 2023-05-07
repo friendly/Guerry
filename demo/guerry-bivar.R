@@ -1,3 +1,8 @@
+#' ---
+#' title: Bivariate data ellipses for crime rates vs. literacy
+#' ---
+#' 
+
 library(Guerry)
 library(car)
 data(Guerry)
@@ -11,7 +16,10 @@ with(Guerry,{
   	xlab="Percent who can read & write",
   	pch = 16,
   	grid = FALSE,
-  	id = list(method="mahal", n = 8, labels=Department, location="avoid", cex=1.2),
+  	id = list(method="mahal", 
+  	          n = 8, 
+  	          labels=Department, 
+  	          location="avoid", cex=1.2),
   	center.pch = 3, center.cex=5,
   	cex.lab=1.5)
 	dataEllipse(Literacy, Crime_pers/1000,
@@ -35,7 +43,10 @@ with(Guerry,{
               xlab="Percent who can read & write",
               pch = 16,
               grid = FALSE,
-              id = list(method="mahal", n = 8, labels=Department, location="avoid", cex=1.2),
+              id = list(method="mahal", 
+                        n = 8, 
+                        labels=Department, 
+                        location="avoid", cex=1.2),
               center.pch = 3, center.cex=5,
               cex.lab=1.5)
   dataEllipse(Literacy, Crime_prop,
@@ -67,7 +78,10 @@ with(Guerry,{
   	xlab="Percent who can read & write",
   	pch = 16,
   	grid = FALSE,
-  	id = list(method="mahal", n = 8, labels=Department, location="avoid", cex=1.2),
+  	id = list(method="mahal", 
+  	          n = 8, 
+  	          labels=Department, 
+  	          location="avoid", cex=1.2),
   	center.pch = 3, center.cex=5,
   	cex.lab=1.5)
 	dataEllipse(Literacy, Crime_pers_rate,
