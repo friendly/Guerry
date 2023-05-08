@@ -6,8 +6,8 @@ library(patchwork)
 data(Guerry, package="Guerry")
 
 
-gdata <- Guerry[1:9]    # keep only main variables;
-gdata <- Guerry[-86,]   # delete Corsica (region==NA)
+gdata <- Guerry[,1:9]    # keep only main variables;
+gdata <- gdata[-86,]   # delete Corsica (region==NA)
 
 guerry.pca <- prcomp(gdata[,4:9], scale=TRUE)
 print(guerry.pca, digits=3)
