@@ -25,7 +25,7 @@ ggbiplot(guerry.pca, groups=gdata$Region,
 
 
 #--------------------
-
+library(factoextra)
 fviz_pca(guerry.pca, 
          addEllipses = TRUE,
          ellipse.level=0.68,

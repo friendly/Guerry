@@ -1,5 +1,11 @@
 ### Univariate plots
 
+```{r echo=FALSE}
+data(Guerry, package = "Guerry")
+library(dplyr)
+library(ggplot2)
+```
+
 #### Plots of means
 
 In his discussion, Guerry often referred to differences among the Regions of France.
@@ -7,16 +13,11 @@ One useful display to address this is a **profile** plot of the means of the mor
 variables for each `Region`, typically shown as a line plot of the mean value
 over the variables. Another term used for this is a **parallel coordinates** plot.
 
-**TODO**: Add a parallel coordinates plot
-
-
-A more attractive form for this display shows the axes for each variable in polar coordinates,
-known as a **radar chart**. Because the variables are on different scales, a first step is to
-normalize them, by scaling each to a range of (0,1). The `scales::rescale()` function handles this.
-
-```{r}
+```{r sumry}
 guerry_sumry <- Guerry[,c(2,4:9)] |>
   filter(!is.na(Region)) |>
+  mutate(Region = factor(Region, 
+                         labels =c("Central", "East", "North", "South", "West"))) |>
   group_by(Region) |>
   summarise(Crime_pers=  mean(Crime_pers),
             Crime_prop = mean(Crime_prop),
@@ -28,26 +29,57 @@ guerry_sumry <- Guerry[,c(2,4:9)] |>
   ungroup() |>
   mutate_at(vars(-Region), scales::rescale)
 
-guerry_sumry
+guerry_sumry |> knitr::kable(digits = 2)
 ```
 Even in this simple table, the regions that stand out as best (1) and worst (0)
-can be seen
+can be seen. In particular, the Central, North and West are highest on personal crime,
+while personal crime is highest in the Central region and lowest in the South.
+
+A plot of these means by region can be produced with the `ggpcp` package.
+
+```{r ggpcp}
+library(ggpcp)
+guerry_sumry |>
+  pcp_select(Region, Crime_pers:Suicides) |>
+  pcp_scale(method="uniminmax") |>
+  pcp_arrange() |>
+  ggplot(aes_pcp()) + 
+  geom_pcp_axes() + 
+  geom_pcp(aes(colour = Region), linewidth = 1) +
+  geom_pcp_labels() +
+  xlab("Variable") +
+  ylab("Percent of maximum") +
+  theme_bw(base_size = 14) +
+  theme(legend.position = 'bottom') 
+```
+
+
+A more attractive form for this display shows the axes for each variable in polar coordinates,
+known as a **radar chart**. Because the variables are on different scales, a first step is to
+normalize them, by scaling each to a range of (0,1). The `scales::rescale()` function handles this.
+
 
 Here, I use the `ggradar` package by Ricardo Bion. It is not on CRAN, so you may need to install
 it to reproduce the figure here.
 
 ```{r ggradar}
-#| fig.width = 7
+#| fig.width = 8
 if(!require(ggradar)) remotes::install_github("ricardo-bion/ggradar")
 library(ggradar)   # Create radar charts using ggplot2
 
 guerry_sumry |>
   ggradar(
     grid.label.size = 4, 
-    axis.label.size = 4,
+    axis.label.size = 3,
+    axis.label.offset = 1.2,
     group.point.size = 4,
+    plot.extent.x.sf = 1,
+    plot.extent.y.sf = 1.2,
+    fill = TRUE,
+    fill.alpha = 0.2,
     legend.position = "bottom",
     legend.title = "Region",
+    legend.text.size = 12,
     plot.title = "Guerry data: Means by Region")
 ```
 
