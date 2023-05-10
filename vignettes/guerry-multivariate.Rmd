@@ -7,7 +7,7 @@ output:
   rmarkdown::html_vignette:
     toc: true
     toc_depth: 2
-bibliography: refs.bib
+bibliography: ["refs.bib", "packages.bib"]
 link-citations: yes
 vignette: >
   %\VignetteIndexEntry{Guerry data: Multivariate Analysis}
@@ -26,6 +26,10 @@ knitr::opts_chunk$set(
   fig.width = 5,
   dpi = 96
 )
+
+# packages to be cited here. Code at the end automatically updates packages.bib
+to.cite <- c("car", "effects", "ggplot2", "GGally", "ggbiplot")
+
 ```
 
 André-Michel Guerry's _Essai sur la Statistique Morale de la France_ [@Guerry:1833]
@@ -122,9 +126,12 @@ and multidimensional scaling (MDS) methods.
 
 Data plots portray the data in a space where the coordinate axes are the observed variables.
 
-*   1D plots include histograms and density estimates
-*   2D plots are most often scatterplots
-*   for higher dimensions, biplots are often the most useful
+*   1D plots include line plots, histograms and density estimates
+*   2D plots are most often scatterplots, but contour plots or hex-binned plots are also useful when the sample size is large.
+*   For higher dimensions, biplots, showing the data in principal components space, together with vectors representing the correlations among variables, are often the most useful.
+
+```{r child = "../man/partials/_ggradar.Rmd"}
+```
 
 ## Density plots
 
@@ -254,8 +261,8 @@ For example, to see the relations among more than two variables we could turn to
 scatterplot matrix or some other display to show all pairwise bivariate relations. 
 
 
-For these, my preferred package is `car` with the `scatterplotMatrix` function.
-`GGally` works within the the `ggplot2` framework, but doesn't have the flexibility
+For these, my preferred package is `car` [@R-car] with the `scatterplotMatrix` function.
+`GGally` [@R-GGally] works within the the `ggplot2` framework, but doesn't have the flexibility
 I'd like.
 
 ```{r spm1}
@@ -274,7 +281,7 @@ Sometimes, particularly with more variables than this, we want to see a more sch
 A _correlation diagram_ or "corrgram" [@Friendly:02:corrgram] is a graphic display of a correlation
 matrix, allowing different renderings of the correlation between each pair of variables:
 as a shaded box, a pie symbol, a schematic data ellipse, and other options.
-This is implemented in the `corrgram` package [@corrgram].
+This is implemented in the `corrgram` package [@R-corrgram].
 The panels in the
 upper and lower triangles can be rendered differently.
 
@@ -323,11 +330,16 @@ First, we use `prcomp()` to carry out the PCA. We'd like to visualize the result
 delete Corsica where `Region` is missing.
 
 ```{r guerry.pca}
-gdata <- Guerry[1:9]    # keep only main variables;
-gdata <- Guerry[-86,]   # delete Corsica (Region==NA)
+gdata <- Guerry |>
+  select(Region, Crime_pers:Suicides) |>   # keep only main variables
+  filter(!is.na(Region))                   # delete Corsica (Region==NA)
 
-guerry.pca <- prcomp(gdata[,4:9], scale=TRUE)
+guerry.pca <- gdata |>
+  select(-Region) |>
+  prcomp(scale = TRUE)
+
 print(guerry.pca, digits=3)
+
 ```
 
 <!-- A screeplot shows the proportions of variance accounted for by each component. The results show that only 65% -->
@@ -339,8 +351,8 @@ print(guerry.pca, digits=3)
 <!-- ggs1 + ggs2 -->
 <!-- ``` -->
 
-In the `ggplot2` framework, biplots can be produced by the `ggbiplot` package, but this package is not on
-CRAN, so cannot be directly used here. Instead, the code below was run locally and the result
+In the `ggplot2` framework, biplots can be produced by the `ggbiplot` package [@R-ggbiplot], but this package is not on
+CRAN, so cannot be directly used in this vignette. Instead, the code below was run locally and the result
 included.
 ```{r biplot1}
 #| eval=FALSE
@@ -530,6 +542,12 @@ and this is nearly perfectly aligned with personal crime, with the largest diffe
 between the South and the other regions. The second canonical dimension, accounting
 for the remaing 17%, is perfectly aligned with property crime.  On this dimension,
 the North stands out compared to the other regions.
+
+```{r write-bib, echo = FALSE}
+# write a packages.bib file of the packages (.packages()) that have been used here
+pkgs <- unique(c(to.cite, .packages()))
+knitr::write_bib(pkgs, file = here::here("vignettes", "packages.bib"))
+```
 
 # References
 

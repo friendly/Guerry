@@ -7,12 +7,14 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/Guerry)](https://cran.r-project.org/package=Guerry)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/Guerry)](https://cran.r-project.org/package=Guerry)
 [![DOI](https://zenodo.org/badge/133678938.svg)](https://zenodo.org/badge/latestdoi/133678938)
+[![Last
+Commit](https://img.shields.io/github/last-commit/friendly/Guerry)](https://github.com/friendly/Guery)
 
 <!-- badges: end -->
 
 # Guerry <img src="man/figures/Guerry-logo.png" align="right" height="200px" />
 
-**Version**: 1.8.0
+**Version**: 1.8.2
 
 The `Guerry` package comprises maps of France in 1830, multivariate data
 from A.-M. Guerry and others, and statistical and graphic methods
@@ -69,10 +71,10 @@ These two datasets are `SpatialPolygonsDataFrame`s constructed with the
 [`sp`](https://cran.r-project.org/package=sp) package. This means they
 contain S4 components and have S4 methods
 
--   `gfrance@polygons` the polygon boundaries of the of the 1830 map of
-    France
--   `gfrance@data` equivalent to the variables contained in the `Guerry`
-    data set
+- `gfrance@polygons` the polygon boundaries of the of the 1830 map of
+  France
+- `gfrance@data` equivalent to the variables contained in the `Guerry`
+  data set
 
 ``` r
 data(gfrance)

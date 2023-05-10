@@ -1,4 +1,3 @@
-### Univariate plots
 
 ```{r echo=FALSE}
 data(Guerry, package = "Guerry")
@@ -6,15 +5,18 @@ library(dplyr)
 library(ggplot2)
 ```
 
-#### Plots of means
+## Plots of means
 
 In his discussion, Guerry often referred to differences among the Regions of France.
 One useful display to address this is a **profile** plot of the means of the moral
 variables for each `Region`, typically shown as a line plot of the mean value
 over the variables. Another term used for this is a **parallel coordinates** plot.
 
+First, find the means of each variable.
+
 ```{r sumry}
-guerry_sumry <- Guerry[,c(2,4:9)] |>
+guerry_sumry <- Guerry |>
+  select(Region, Crime_pers:Suicides) |>
   filter(!is.na(Region)) |>
   mutate(Region = factor(Region, 
                          labels =c("Central", "East", "North", "South", "West"))) |>
@@ -38,6 +40,7 @@ while personal crime is highest in the Central region and lowest in the South.
 A plot of these means by region can be produced with the `ggpcp` package.
 
 ```{r ggpcp}
+#| fig.width = 8
 library(ggpcp)
 guerry_sumry |>
   pcp_select(Region, Crime_pers:Suicides) |>
@@ -45,7 +48,7 @@ guerry_sumry |>
   pcp_arrange() |>
   ggplot(aes_pcp()) + 
   geom_pcp_axes() + 
-  geom_pcp(aes(colour = Region), linewidth = 1) +
+  geom_pcp(aes(colour = Region), linewidth = 2) +
   geom_pcp_labels() +
   xlab("Variable") +
   ylab("Percent of maximum") +
@@ -54,6 +57,7 @@ guerry_sumry |>
 ```
 
 
+#### Radar chart
 A more attractive form for this display shows the axes for each variable in polar coordinates,
 known as a **radar chart**. Because the variables are on different scales, a first step is to
 normalize them, by scaling each to a range of (0,1). The `scales::rescale()` function handles this.
