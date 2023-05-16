@@ -16,8 +16,13 @@ grid_preview("fr_regions_grid1")
 grid_preview("fr_departements_grid1")
 #grid_preview("fr_departements_grid2")
 
-zz <- grid_preview("fr_departements_grid2")
-zz + geom_text(aes(label=name), size=2, nudge_y=0.2)
+# includes 970s outside metro france
+z1 <- grid_preview("fr_departements_grid1") +
+   geom_text(aes(label=name), size=2, nudge_y=0.35)
+
+# excludes those and Corsica
+z2 <- grid_preview("fr_departements_grid2") +
+  geom_text(aes(label=name), size=2, nudge_y=0.35)
 
 # modify grid to collapse Corsica (2A, 2B) and remove territories
 
@@ -60,7 +65,7 @@ df %>% mutate(
 
 ggplot(df_ranks, aes(Crime_pers)) +
 	geom_point() +
-	facet_geo(~dept, grid = "fr_departements_grid2")
+	facet_geo(~dept, grid = "fr_departements_1830")
 
 # Some values in the specified facet_geo column 'dept' do not match the 'code' column of the specified grid and will be removed: 1,
 # 2, 3, 4, 5, 7, 8, 9, 17, 22, 23, 29, 50, 55, 59, 61, 62, 69, 70, 78, 87, 89, 200
