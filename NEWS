@@ -1,3 +1,8 @@
+Version 1.8.3 (2023-05-16)
+
+* Moved some examples to `demo/`
+* Edit example in `gfrance85.Rd`
+
 Version 1.8.2 (2023-05-10)
 
 * Incorporate parallel coord plots and radar charts in vignette
