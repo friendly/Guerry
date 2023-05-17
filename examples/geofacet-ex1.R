@@ -3,6 +3,7 @@
 #' ---
 #' 
 
+library(sp)
 library(geofacet)
 library(ggplot2)
 library(dplyr)
@@ -28,7 +29,7 @@ xy <- coordinates(gfrance85) |>
   setNames(c("x", "y")) 
 
 # make the grid data.frame
-nbin <- 17
+nbin <- 16
 gfrance85_grid <- data.frame(code = dept,
                              name = as.character(dep.names),
                              row = bin(xy$x, nbin),
@@ -37,6 +38,15 @@ head(gfrance85_grid)
 
 # check for duplicates
 which(duplicated(gfrance85_grid[, c("row", "col")]))
+
+gfrance85_grid |>
+  mutate(label = paste(code, "\n", name)) |>
+  ggplot(aes(x = row, y = col)) +
+  geom_tile(color = "black",
+            fill = scales::alpha("blue", .3)) +
+  geom_text(aes(label = label), size = 2) +
+  coord_equal()
+
 
 write.csv(gfrance85_grid, file = "examples/gfrance85_grid.csv", row.names = FALSE)
 

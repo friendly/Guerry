@@ -1,0 +1,68 @@
+# How to create a `geofacet` grid from the Guerry map of France in 1830?
+
+I'm trying to create a grid for the [`geofacet`](https://hafen.github.io/geofacet/) package
+based on the map of France from 1830 in the [`Guerry`](https://github.com/friendly/Guerry) package.
+
+The base map, `Guerry::gfrance85` is a `SpatialPolygonsDataFrame` ofthe 85 departments (excluding Corsica)
+at that time
+
+![](https://github.com/friendly/Guerry/blob/master/examples/gfrance85.png)
+
+I have two problems:
+* Creating a reasonable grid from the centroids of the departments in the map. The one I created below has too many holes.
+* Getting the `geofacet` package to recognize this [But I'll save that for a separate query]
+
+Below is my working MRE. I chose to use a 17 x 17 grid because any smaller gives duplicate cells
+for the departments.
+
+```
+library(sp)
+library(geofacet)
+library(ggplot2)
+library(dplyr)
+#library(tidyr)
+library(Guerry)
+
+
+# scale a variable into n integer bins
+bin <- function(x, n=10){
+  1 + floor(n * (x - min(x)) / (max(x) - min(x)))
+}
+
+data(gfrance85, package = "Guerry")
+
+dept         <- data.frame(gfrance85)[,"dept"]   
+dep.names    <- data.frame(gfrance85)[,"Department"]
+region.names <- data.frame(gfrance85)[,"Region"]
+
+
+# extract department centroids
+xy <- coordinates(gfrance85) |>
+  as.data.frame() |>
+  setNames(c("x", "y")) 
+
+# make the grid data.frame
+nbin <- 17   # size of grid
+gfrance85_grid <- data.frame(code = dept,
+                             name = as.character(dep.names),
+                             row = bin(xy$x, nbin),
+                             col = bin(xy$y, nbin))
+head(gfrance85_grid)
+```
+My grid data set looks like this:
+```
+  code         name row col
+1    1          Ain  15   8
+2    2        Aisne  12  16
+3    3       Allier  11   9
+4    4 Basses-Alpes  16   4
+5    5 Hautes-Alpes  16   5
+6    7      Ardeche  13   5
+```
+
+When I plot this, it shows the first problem: There are too many holes in the grid. 
+How can I process this data set to close some of the holes?
+
+![](C:\R\Projects\Guerry\examples\gfrance85_grid17.png)
+
+
