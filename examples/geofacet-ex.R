@@ -54,14 +54,19 @@ df <- Guerry[,1:9]
 # ranks
 
 
-df %>% mutate(
-             Crime_pers = dense_rank(Crime_pers),
-             Crime_prop = dense_rank(Crime_prop),
-             Literacy   = dense_rank(Literacy),
-             Donations  = dense_rank(Donations),
-             Infants    = dense_rank(Infants),
-             Suicides   = dense_rank(Suicides)
-) -> df_ranks
+# df %>% mutate(
+#              Crime_pers = dense_rank(Crime_pers),
+#              Crime_prop = dense_rank(Crime_prop),
+#              Literacy   = dense_rank(Literacy),
+#              Donations  = dense_rank(Donations),
+#              Infants    = dense_rank(Infants),
+#              Suicides   = dense_rank(Suicides)
+# ) -> df_ranks
+
+df_ranks <- Guerry |>
+  select(1:9) |>
+  mutate(across(Crime_pers:Suicides, dense_rank))
+
 
 ggplot(df_ranks, aes(Crime_pers)) +
 	geom_point() +
