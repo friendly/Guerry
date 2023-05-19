@@ -33,15 +33,21 @@ nbin <- 17
 gfrance85_grid <- data.frame(code = dept,
                              name = as.character(dep.names),
                              col = bin(xy$x, nbin),
-                             row = bin(xy$y, nbin),
-                             region = region.names) |>
-  mutate(region = factor(region, 
-                         labels =c("Central", "East", "North", "South", "West")))
+                             row = bin(xy$y, nbin)
+                             ) +
+  mutate(row = nbin - row)
+  #                          region = region.names) 
+  # mutate(region = factor(region, 
+  #                        labels =c("Central", "East", "North", "South", "West")))
   
-head(gfrance85_grid)
+#head(gfrance85_grid)
 
 # check for duplicates
 which(duplicated(gfrance85_grid[, c("row", "col")]))
+
+range(gfrance85_grid$row)
+range(gfrance85_grid$col)
+
 
 # gfrance85_grid |>
 #   mutate(label = paste(code, "\n", name)) |>
@@ -55,7 +61,7 @@ col.region <- colors()[c(149,254,468,552,26)] |>
   scales::alpha(alpha = 0.2)
 
 gfrance85_grid |>
-  ggplot(aes(x = col, y = row, fill = region)) +
+  ggplot(aes(x = col, y = row, fill = region.names)) +
   geom_tile(color = "black") +
   geom_text(aes(label = code), size = 3, nudge_y = .2) +
   geom_text(aes(label = name), size = 2, nudge_y = -.2) +
@@ -66,6 +72,12 @@ gfrance85_grid |>
 write.csv(gfrance85_grid, file = "examples/gfrance85_grid.csv", row.names = FALSE)
 
 
-grid_preview("gfrance85_grid") +
+grid_preview(gfrance85_grid) +
+  geom_text(aes(label=name), size=2, nudge_y=0.35)
+
+# try grid_auto
+
+grd <- grid_auto(gfrance85, names = "Department", codes = "dept", seed = 47)
+grid_preview(grd, label = "name_Department") +
   geom_text(aes(label=name), size=2, nudge_y=0.35)
 
