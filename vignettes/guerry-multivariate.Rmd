@@ -540,7 +540,7 @@ This gives a simple interpretation of the differences in `Region` on the crime v
 The first canonical dimension accounts for 83% of differences among the regions,
 and this is nearly perfectly aligned with personal crime, with the largest difference
 between the South and the other regions. The second canonical dimension, accounting
-for the remaing 17%, is perfectly aligned with property crime.  On this dimension,
+for the remaining 17%, is perfectly aligned with property crime.  On this dimension,
 the North stands out compared to the other regions.
 
 ```{r write-bib, echo = FALSE}

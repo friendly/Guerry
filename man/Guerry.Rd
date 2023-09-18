@@ -31,7 +31,7 @@ added from other sources.
     \item{\code{Donations}}{Donations to the poor. Source: A2 (Bulletin des lois)}
     \item{\code{Infants}}{Population per illegitimate birth. Source: A2 (Bureau des Longitudes, 1817-1821)}
     \item{\code{Suicides}}{Population per suicide. Source: A2 (Compte general, 1827-1830)}
-    \item{\code{MainCity}}{Size of principal city ('1:Sm', '2:Med', '3:Lg'), used as a surrogate for poulation density. Large refers to the top 10, small to the bottom 10; all the rest are classed Medium.
+    \item{\code{MainCity}}{Size of principal city ('1:Sm', '2:Med', '3:Lg'), used as a surrogate for population density. Large refers to the top 10, small to the bottom 10; all the rest are classed Medium.
 Source: A1. An ordered factor with levels \code{1:Sm} < \code{2:Med} < \code{3:Lg}}
     \item{\code{Wealth}}{Per capita tax on personal property. A ranked index based on taxes on personal and movable property per inhabitant.
 Source: A1}
@@ -41,7 +41,7 @@ Source: A1}
     \item{\code{Infanticide}}{Infanticides per capita. A ranked ratio of number of infanticides to population-- Average for the years 1825-1830. Source: A1 (Compte general) }
     \item{\code{Donation_clergy}}{Donations to the clergy. A ranked ratio of the number of bequests and donations inter vivios to population-- Average for the years 1815-1824. Source: A1 (Bull. des lois, ordunn. d'autorisation) }
     \item{\code{Lottery}}{Per capita wager on Royal Lottery. Ranked ratio of the proceeds bet on the royal lottery to population--- Average for the years 1822-1826. Source: A1 (Compte rendus par le ministre des finances)}
-    \item{\code{Desertion}}{Military disertion, ratio of the number of young soldiers accused of desertion to the force of the military contingent, minus the deficit produced by the insufficiency of available billets-- Average of the years 1825-1827.
+    \item{\code{Desertion}}{Military desertion, ratio of the number of young soldiers accused of desertion to the force of the military contingent, minus the deficit produced by the insufficiency of available billets-- Average of the years 1825-1827.
 Source: A1 (Compte du ministere du guerre, 1829 etat V) }
     \item{\code{Instruction}}{Instruction. Ranks recorded from Guerry's map of Instruction. Note: this is inversely related to \code{Literacy} (as defined here)}
     \item{\code{Prostitutes}}{Prostitutes in Paris.
@@ -50,7 +50,7 @@ Source: Parent-Duchatelet (1836), \emph{De la prostitution en Paris}}
     \item{\code{Distance}}{Distance to Paris (km). Distance of each department centroid to the centroid of the Seine (Paris)
 Source: calculated from department centroids }
     \item{\code{Area}}{Area (1000 km^2). Source: Angeville (1836) }
-    \item{\code{Pop1831}}{1831 population. Population in 1831, taken from Angeville (1836), \emph{Essai sur la Statistique de la Population francais}, in 1000s }
+    \item{\code{Pop1831}}{1831 population. Population in 1831, taken from Angeville (1836), \emph{Essai sur la Statistique de la Population francaise}, in 1000s }
   }
 }
 \details{

@@ -1,7 +1,8 @@
-Version 1.8.3 (2023-05-16)
+Version 1.8.3 (2023-09-18)
 
 * Moved some examples to `demo/`
 * Edit example in `gfrance85.Rd`
+* Vignette `MultiSpat.Rmd` moved to vignettes-old/ due to problems with `adespatial`
 
 Version 1.8.2 (2023-05-10)
 
