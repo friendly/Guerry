@@ -16,8 +16,8 @@ PCbiplot <- function(PC,
     plot <- ggplot(data, aes(.data[[x]], .data[[y]])) + 
         geom_text(alpha=.4, size=3, aes(label=obsnames))
     plot <- plot + 
-        geom_hline(aes(yintercept=0), size=.2) + 
-        geom_vline(aes(xintercept=0), size=.2)
+        geom_hline(aes(yintercept=0), linewidth=.2) + 
+        geom_vline(aes(xintercept=0), linewidth=.2)
 
     datapc <- data.frame(varnames=rownames(PC$rotation), PC$rotation)
     mult <- min(
