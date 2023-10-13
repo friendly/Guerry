@@ -13,11 +13,11 @@ PCbiplot <- function(PC,
                      ) {
     # PC being a prcomp object
     data <- data.frame(obsnames=row.names(PC$x), PC$x)
-    plot <- ggplot(data, aes_string(x=x, y=y)) + 
+    plot <- ggplot(data, aes(.data[[x]], .data[[y]])) + 
         geom_text(alpha=.4, size=3, aes(label=obsnames))
     plot <- plot + 
-        geom_hline(aes(yintercept=0), size=.2) + 
-        geom_vline(aes(xintercept=0), size=.2)
+        geom_hline(aes(yintercept=0), linewidth=.2) + 
+        geom_vline(aes(xintercept=0), linewidth=.2)
 
     datapc <- data.frame(varnames=rownames(PC$rotation), PC$rotation)
     mult <- min(
@@ -38,7 +38,7 @@ PCbiplot <- function(PC,
                      arrow = arrow(length=unit(0.2,"cm")), 
                      alpha = var.alpha, 
                      color=var.color,
-                     size = var.lwd)
+                     linewidth = var.lwd)
     plot <- plot + theme_bw()
     plot
 }

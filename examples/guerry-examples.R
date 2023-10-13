@@ -45,7 +45,8 @@ scatterplotMatrix(Guerry[,4:9],
 library(ggbiplot)
 gdata <- Guerry[,1:9]
 
-guerry.pca <- prcomp(Guerry[,4:9], scale=TRUE)
+Guerry <- Guerry[1:85,]  # remove Corsica
+guerry.pca <- prcomp(Guerry[, 4:9], scale=TRUE)
 ggbiplot(guerry.pca, groups=Guerry$Region, ellipse=TRUE, circle=TRUE)
 
 
