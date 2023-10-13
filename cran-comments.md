@@ -18,7 +18,7 @@ Only one package depends on Guerry as a `Suggests:`, because it uses the Guerry 
 [1] "adegraphics"
 
 
-## Version 1.8.1 (2023-05-05)
+## Version 1.8.3 (2023-10-13)
 
 This is a re-submission of a maintenance release to correct a problem with latin1 encoding used in the DESCRIPTION.
 and in man/ files. All non-ascii characters have now been removed.

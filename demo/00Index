@@ -1,5 +1,4 @@
 guerry_bivar          Bivariate data ellipses for crime rates vs. literacy
 guerry_density        Density plots of Guerry data
-guerry_ggradar        Radar chart of means of Guerry variables
 guerry_manova         MANOVA, candisc models for Guerry data
 guerry_mra            Predicting crime, multiple regression

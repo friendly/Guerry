@@ -1,7 +1,15 @@
-Version 1.8.3 (2023-05-16)
+
+Version 1.8.3 (2023-10-13)
+
+A problem with the `adegraphics` package becoming archived triggered a warning on `Guerry`
+threatening the same fate. I did not reply in time, and so `Guerry` was archived.
+This re-submission fixes that and other issues found by win-builder.
+
 
 * Moved some examples to `demo/`
 * Edit example in `gfrance85.Rd`
+* Restore use of `adegraphics` for vignette `MultiSpat.Rmd`
+* The `demo/guerry_ggradar.R` used a non-CRAN package; this package has been removed from Suggests: and the example moved to `examples/`.
 
 Version 1.8.2 (2023-05-10)
 

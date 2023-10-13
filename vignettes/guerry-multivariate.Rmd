@@ -130,8 +130,8 @@ Data plots portray the data in a space where the coordinate axes are the observe
 *   2D plots are most often scatterplots, but contour plots or hex-binned plots are also useful when the sample size is large.
 *   For higher dimensions, biplots, showing the data in principal components space, together with vectors representing the correlations among variables, are often the most useful.
 
-```{r child = "../man/partials/_ggradar.Rmd"}
-```
+<!-- ```{r child = "../man/partials/_ggradar.Rmd"} -->
+<!-- ``` -->
 
 ## Density plots
 
