@@ -13,7 +13,7 @@ It gives the rank ordering of crimes against persons in seven age groups, in lon
 \format{
   A data frame with 124 observations on the following 4 variables.
   \describe{
-    \item{\code{age}}{a character vector, with 7 age groups, \code{<21}, \code{21-30}, \code{30-40} ... \code{60-70}, code{>70}}
+    \item{\code{age}}{a character vector, with 7 age groups, \code{<21}, \code{21-30}, \code{30-40} ... \code{60-70}, code{70-}}
     \item{\code{rank}}{a numeric vector, rank of the crime within each age group}
     \item{\code{crime}}{a character vector, label of the crime}
     \item{\code{share}}{a numeric vector, share (frequency) of the crime in a population of 1000}
