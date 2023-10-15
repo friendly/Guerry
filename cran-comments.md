@@ -17,6 +17,10 @@ I note that these win-builder spelling checks to not respect the `inst/WORDFILE`
 
 Package checks for v. 1.8.3 resulting from `adespatial` being archived have now been corrected.
 
+However, the pretest-archived checks are still triggered, requiring manual inspection, and I'm stuck in
+a loop. Please APPROVE the package re-submission.
+
+
 ## Reverse dependencies
 
 Only one package depends on Guerry as a `Suggests:`, because it uses the Guerry data in examples.
