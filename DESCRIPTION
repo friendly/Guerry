@@ -24,7 +24,8 @@ Encoding: UTF-8
 Language: en-US
 Depends: R (>= 3.5.0)
 Imports: sp
-Suggests: knitr, 
+Suggests: knitr,
+  sf,
   spdep, 
   ade4, adegraphics, adespatial, 
   RColorBrewer, 
