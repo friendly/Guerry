@@ -1,6 +1,6 @@
 ## Test environments
 * local Windows, 4.2.2 (2022-10-31 ucrt)
-* win-builder R Under development (unstable) (2023-10-14 r85331 ucrt)
+* win-builder R Under development (unstable) (2023-10-23 r85401 ucrt)
 * R-hub: Windows Server 2022, R-devel, 64 bit; Ubuntu Linux 20.04.1 LTS, R-release, GCC
 
 ## R CMD check results
