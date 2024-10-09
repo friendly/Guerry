@@ -10,3 +10,6 @@ README.md
 ^Meta$
 ^.build-steps.R$
 ^CRAN-SUBMISSION$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
