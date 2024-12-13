@@ -1,3 +1,7 @@
+## Version 1.8.4 (2024-12-13)
+
+* Added Guerry_ranks, with all numeric variables ranked
+
 ## Version 1.8.3 (2023-10-13)
 
 A problem with the adegraphics package becoming archived triggered a warning on Guerry
