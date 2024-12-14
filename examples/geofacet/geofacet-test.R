@@ -1,5 +1,5 @@
 
-gfrance85_grid <- read.csv(file = "examples/gfrance85_grid.csv")
+gfrance85_grid <- read.csv(file = "examples/geofacet/gfrance85_grid.csv")
 
 data(Guerry_ranks)
 
