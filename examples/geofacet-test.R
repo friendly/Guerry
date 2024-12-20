@@ -18,6 +18,7 @@ ggplot(state_ranks, aes(variable, rank, fill = variable)) +
 
 Guerry_ranks_long <- Guerry_ranks |>
   select(dept:Suicides) |>
+  filter(dept != 200) |>
   pivot_longer(cols=Crime_pers:Suicides, 
                names_to = "variable",
                values_to = "rank")
