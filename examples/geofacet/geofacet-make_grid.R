@@ -59,6 +59,6 @@ grid_preview(gfrance85_grid15) +
   geom_text(aes(label=name), size=2, nudge_y=0.35)
 
 #try the designer
-grid_design(gfrance85_grid17,
+grid_design(gfrance85_grid,
             img = "https://github.com/friendly/Guerry/blob/master/man/figures/README-gfrance85-labels-1.png?raw=true",
             label = "code")

@@ -1,0 +1,86 @@
+row,col,code,name,name_region
+4,11,59,Nord,North
+4,10,62,Pas-de-Calais,North
+4,12, 8,Ardennes,North
+4,14,57,Moselle,North
+5,11, 2,Aisne,North
+5,10,80,Somme,North
+5,8,76,Seine-Inferieure,North
+5,13,54,Meurthe,East
+5,12,55,Meuse,North
+5,14,67,Bas-Rhin,East
+6,11,51,Marne,North
+6,10,60,Oise,North
+6,9,78,Seine-et-Oise,North
+6,8,27,Eure,North
+6,6,14,Calvados,North
+6,7,61,Orne,North
+6,5,50,Manche,North
+6,12,10,Aube,East
+6,14,88,Vosges,East
+7,11,77,Seine-et-Marne,North
+7,10,75,Seine,North
+7,9,28,Eure-et-Loir,Central
+7,8,53,Mayenne,West
+7,6,22,Cotes-du-Nord,West
+7,7,35,Ille-et-Vilaine,West
+7,5,29,Finistere,West
+7,13,52,Haute-Marne,East
+7,14,68,Haut-Rhin,East
+7,12,89,Yonne,Central
+8,10,45,Loiret,Central
+8,7,72,Sarthe,Central
+8,5,56,Morbihan,West
+8,13,21,Cote-d'Or,East
+8,9,41,Loir-et-Cher,Central
+8,14,70,Haute-Saone,East
+9,7,37,Indre-et-Loire,Central
+9,6,49,Maine-et-Loire,West
+9,5,44,Loire-Inferieure,West
+9,10,18,Cher,Central
+9,14,25,Doubs,East
+9,9,36,Indre,Central
+9,12,58,Nievre,Central
+9,13,71,Saone-et-Loire,East
+10,11, 3,Allier,Central
+10,14,39,Jura,East
+10,6,79,Deux-Sevres,West
+10,5,85,Vendee,West
+10,7,86,Vienne,West
+10,13,69,Rhone,East
+11,14, 1,Ain,East
+11,9,23,Creuse,Central
+11,8,87,Haute-Vienne,Central
+11,5,17,Charente-Inferieure,West
+11,7,16,Charente,West
+11,10,15,Cantal,Central
+11,13,42,Loire,Central
+12,11,63,Puy-de-Dome,Central
+12,7,24,Dordogne,West
+12,9,19,Correze,Central
+12,10,12,Aveyron,South
+12,13,38,Isere,East
+13,11,43,Haute-Loire,Central
+13,5,33,Gironde,West
+13,9,46,Lot,South
+13,10,81,Tarn,South
+13,13,26,Drome,East
+13,14, 5,Hautes-Alpes,East
+14,12, 7,Ardeche,South
+14,11,48,Lozere,South
+14,5,40,Landes,West
+14,7,47,Lot-et-Garonne,West
+14,8,82,Tarn-et-Garonne,South
+14,10,11,Aude,South
+14,13,84,Vaucluse,South
+14,14, 4,Basses-Alpes,East
+15,12,30,Gard,South
+15,5,64,Basses-Pyrenees,West
+15,6,65,Hautes-Pyrenees,South
+15,7,32,Gers,South
+15,8,31,Haute-Garonne,South
+15,10,66,Pyrenees-Orientales,South
+15,11,34,Herault,South
+15,9, 9,Ariege,South
+15,13,13,Bouches-du-Rhone,South
+15,14,83,Var,South
