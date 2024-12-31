@@ -1,0 +1,10 @@
+pandoc: 3.1.2
+pkgdown: 2.1.1
+pkgdown_sha: ~
+articles:
+  guerry-multivariate: guerry-multivariate.html
+  MultiSpat: MultiSpat.html
+last_built: 2024-10-09T01:15Z
+urls:
+  reference: http://friendly.github.io/Guerry/reference
+  article: http://friendly.github.io/Guerry/articles

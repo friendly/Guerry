@@ -49,7 +49,7 @@ Description: Maps of France in 1830, multivariate datasets from A.-M. Guerry and
 	graphic methods related to Guerry's "Moral Statistics of France". The goal is to facilitate the exploration and
 	development of statistical and graphic methods for multivariate data in a geospatial context of historical interest.
 License: GPL
-URL: https://github.com/friendly/Guerry
+URL: http://friendly.github.io/Guerry, https://github.com/friendly/Guerry
 BugReports: https://github.com/friendly/Guerry/issues
 LazyLoad: yes
 LazyData: yes
