@@ -1,8 +1,8 @@
 Package: Guerry
 Type: Package
 Title: Maps, Data and Methods Related to Guerry (1833) "Moral Statistics of France"
-Version: 1.8.3
-Date: 2023-10-24
+Version: 1.8.4
+Date: 2025-01-01
 Authors@R: c(
              person(given = "Michael", 
                    family = "Friendly", 

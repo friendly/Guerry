@@ -16,18 +16,24 @@ both in the map and in many analyses.
 \usage{data(gfrance85)}
 \format{
   The format is:
-Formal class 'SpatialPolygonsDataFrame' [package "sp"] with 5 slots: \code{gfrance85@data},
-\code{gfrance85@polygons}, \code{gfrance85@plotOrder}, \code{gfrance85@bbox}, \code{gfrance85@proj4string}.
-See: \code{\link[sp]{SpatialPolygonsDataFrame}} for descriptions of some components.
+Formal class 'SpatialPolygonsDataFrame' [package "sp"] with 5 slots: 
+\itemize{
+\item \code{gfrance85@data},
+\item \code{gfrance85@polygons}, 
+\item \code{gfrance85@plotOrder}, 
+\item \code{gfrance85@bbox}, 
+\item \code{gfrance85@proj4string}.
+}
 
 The analysis variables  are described in  \code{\link{Guerry}}.
-}
+See: \code{\link[sp]{SpatialPolygonsDataFrame}} for descriptions of some components.
+
 \details{
 In the present version, the PROJ4 projection is not specified.
 }
 \source{
 Friendly, M. (2007).
-Supplementary materials for Andr?-Michel Guerry's Moral Statistics of France:
+Supplementary materials for Andre-Michel Guerry's Moral Statistics of France:
 Challenges for Multivariate Spatial Analysis,
 \url{http://datavis.ca/gallery/guerry/}.
 

@@ -24,6 +24,23 @@ corrgram(Guerry[,vars],
 
 corrgram(Angeville[,-1], order=TRUE, cex.labels=1.2)
 
+# try all numeric variables, with variable ordering
+library(corrplot)
+library(dplyr)
+
+Guerry.cor <- Guerry |> 
+  dplyr::select(where(is.numeric), -dept) |>
+  tidyr::drop_na() |>
+  cor() 
+
+corrplot.mixed(Guerry.cor,
+  order = "AOE", 
+  lower = "ellipse",
+  upper = "pie",
+  tl.pos = "lt",
+  tl.col = "black")
+
+
 # library(ggplot2)
 # plotmatrix(Guerry[,4:9], colour="gray20") +
 #   geom_smooth(method="lm")

@@ -275,7 +275,7 @@ scatterplotMatrix(Guerry[,4:9],
                   smooth=FALSE)
 ```
 
-### Corrgrams
+## Corrgrams
 
 Sometimes, particularly with more variables than this, we want to see a more schematic overview.  
 A _correlation diagram_ or "corrgram" [@Friendly:02:corrgram] is a graphic display of a correlation
@@ -283,8 +283,11 @@ matrix, allowing different renderings of the correlation between each pair of va
 as a shaded box, a pie symbol, a schematic data ellipse, and other options.
 This is implemented in the `corrgram` package [@R-corrgram].
 The panels in the
-upper and lower triangles can be rendered differently.
+upper and lower triangles can be rendered differently, as shown below.
 
+![](../man/figures/corrgram-renderings.png)
+
+For the main Guerry variables it looks like this
 ```{r corrgram1}
 #| echo=-1
 par(mar=rep(1,4)+.1)
@@ -320,6 +323,29 @@ An alternative analysis might include:
 
 * converting the data to ranks.
 * considering transformations of some of the variables
+
+An important feature of corrplots is that they accommodate a large number of variables.
+Here I show the correlations among _all numeric_ variables, using `corrplot.mixed`
+from the `corrplot` package. This provides for _effect ordering_ [@FriendlyKwan:02:effect] 
+of the variables in a way that puts the most highly correlated variables adjacently,
+making it easier to see their patterns.
+
+```{r corrplot}
+#| out.width="100%"
+library(corrplot)
+Guerry.cor <- Guerry |> 
+  dplyr::select(where(is.numeric), -dept) |>
+  tidyr::drop_na() |>
+  cor() 
+
+corrplot.mixed(Guerry.cor,
+  order = "AOE", 
+  lower = "ellipse",
+  upper = "pie",
+  tl.pos = "lt",
+  tl.col = "black")
+
+```
 
 
 ## Biplots

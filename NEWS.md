@@ -1,4 +1,8 @@
-## Version 1.8.3 (2023-10-13)
+## Version 1.8.4 (2025-01-01)
+
+* Corrected numerous transcription errors in the Guerry data (thx: Kathryn DuBois)
+
+## Version 1.8.3 (2023-10-24)
 
 A problem with the adegraphics package becoming archived triggered a warning on Guerry
 threatening the same fate. I did not reply in time, and so Guerry was archived.
