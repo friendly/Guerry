@@ -27,7 +27,7 @@ Formal class 'SpatialPolygonsDataFrame' [package "sp"] with 5 slots:
 
 The analysis variables  are described in  \code{\link{Guerry}}.
 See: \code{\link[sp]{SpatialPolygonsDataFrame}} for descriptions of some components.
-
+}
 \details{
 In the present version, the PROJ4 projection is not specified.
 }

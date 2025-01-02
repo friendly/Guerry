@@ -1,15 +1,15 @@
 
 data(Guerry, package="Guerry")
 
-Guerry_ranks <- Guerry |>
-  mutate(
-    Crime_pers = dense_rank(Crime_pers),
-    Crime_prop = dense_rank(Crime_prop),
-    Literacy   = dense_rank(Literacy),
-    Donations  = dense_rank(Donations),
-    Infants    = dense_rank(Infants),
-    Suicides   = dense_rank(Suicides)
-  )
+# Guerry_ranks <- Guerry |>
+#   mutate(
+#     Crime_pers = dense_rank(Crime_pers),
+#     Crime_prop = dense_rank(Crime_prop),
+#     Literacy   = dense_rank(Literacy),
+#     Donations  = dense_rank(Donations),
+#     Infants    = dense_rank(Infants),
+#     Suicides   = dense_rank(Suicides)
+#   )
 
 # do it for all numeric
 Guerry_ranks<- Guerry |> 
