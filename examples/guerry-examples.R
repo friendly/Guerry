@@ -24,6 +24,13 @@ corrgram(Guerry[,vars],
 
 corrgram(Angeville[,-1], order=TRUE, cex.labels=1.2)
 
+
+Guerry |> 
+  dplyr::select(where(is.numeric), -dept) |>
+  tidyr::drop_na() |>
+  corrgram(order = TRUE)
+
+
 # try all numeric variables, with variable ordering
 library(corrplot)
 library(dplyr)

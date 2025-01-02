@@ -21,10 +21,11 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,   # suppress package loading messages
   comment = "#>",
-  fig.height = 3,
-  fig.width = 3,
+  fig.height = 3.5,
+  fig.width = 3.5,
   fig.align = "center"
 )
+options(digits = 4)
 ```
 
 This vignette indicates how to perform the analyses described in @SD966 of data derived from André-Michel Guerry's [-@SD955] *Essai sur la Statistique Morale de la France*. 
@@ -74,7 +75,8 @@ To simplify analyses, we extract the components to be used below.
 ```{r components}
  data(gfrance85)
  gdata <- gfrance85@data                          # the Guerry data.frame
- df           <- gdata[, 4:9]                     # the 6 variables
+ vars <- c("Crime_pers", "Crime_prop", "Literacy", "Donations", "Infants", "Suicides")
+ df           <- gdata[, vars]                    # the 6 variables
  france.map   <- as(gfrance85, "SpatialPolygons") # the map
  xy           <- coordinates(gfrance85)           # spatial coordinates
  dep.names    <- gdata[, "Department"]            # departement names
@@ -108,16 +110,29 @@ pca$eig/sum(pca$eig) * 100
 
 Correlations between variables and principal components can be represented on a correlation circle. The first axis is negatively correlated to literacy and positively correlated to property crime, suicides and illegitimate births. The second axis is aligned mainly with personal crime and donations to the poor.
 
-```{r}
+```{r corcircle}
 s.corcircle(pca$co)
 ```
 
 Spatial information can be added on the factorial map representing the projections of départements on principal axes by coloring according to colors representing the different regions of France.
 
 ```{r, fig.width = 4, fig.height  = 4}
-s.label(pca$li, ppoint.col = col.region[region.names], plabel.optim = TRUE, plabel.cex = 0.6)
-s.Spatial(france.map, col = col.region[region.names], plabel.cex = 0)
-s.class(xy, region.names, col = col.region, add = TRUE, ellipseSize = 0, starSize = 0)
+s.label(pca$li, 
+        ppoint.col = col.region[region.names], 
+        plabel.optim = TRUE, 
+        plabel.cex = 0.6)
+```
+
+Draw the map, colored by region:
+```{r, fig.width = 4, fig.height  = 4}
+s.Spatial(france.map, 
+          col = col.region[region.names], 
+          plabel.cex = 0)
+s.class(xy, 
+        region.names, 
+        col = col.region, 
+        add = TRUE, 
+        ellipseSize = 0, starSize = 0)
 ```
 
 For the first axis, the North and East are characterized by negative scores, corresponding to high levels of literacy and high rates of suicides, crimes against property and illegitimate births. The second axis mainly contrasts the West (high donations to the the poor and low levels of crime against persons) to the South. 
@@ -138,7 +153,10 @@ lw <- nb2listw(nb, style = "W")
 We can represent this neighborhood on the geographical map:
 
 ```{r}
-s.Spatial(france.map, nb = nb, plabel.cex = 0, pSp.border = "white")
+s.Spatial(france.map, 
+          nb = nb, 
+          plabel.cex = 0, 
+          pSp.border = "white")
 ```
 
 ### Moran's Coefficient
@@ -192,7 +210,12 @@ The simplest approach considered a two-step procedure where the data are first s
 
 ```{r, fig.dim = c(6,3)}
 moran.randtest(pca$li, lw)
-s.value(xy, pca$li[, 1:2], Sp = france.map, pSp.border = "white", symbol = "circle", pgrid.draw = FALSE)
+s.value(xy, 
+        pca$li[, 1:2], 
+        Sp = france.map, 
+        pSp.border = "white", 
+        symbol = "circle", 
+        pgrid.draw = FALSE)
 ```
 
 # Spatial multivariate analysis
@@ -239,14 +262,24 @@ The first axis opposed literacy to property crime, suicides and illegitimate bir
 Projections of départements on the BCA axes can be represented on the factorial map:
 
 ```{r, fig.dim = c(4,4)}
-s.label(bet$ls, as.character(dep.names), ppoint.cex = 0, plabel.optim = TRUE, plabel.col = col.region[region.names], plabel.cex = 0.5)
-s.class(bet$ls, fac = region.names, col = col.region, ellipse = 0, add = TRUE)
+s.label(bet$ls, 
+        as.character(dep.names), 
+        ppoint.cex = 0, 
+        plabel.optim = TRUE, 
+        plabel.col = col.region[region.names], plabel.cex = 0.5)
+s.class(bet$ls, 
+        fac = region.names, 
+        col = col.region, ellipse = 0, add = TRUE)
 ```
 
 The scores can be mapped to show the spatial aspects:
 
 ```{r, fig.dim = c(6,3)}
-s.value(xy, bet$ls, symbol = "circle", Sp = france.map, pSp.col = col.region[region.names], pSp.border = "transparent")
+s.value(xy, 
+        bet$ls, 
+        symbol = "circle", 
+        Sp = france.map, 
+        pSp.col = col.region[region.names], pSp.border = "transparent")
 ```
 
 The results are very close to those obtained by PCA: the first axis contrasted the North and the East (*la France éclairée*) to the other regions while the South is separated from the other regions by the second axis. The high variability of the region Centre is also noticeable. In contrast, the South is very homogeneous. 
@@ -371,7 +404,7 @@ s.value(xy, ms$li, Sp = france.map)
 
 # Conclusions 
 
-Even if the methods presented are quite different in their theoretical and practical viewpoints, their applications to Guerry's dataset yield very similar results. We provided a quantitative measure of this similarity by computing Procrustes statistics [@SD516;SD161] between the scores of the départements onto the first two axes for the different analyses. All the values of the statistic are very high and significant; this confirms the high concordance between the outputs of the different methods. 
+Even if the methods presented are quite different in their theoretical and practical viewpoints, their applications to Guerry's dataset yield very similar results. We provided a quantitative measure of this similarity by computing Procrustes statistics [@SD516;@SD161] between the scores of the départements onto the first two axes for the different analyses. All the values of the statistic are very high and significant; this confirms the high concordance between the outputs of the different methods. 
 
 ```{r}
 mat <- matrix(NA, 4, 4)
