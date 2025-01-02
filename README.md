@@ -41,10 +41,11 @@ data?
 
 You can install Guerry from CRAN or the development version as follows:
 
-| Version | Command                                      |
-|:--------|:---------------------------------------------|
-| CRAN    | `install.packages("Guerry")`                 |
-| Devel   | `remotes::install_github("friendly/Guerry")` |
+| Version | Command |
+|:---|:---|
+| CRAN | `install.packages("Guerry")` |
+| Devel | `remotes::install_github("friendly/Guerry")` |
+| R-universe | `install.packages('Guerry', repos = c('https://friendly.r-universe.dev'))` |
 
 ## Data sets
 
