@@ -17,8 +17,8 @@
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.9/font.css" rel="stylesheet">
 <link href="../deps/JetBrains_Mono-0.4.9/font.css" rel="stylesheet">
 <link href="../deps/Roboto_Slab-0.4.9/font.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Guerry data: Multivariate Analysis">
 </head>
 <body>
@@ -29,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">Guerry</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,7 +69,7 @@
                         <h4 data-toc-skip class="author">Michael
 Friendly</h4>
             
-            <h4 data-toc-skip class="date">2024-10-08</h4>
+            <h4 data-toc-skip class="date">2025-01-02</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/friendly/Guerry/blob/HEAD/vignettes/guerry-multivariate.Rmd" class="external-link"><code>vignettes/guerry-multivariate.Rmd</code></a></small>
       <div class="d-none name"><code>guerry-multivariate.Rmd</code></div>
@@ -97,10 +97,12 @@ and focus on multivariate analyses of the the data set.</p>
 </h2>
 <p>We will primarily use the following packages, so load them now.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/friendly/Guerry" class="external-link">Guerry</a></span><span class="op">)</span>         <span class="co"># Guerry data</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://friendly.github.io/Guerry/" class="external-link">Guerry</a></span><span class="op">)</span>         <span class="co"># Guerry data</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-forge.r-project.org/projects/car/" class="external-link">car</a></span><span class="op">)</span>            <span class="co"># better scatterplots</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://www.r-project.org" class="external-link">effects</a></span><span class="op">)</span>        <span class="co"># Effect Displays for Linear Models</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>        <span class="co"># Elegant Data Visualisations Using the Grammar of Graphics</span></span>
+<span><span class="co">#&gt; Error in get(paste0(generic, ".", class), envir = get_method_env()) : </span></span>
+<span><span class="co">#&gt;   object 'type_sum.accel' not found</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggrepel.slowkow.com/" class="external-link">ggrepel</a></span><span class="op">)</span>        <span class="co"># better handling of text labels</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com" class="external-link">patchwork</a></span><span class="op">)</span>      <span class="co"># combine plots</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://friendly.github.io/heplots/" class="external-link">heplots</a></span><span class="op">)</span>        <span class="co"># Hypothesis-Error plots</span></span>
@@ -382,8 +384,8 @@ multivariate data set. For example, to see the relations among more than
 two variables we could turn to a scatterplot matrix or some other
 display to show all pairwise bivariate relations.</p>
 <p>For these, my preferred package is <code>car</code> <span class="citation">(<a href="#ref-R-car">John Fox, Weisberg, and Price
-2023</a>)</span> with the <code>scatterplotMatrix</code> function.
-<code>GGally</code> <span class="citation">(<a href="#ref-R-GGally">Schloerke et al. 2021</a>)</span> works within the
+2024</a>)</span> with the <code>scatterplotMatrix</code> function.
+<code>GGally</code> <span class="citation">(<a href="#ref-R-GGally">Schloerke et al. 2024</a>)</span> works within the
 the <code>ggplot2</code> framework, but doesn’t have the flexibility I’d
 like.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
@@ -392,17 +394,21 @@ like.</p>
 <span>                  ellipse<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>levels<span class="op">=</span><span class="fl">0.68</span><span class="op">)</span>, </span>
 <span>                  smooth<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="guerry-multivariate_files/figure-html/spm1-1.png" width="100%"></p>
-<div class="section level4">
-<h4 id="corrgrams">Corrgrams<a class="anchor" aria-label="anchor" href="#corrgrams"></a>
-</h4>
+</div>
+<div class="section level3">
+<h3 id="corrgrams">Corrgrams<a class="anchor" aria-label="anchor" href="#corrgrams"></a>
+</h3>
 <p>Sometimes, particularly with more variables than this, we want to see
 a more schematic overview.<br>
-A <em>correlation diagram</em> or “corrgram” <span class="citation">(<a href="#ref-Friendly:02:corrgram">Friendly 2002</a>)</span> is a graphic
-display of a correlation matrix, allowing different renderings of the
-correlation between each pair of variables: as a shaded box, a pie
-symbol, a schematic data ellipse, and other options. This is implemented
-in the <code>corrgram</code> package <span class="citation">(<a href="#ref-R-corrgram">Wright 2021</a>)</span>. The panels in the upper
-and lower triangles can be rendered differently.</p>
+A <em>correlation diagram</em> or “corrgram” <span class="citation">(<a href="#ref-Friendly:02:corrgram">Michael Friendly 2002</a>)</span> is a
+graphic display of a correlation matrix, allowing different renderings
+of the correlation between each pair of variables: as a shaded box, a
+pie symbol, a schematic data ellipse, and other options. This is
+implemented in the <code>corrgram</code> package <span class="citation">(<a href="#ref-R-corrgram">Wright 2021</a>)</span>. The
+panels in the upper and lower triangles can be rendered differently, as
+shown below.</p>
+<p><img src="../reference/figures/corrgram-renderings.png"></p>
+<p>For the main Guerry variables it looks like this</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kwstat.github.io/corrgram/" class="external-link">corrgram</a></span><span class="op">)</span>             <span class="co"># Plot a Correlogram</span></span>
 <span><span class="fu"><a href="http://kwstat.github.io/corrgram/reference/corrgram.html" class="external-link">corrgram</a></span><span class="op">(</span><span class="va">Guerry</span><span class="op">[</span>,<span class="fl">4</span><span class="op">:</span><span class="fl">9</span><span class="op">]</span>, upper<span class="op">=</span><span class="va">panel.pie</span><span class="op">)</span></span></code></pre></div>
@@ -429,7 +435,27 @@ as having negative relations with all other variables.</p>
 <li>converting the data to ranks.</li>
 <li>considering transformations of some of the variables</li>
 </ul>
-</div>
+<p>An important feature of corrplots is that they accommodate a large
+number of variables. Here I show the correlations among <em>all
+numeric</em> variables, using <code>corrplot.mixed</code> from the
+<code>corrplot</code> package. This provides for <em>effect
+ordering</em> <span class="citation">(<a href="#ref-FriendlyKwan:02:effect">M. Friendly and Kwan 2003</a>)</span>
+of the variables in a way that puts the most highly correlated variables
+adjacently, making it easier to see their patterns.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/taiyun/corrplot" class="external-link">corrplot</a></span><span class="op">)</span></span>
+<span><span class="va">Guerry.cor</span> <span class="op">&lt;-</span> <span class="va">Guerry</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html" class="external-link">where</a></span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="op">-</span><span class="va">dept</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html" class="external-link">drop_na</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">cor</a></span><span class="op">(</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/corrplot/man/corrplot.mixed.html" class="external-link">corrplot.mixed</a></span><span class="op">(</span><span class="va">Guerry.cor</span>,</span>
+<span>  order <span class="op">=</span> <span class="st">"AOE"</span>, </span>
+<span>  lower <span class="op">=</span> <span class="st">"ellipse"</span>,</span>
+<span>  upper <span class="op">=</span> <span class="st">"pie"</span>,</span>
+<span>  tl.pos <span class="op">=</span> <span class="st">"lt"</span>,</span>
+<span>  tl.col <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="guerry-multivariate_files/figure-html/corrplot-1.png" width="100%"></p>
 </div>
 <div class="section level3">
 <h3 id="biplots">Biplots<a class="anchor" aria-label="anchor" href="#biplots"></a>
@@ -443,7 +469,7 @@ space.</p>
 <p>First, we use <code><a href="https://rdrr.io/r/stats/prcomp.html" class="external-link">prcomp()</a></code> to carry out the PCA. We’d like
 to visualize the result in relation to <code>Region</code>, so delete
 Corsica where <code>Region</code> is missing.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gdata</span> <span class="op">&lt;-</span> <span class="va">Guerry</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">Region</span>, <span class="va">Crime_pers</span><span class="op">:</span><span class="va">Suicides</span><span class="op">)</span> <span class="op">|&gt;</span>   <span class="co"># keep only main variables</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">Region</span><span class="op">)</span><span class="op">)</span>                   <span class="co"># delete Corsica (Region==NA)</span></span>
@@ -454,16 +480,16 @@ Corsica where <code>Region</code> is missing.</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">guerry.pca</span>, digits<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Standard deviations (1, .., p=6):</span></span>
-<span><span class="co">#&gt; [1] 1.463 1.096 1.050 0.817 0.741 0.584</span></span>
+<span><span class="co">#&gt; [1] 1.460 1.114 1.049 0.805 0.730 0.590</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Rotation (n x k) = (6 x 6):</span></span>
-<span><span class="co">#&gt;                PC1     PC2     PC3      PC4     PC5     PC6</span></span>
-<span><span class="co">#&gt; Crime_pers -0.0659  0.5906  0.6732 -0.13973 -0.0102 -0.4172</span></span>
-<span><span class="co">#&gt; Crime_prop -0.5123 -0.0884  0.4765  0.09861  0.1381  0.6884</span></span>
-<span><span class="co">#&gt; Literacy    0.5118 -0.1294  0.2090 -0.00797  0.8213  0.0560</span></span>
-<span><span class="co">#&gt; Donations  -0.1062  0.6990 -0.4134  0.47298  0.2742  0.1741</span></span>
-<span><span class="co">#&gt; Infants    -0.4513  0.1033 -0.3238 -0.73031  0.3776 -0.0696</span></span>
-<span><span class="co">#&gt; Suicides   -0.5063 -0.3569  0.0169  0.46220  0.2976 -0.5602</span></span></code></pre></div>
+<span><span class="co">#&gt;                PC1     PC2     PC3    PC4    PC5     PC6</span></span>
+<span><span class="co">#&gt; Crime_pers -0.0355 -0.6644 -0.5784 -0.112 -0.026 -0.4578</span></span>
+<span><span class="co">#&gt; Crime_prop -0.4993 -0.0137 -0.5082  0.128  0.208  0.6575</span></span>
+<span><span class="co">#&gt; Literacy    0.5205  0.1240 -0.1969 -0.120  0.813  0.0115</span></span>
+<span><span class="co">#&gt; Donations  -0.0910 -0.6281  0.5250  0.432  0.343  0.1304</span></span>
+<span><span class="co">#&gt; Infants    -0.4613 -0.0836  0.3032 -0.784  0.267 -0.0495</span></span>
+<span><span class="co">#&gt; Suicides   -0.5073  0.3761 -0.0313  0.394  0.326 -0.5818</span></span></code></pre></div>
 <!-- A screeplot shows the proportions of variance accounted for by each component. The results show that only 65% -->
 <!-- of the variance is accounted for in two dimensions. -->
 <!-- ```{r fig.height=4, fig.width=7} -->
@@ -472,10 +498,10 @@ Corsica where <code>Region</code> is missing.</p>
 <!-- ggs1 + ggs2 -->
 <!-- ``` -->
 <p>In the <code>ggplot2</code> framework, biplots can be produced by the
-<code>ggbiplot</code> package <span class="citation">(<a href="#ref-R-ggbiplot">Vu 2011</a>)</span>, but this package is not on
-CRAN, so cannot be directly used in this vignette. Instead, the code
-below was run locally and the result included.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code>ggbiplot</code> package <span class="citation">(<a href="#ref-R-ggbiplot">Vu and Friendly 2024</a>)</span>, but this
+package is not on CRAN, so cannot be directly used in this vignette.
+Instead, the code below was run locally and the result included.</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/friendly/ggbiplot" class="external-link">ggbiplot</a></span><span class="op">)</span><span class="op">)</span> <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"vqv/ggbiplot"</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/friendly/ggbiplot" class="external-link">ggbiplot</a></span><span class="op">)</span> <span class="co"># A ggplot2 based biplot</span></span>
 <span><span class="fu"><a href="http://friendly.github.io/ggbiplot/reference/ggbiplot.html" class="external-link">ggbiplot</a></span><span class="op">(</span><span class="va">guerry.pca</span>, groups<span class="op">=</span><span class="va">gdata</span><span class="op">$</span><span class="va">Region</span>, </span>
@@ -484,15 +510,15 @@ below was run locally and the result included.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>color<span class="op">=</span><span class="st">"Region"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.8</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html" class="external-link">include_graphics</a></span><span class="op">(</span><span class="st">"figures/ggbiplot.png"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="figures%2Fggbiplot.png" width="378"></p>
 <p>This is OK, but there are many features of such plots that cannot be
 customized (line widths, colors, … ). I prefer those created using the
 <code>heplots</code> package.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">op</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">4</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">+</span><span class="fl">.1</span><span class="op">)</span></span>
-<span><span class="va">cols</span> <span class="op">=</span> <span class="fu">colorspace</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/colorspace/man/rainbow_hcl.html" class="external-link">rainbow_hcl</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">cols</span> <span class="op">=</span> <span class="fu">colorspace</span><span class="fu">::</span><span class="fu"><a href="https://colorspace.R-Forge.R-project.org/reference/rainbow_hcl.html" class="external-link">rainbow_hcl</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://friendly.github.io/heplots/reference/covEllipses.html" class="external-link">covEllipses</a></span><span class="op">(</span><span class="va">guerry.pca</span><span class="op">$</span><span class="va">x</span>, </span>
 <span>            group<span class="op">=</span><span class="va">gdata</span><span class="op">$</span><span class="va">Region</span>, </span>
 <span>            pooled<span class="op">=</span><span class="cn">FALSE</span>, </span>
@@ -544,7 +570,7 @@ joint relation of the crime variables to other predictors.</li>
 </h3>
 <p>The simplest approach to predicting the crime variables would be to
 fit a separate multiple regression to each.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">crime.mod1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Crime_pers</span> <span class="op">~</span>  <span class="va">Region</span> <span class="op">+</span> <span class="va">Literacy</span> <span class="op">+</span> <span class="va">Donations</span> <span class="op">+</span>  <span class="va">Infants</span> <span class="op">+</span> <span class="va">Suicides</span>, data<span class="op">=</span><span class="va">Guerry</span><span class="op">)</span></span>
 <span><span class="va">crime.mod2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Crime_prop</span> <span class="op">~</span>  <span class="va">Region</span> <span class="op">+</span> <span class="va">Literacy</span> <span class="op">+</span> <span class="va">Donations</span> <span class="op">+</span>  <span class="va">Infants</span> <span class="op">+</span> <span class="va">Suicides</span>, data<span class="op">=</span><span class="va">Guerry</span><span class="op">)</span></span></code></pre></div>
 <p>Tests for the predictors are best obtained using
@@ -552,31 +578,31 @@ fit a separate multiple regression to each.</p>
 tests, adjusting for other predictors, rather than the
 <strong>sequential</strong> (Type I) tests provided by
 <code><a href="https://rdrr.io/r/stats/anova.html" class="external-link">stats::anova()</a></code></p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">crime.mod1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Anova Table (Type II tests)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Response: Crime_pers</span></span>
 <span><span class="co">#&gt;               Sum Sq Df F value    Pr(&gt;F)    </span></span>
-<span><span class="co">#&gt; Region    1388267847  4  9.0398 5.005e-06 ***</span></span>
-<span><span class="co">#&gt; Literacy    77140249  1  2.0092    0.1604    </span></span>
-<span><span class="co">#&gt; Donations   54505520  1  1.4197    0.2372    </span></span>
-<span><span class="co">#&gt; Infants       102152  1  0.0027    0.9590    </span></span>
-<span><span class="co">#&gt; Suicides      205432  1  0.0054    0.9419    </span></span>
-<span><span class="co">#&gt; Residuals 2917886368 76                      </span></span>
+<span><span class="co">#&gt; Region    1305075062  4  8.5222 9.789e-06 ***</span></span>
+<span><span class="co">#&gt; Literacy    80862349  1  2.1121    0.1503    </span></span>
+<span><span class="co">#&gt; Donations   55264860  1  1.4435    0.2333    </span></span>
+<span><span class="co">#&gt; Infants       433571  1  0.0113    0.9155    </span></span>
+<span><span class="co">#&gt; Suicides     5885990  1  0.1537    0.6961    </span></span>
+<span><span class="co">#&gt; Residuals 2909622973 76                      </span></span>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">crime.mod2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Anova Table (Type II tests)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Response: Crime_prop</span></span>
-<span><span class="co">#&gt;              Sum Sq Df F value    Pr(&gt;F)    </span></span>
-<span><span class="co">#&gt; Region     52269436  4  2.0939 0.0898250 .  </span></span>
-<span><span class="co">#&gt; Literacy   13366819  1  2.1419 0.1474514    </span></span>
-<span><span class="co">#&gt; Donations   9218353  1  1.4771 0.2279870    </span></span>
-<span><span class="co">#&gt; Infants     7577617  1  1.2142 0.2739759    </span></span>
-<span><span class="co">#&gt; Suicides  100890796  1 16.1665 0.0001355 ***</span></span>
-<span><span class="co">#&gt; Residuals 474296314 76                      </span></span>
+<span><span class="co">#&gt;              Sum Sq Df F value   Pr(&gt;F)    </span></span>
+<span><span class="co">#&gt; Region     58042604  4  2.2182 0.074873 .  </span></span>
+<span><span class="co">#&gt; Literacy   13063224  1  1.9969 0.161704    </span></span>
+<span><span class="co">#&gt; Donations   8093826  1  1.2373 0.269507    </span></span>
+<span><span class="co">#&gt; Infants     7058522  1  1.0790 0.302216    </span></span>
+<span><span class="co">#&gt; Suicides   79203021  1 12.1073 0.000835 ***</span></span>
+<span><span class="co">#&gt; Residuals 497174277 76                     </span></span>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
 <p>These are somewhat disappointing if you look only at the significance
@@ -588,12 +614,12 @@ that increased <code>Literacy</code> would reduce crime.</p>
 effects using the <code>effects</code> package. The (marginal) effect
 for a given term gives the predicted values, averaging over all other
 terms in the model.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/effects/man/predictorEffects.html" class="external-link">predictorEffects</a></span><span class="op">(</span><span class="va">crime.mod1</span>, <span class="op">~</span> <span class="va">Region</span> <span class="op">+</span> <span class="va">Literacy</span> <span class="op">+</span> <span class="va">Infants</span> <span class="op">+</span> <span class="va">Suicides</span><span class="op">)</span>, </span>
 <span>     lwd<span class="op">=</span><span class="fl">2</span>, main<span class="op">=</span><span class="st">""</span><span class="op">)</span></span></code></pre></div>
 <p><img src="figures%2Fmra-effect1.png" width="425"></p>
 <p>Doing the same for property crime, we get:</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/effects/man/predictorEffects.html" class="external-link">predictorEffects</a></span><span class="op">(</span><span class="va">crime.mod2</span>, <span class="op">~</span> <span class="va">Region</span> <span class="op">+</span> <span class="va">Literacy</span> <span class="op">+</span> <span class="va">Infants</span> <span class="op">+</span> <span class="va">Suicides</span><span class="op">)</span>, </span>
 <span>     lwd<span class="op">=</span><span class="fl">2</span>, main<span class="op">=</span><span class="st">""</span><span class="op">)</span></span></code></pre></div>
 <p><img src="figures%2Fmra-effect2.png" width="425"></p>
@@ -603,18 +629,18 @@ terms in the model.</p>
 </h3>
 <p>The two regression models can be fit together in a multivariate
 regression for both crime variables jointly.</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">crime.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">Crime_pers</span>, <span class="va">Crime_prop</span><span class="op">)</span> <span class="op">~</span> </span>
 <span>                <span class="va">Region</span> <span class="op">+</span> <span class="va">Literacy</span> <span class="op">+</span> <span class="va">Donations</span> <span class="op">+</span>  <span class="va">Infants</span> <span class="op">+</span> <span class="va">Suicides</span>, data<span class="op">=</span><span class="va">Guerry</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/car/man/Anova.html" class="external-link">Anova</a></span><span class="op">(</span><span class="va">crime.mod</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Type II MANOVA Tests: Pillai test statistic</span></span>
 <span><span class="co">#&gt;           Df test stat approx F num Df den Df    Pr(&gt;F)    </span></span>
-<span><span class="co">#&gt; Region     4   0.42933   5.1936      8    152 9.563e-06 ***</span></span>
-<span><span class="co">#&gt; Literacy   1   0.03707   1.4434      2     75 0.2425951    </span></span>
-<span><span class="co">#&gt; Donations  1   0.02615   1.0071      2     75 0.3701736    </span></span>
-<span><span class="co">#&gt; Infants    1   0.01833   0.7001      2     75 0.4997450    </span></span>
-<span><span class="co">#&gt; Suicides   1   0.20772   9.8315      2     75 0.0001615 ***</span></span>
+<span><span class="co">#&gt; Region     4   0.41897   5.0349      8    152 1.472e-05 ***</span></span>
+<span><span class="co">#&gt; Literacy   1   0.03657   1.4234      2     75 0.2473351    </span></span>
+<span><span class="co">#&gt; Donations  1   0.02421   0.9304      2     75 0.3989076    </span></span>
+<span><span class="co">#&gt; Infants    1   0.01575   0.5999      2     75 0.5514648    </span></span>
+<span><span class="co">#&gt; Suicides   1   0.17728   8.0804      2     75 0.0006638 ***</span></span>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
 <p>As a quick check on the assumption that the residuals are bivariate
@@ -625,18 +651,18 @@ against the corresponding
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>χ</mi><mn>2</mn><mn>2</mn></msubsup><annotation encoding="application/x-tex">\chi^2_2</annotation></semantics></math>
 quantiles these would have in a bivariate normal distribution. The data
 for Creuse stands out as a potential outlier.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">Guerry</span><span class="op">$</span><span class="va">dept</span>,<span class="st">":"</span>, <span class="va">Guerry</span><span class="op">$</span><span class="va">Department</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://friendly.github.io/heplots/reference/cqplot.html" class="external-link">cqplot</a></span><span class="op">(</span><span class="va">crime.mod</span>, id.n<span class="op">=</span><span class="fl">4</span>, labels<span class="op">=</span><span class="va">labels</span><span class="op">)</span></span></code></pre></div>
 <p><img src="guerry-multivariate_files/figure-html/cqplot-1.png" width="480"></p>
 <div class="section level4">
 <h4 id="he-plots">HE plots<a class="anchor" aria-label="anchor" href="#he-plots"></a>
 </h4>
-<p>Hypothesis-Error (HE) plots <span class="citation">(<a href="#ref-Friendly:2007:heplots">Friendly 2007</a>; <a href="#ref-FoxFriendlyMonette:09:compstat">J. Fox, Friendly, and Monette
-2009</a>; <a href="#ref-heplots">Friendly, Fox, and Georges Monette
-2022</a>)</span> provide a convenient graphical summary of hypothesis
-tests in multivariate linear model. They plot a data ellipse for the
-residuals in the model, representing the
+<p>Hypothesis-Error (HE) plots <span class="citation">(<a href="#ref-Friendly:2007:heplots">Michael Friendly 2007</a>; <a href="#ref-FoxFriendlyMonette:09:compstat">J. Fox, Friendly, and Monette
+2009</a>; <a href="#ref-heplots">Michael Friendly, Fox, and Georges
+Monette 2022</a>)</span> provide a convenient graphical summary of
+hypothesis tests in multivariate linear model. They plot a data ellipse
+for the residuals in the model, representing the
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐄</mi><annotation encoding="application/x-tex">\mathbf{E}</annotation></semantics></math>
 matrix in the test statistics (Roy’s maximum root test, Pillai and
 Hotelling trace criteria and Wilks’ Lambda). Overlaid on this are
@@ -646,7 +672,7 @@ the fitted values. Using Roy’s test, these have a convenient
 interpretation: a term is significant <em>iff</em> the H ellipse
 projects anywhere outside the E ellipse. For a 1 df (regression)
 variable, the H ellipse collapses to a line.</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://friendly.github.io/heplots/reference/heplot.html" class="external-link">heplot</a></span><span class="op">(</span><span class="va">crime.mod</span>, </span>
 <span>       fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha<span class="op">=</span><span class="fl">0.05</span>, </span>
 <span>       cex<span class="op">=</span><span class="fl">1.4</span>, cex.lab<span class="op">=</span><span class="fl">1.3</span> <span class="op">)</span></span></code></pre></div>
@@ -668,34 +694,34 @@ test statistics for the terms, which can be visualized in
 <strong>canonical space</strong>.</p>
 <p>The analysis below reflects the effect of <code>Region</code> in
 relation to both crime variables.</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">crime.can</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://friendly.github.io/candisc/reference/candisc.html" class="external-link">candisc</a></span><span class="op">(</span><span class="va">crime.mod</span><span class="op">)</span></span>
 <span><span class="va">crime.can</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Canonical Discriminant Analysis for Region:</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;     CanRsq Eigenvalue Difference Percent Cumulative</span></span>
-<span><span class="co">#&gt; 1 0.337068    0.50845    0.40681   83.34      83.34</span></span>
-<span><span class="co">#&gt; 2 0.092267    0.10164    0.40681   16.66     100.00</span></span>
+<span><span class="co">#&gt; 1 0.322365    0.47572    0.36879  81.647     81.647</span></span>
+<span><span class="co">#&gt; 2 0.096603    0.10693    0.36879  18.353    100.000</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Test of H0: The canonical correlations in the </span></span>
 <span><span class="co">#&gt; current row and all that follow are zero</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;   LR test stat approx F numDF denDF   Pr(&gt; F)    </span></span>
-<span><span class="co">#&gt; 1      0.60177   5.7097     8   158 2.209e-06 ***</span></span>
-<span><span class="co">#&gt; 2      0.90773   2.7105     3    80   0.05051 .  </span></span>
+<span><span class="co">#&gt; 1      0.61217   5.4924     8   158 3.993e-06 ***</span></span>
+<span><span class="co">#&gt; 2      0.90340   2.8515     3    80   0.04248 *  </span></span>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
 <p>The HE plot for this analysis is shown below. Variable vector
 represent the correlations of the crime variables with the canonical
 dimension.</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://friendly.github.io/heplots/reference/heplot.html" class="external-link">heplot</a></span><span class="op">(</span><span class="va">crime.can</span>, fill<span class="op">=</span><span class="cn">TRUE</span>, fill.alpha<span class="op">=</span><span class="fl">0.1</span>,</span>
 <span>       var.col <span class="op">=</span> <span class="st">"black"</span>, </span>
 <span>       var.cex <span class="op">=</span> <span class="fl">1.3</span>,</span>
 <span>       cex<span class="op">=</span><span class="fl">1.4</span>, cex.lab<span class="op">=</span><span class="fl">1.3</span><span class="op">)</span></span></code></pre></div>
 <p><img src="guerry-multivariate_files/figure-html/hecan-1.png" width="480"></p>
-<pre><code><span><span class="co">#&gt; Vector scale factor set to  3.10537</span></span></code></pre>
+<pre><code><span><span class="co">#&gt; Vector scale factor set to  3.014304</span></span></code></pre>
 <p>This gives a simple interpretation of the differences in
 <code>Region</code> on the crime variables. The first canonical
 dimension accounts for 83% of differences among the regions, and this is
@@ -710,7 +736,7 @@ other regions.</p>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-FoxFriendlyMonette:09:compstat" class="csl-entry">
 Fox, J., M. Friendly, and G. Monette. 2009. <span>“Visualizing
 Hypothesis Tests in Multivariate Linear Models: The <em>Heplots</em>
@@ -718,8 +744,8 @@ Package for <span>R</span>.”</span> <em>Computational Statistics</em> 24
 (2): 233–46. <a href="https://datavis.ca/papers/FoxFriendlyMonette-2009.pdf" class="external-link">https://datavis.ca/papers/FoxFriendlyMonette-2009.pdf</a>.
 </div>
 <div id="ref-R-car" class="csl-entry">
-Fox, John, Sanford Weisberg, and Brad Price. 2023. <em>Car: Companion to
-Applied Regression</em>. <a href="https://CRAN.R-project.org/package=car" class="external-link">https://CRAN.R-project.org/package=car</a>.
+Fox, John, Sanford Weisberg, and Brad Price. 2024. <em>Car: Companion to
+Applied Regression</em>. <a href="https://r-forge.r-project.org/projects/car/" class="external-link">https://r-forge.r-project.org/projects/car/</a>.
 </div>
 <div id="ref-Friendly:02:corrgram" class="csl-entry">
 Friendly, Michael. 2002. <span>“Corrgrams: Exploratory Displays for
@@ -735,6 +761,11 @@ Statistics</em> 16 (4): 421–44. <a href="http://datavis.ca/papers/jcgs-heplots
 Friendly, Michael, John Fox, and and Georges Monette. 2022. <em><span class="nocase">heplots</span>: Visualizing Tests in Multivariate Linear
 Models</em>. <a href="https://CRAN.R-project.org/package=heplots" class="external-link">https://CRAN.R-project.org/package=heplots</a>.
 </div>
+<div id="ref-FriendlyKwan:02:effect" class="csl-entry">
+Friendly, M., and E. Kwan. 2003. <span>“Effect Ordering for Data
+Displays.”</span> <em>Computational Statistics and Data Analysis</em> 43
+(4): 509–39. <a href="https://doi.org/10.1016/S0167-9473(02)00290-6" class="external-link">https://doi.org/10.1016/S0167-9473(02)00290-6</a>.
+</div>
 <div id="ref-Galton:1886" class="csl-entry">
 Galton, Francis. 1886. <span>“Regression Towards Mediocrity in
 Hereditary Stature.”</span> <em>Journal of the Anthropological
@@ -746,11 +777,12 @@ Guerry, André-Michel. 1833. <em>Essai Sur La Statistique Morale de La
 </div>
 <div id="ref-R-GGally" class="csl-entry">
 Schloerke, Barret, Di Cook, Joseph Larmarange, Francois Briatte, Moritz
-Marbach, Edwin Thoen, Amos Elberg, and Jason Crowley. 2021. <em>GGally:
-Extension to Ggplot2</em>. <a href="https://CRAN.R-project.org/package=GGally" class="external-link">https://CRAN.R-project.org/package=GGally</a>.
+Marbach, Edwin Thoen, Amos Elberg, and Jason Crowley. 2024. <em>GGally:
+Extension to Ggplot2</em>. <a href="https://ggobi.github.io/ggally/" class="external-link">https://ggobi.github.io/ggally/</a>.
 </div>
 <div id="ref-R-ggbiplot" class="csl-entry">
-Vu, Vincent Q. 2011. <em>Ggbiplot: A Ggplot2 Based Biplot</em>. <a href="http://github.com/vqv/ggbiplot" class="external-link">http://github.com/vqv/ggbiplot</a>.
+Vu, Vincent Q., and Michael Friendly. 2024. <em>Ggbiplot: A Grammar of
+Graphics Implementation of Biplots</em>. <a href="https://github.com/friendly/ggbiplot" class="external-link">https://github.com/friendly/ggbiplot</a>.
 </div>
 <div id="ref-R-corrgram" class="csl-entry">
 Wright, Kevin. 2021. <em>Corrgram: Plot a Correlogram</em>. <a href="https://kwstat.github.io/corrgram/" class="external-link">https://kwstat.github.io/corrgram/</a>.

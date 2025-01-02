@@ -12,9 +12,9 @@ Commit](https://img.shields.io/github/last-commit/friendly/Guerry)](https://gith
 
 <!-- badges: end -->
 
-# Guerry <img src="man/figures/Guerry-logo.png" align="right" height="200px" />
+# Guerry <img src="man/figures/logo.png" align="right" height="200px" />
 
-**Version**: 1.8.3
+**Version**: 1.8.4 <!-- 1.8.3 -->
 
 The `Guerry` package comprises maps of France in 1830, multivariate data
 from A.-M. Guerry and others, and statistical and graphic methods
@@ -50,13 +50,14 @@ You can install Guerry from CRAN or the development version as follows:
 
 The Guerry package contains the following data sets:
 
-| Name         | Description                                                                                                            |
-|:-------------|:-----------------------------------------------------------------------------------------------------------------------|
-| `gfrance`    | Map of France in 1830 with the `Guerry` data. It is a `SpatialPolygonsDataFrame` object created with the `sp` package. |
-| `gfrance85`  | The same for the 85 departments excluding Corsica                                                                      |
-| `Guerry`     | A collection of ‘moral variables’ on the 86 departments of France around 1830 from Guerry (1833) and other sources.    |
-| `Angeville`  | Data from d’Angeville (1836) on the population of France.                                                              |
-| `propensity` | Distribution of crimes against persons at different ages                                                               |
+| Name | Description |
+|:---|:---|
+| `gfrance` | Map of France in 1830 with the `Guerry` data. It is a `SpatialPolygonsDataFrame` object created with the `sp` package. |
+| `gfrance85` | The same for the 85 departments excluding Corsica |
+| `Guerry` | A collection of ‘moral variables’ on the 86 departments of France around 1830 from Guerry (1833) and other sources. |
+| `Guerry_ranks` | Data in `Guerry` with all numeric variables converted to ranks. |
+| `Angeville` | Data from d’Angeville (1836) on the population of France. |
+| `propensity` | Distribution of crimes against persons at different ages |
 
 ## Examples
 
@@ -79,13 +80,12 @@ contain S4 components and have S4 methods
 ``` r
 data(gfrance)
 names(gfrance)  # list the @data variables
-#>  [1] "CODE_DEPT"       "COUNT"           "AVE_ID_GEO"      "dept"           
-#>  [5] "Region"          "Department"      "Crime_pers"      "Crime_prop"     
-#>  [9] "Literacy"        "Donations"       "Infants"         "Suicides"       
-#> [13] "MainCity"        "Wealth"          "Commerce"        "Clergy"         
-#> [17] "Crime_parents"   "Infanticide"     "Donation_clergy" "Lottery"        
-#> [21] "Desertion"       "Instruction"     "Prostitutes"     "Distance"       
-#> [25] "Area"            "Pop1831"
+#>  [1] "dept"            "Region"          "Department"      "Crime_pers"     
+#>  [5] "Crime_prop"      "Literacy"        "Donations"       "Infants"        
+#>  [9] "Suicides"        "MainCity"        "Wealth"          "Commerce"       
+#> [13] "Clergy"          "Crime_parents"   "Infanticide"     "Donation_clergy"
+#> [17] "Lottery"         "Desertion"       "Instruction"     "Prostitutes"    
+#> [21] "Distance"        "Area"            "Pop1831"
 ```
 
 Thus, you can can just use `plot(gfrance)` to plot the outlines of the

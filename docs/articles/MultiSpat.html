@@ -17,8 +17,8 @@
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.9/font.css" rel="stylesheet">
 <link href="../deps/JetBrains_Mono-0.4.9/font.css" rel="stylesheet">
 <link href="../deps/Roboto_Slab-0.4.9/font.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Guerry data: Spatial Multivariate Analysis">
 </head>
 <body>
@@ -29,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">Guerry</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,7 +69,7 @@
                         <h4 data-toc-skip class="author">Stéphane
 Dray</h4>
             
-            <h4 data-toc-skip class="date">2024-10-08</h4>
+            <h4 data-toc-skip class="date">2025-01-02</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/friendly/Guerry/blob/HEAD/vignettes/MultiSpat.Rmd" class="external-link"><code>vignettes/MultiSpat.Rmd</code></a></small>
       <div class="d-none name"><code>MultiSpat.Rmd</code></div>
@@ -95,12 +95,14 @@ graphical methods) and <code>adespatial</code> for multivariate spatial
 analysis. For further information on this spatial analysis approach, see
 <code><a href="http://adeverse.github.io/adespatial/articles/tutorial.html" class="external-link">vignette(package="adespatial", "tutorial")</a></code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/friendly/Guerry" class="external-link">Guerry</a></span><span class="op">)</span>       <span class="co"># Guerry's data</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://friendly.github.io/Guerry/" class="external-link">Guerry</a></span><span class="op">)</span>       <span class="co"># Guerry's data</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/edzer/sp/" class="external-link">sp</a></span><span class="op">)</span>           <span class="co"># management of spatial data</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://pbil.univ-lyon1.fr/ADE-4/" class="external-link">ade4</a></span><span class="op">)</span>         <span class="co"># multivariate analysis</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://pbil.univ-lyon1.fr/ADE-4/" class="external-link">adegraphics</a></span><span class="op">)</span>  <span class="co"># graphical representation</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-spatial/spdep/" class="external-link">spdep</a></span><span class="op">)</span>        <span class="co"># spatial dependency</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/adeverse/adespatial" class="external-link">adespatial</a></span><span class="op">)</span>   <span class="co"># multivariate spatial analysis</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/adeverse/adespatial" class="external-link">adespatial</a></span><span class="op">)</span>   <span class="co"># multivariate spatial analysis</span></span>
+<span><span class="co">#&gt; Error in get(paste0(generic, ".", class), envir = get_method_env()) : </span></span>
+<span><span class="co">#&gt;   object 'type_sum.accel' not found</span></span></code></pre></div>
 <p>Guerry gathered data on crimes, suicide, literacy and other moral
 statistics for various départements (i.e., counties) in France. He
 provided the first real social data analysis, using graphics and maps to
@@ -150,24 +152,26 @@ write</td>
 <code>SpatialPolygonsDataFrame</code> object created with the
 <code>sp</code> package. It contains the polygon boundaries of the map
 of France in 1830, as well the variables in the <code>Guerry</code> data
-frame. As an ordinary data.frame, it has these components</p>
+frame. As an ordinary <code>data.frame</code>, it has these
+components</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">gfrance85</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "CODE_DEPT"       "COUNT"           "AVE_ID_GEO"      "dept"           </span></span>
-<span><span class="co">#&gt;  [5] "Region"          "Department"      "Crime_pers"      "Crime_prop"     </span></span>
-<span><span class="co">#&gt;  [9] "Literacy"        "Donations"       "Infants"         "Suicides"       </span></span>
-<span><span class="co">#&gt; [13] "MainCity"        "Wealth"          "Commerce"        "Clergy"         </span></span>
-<span><span class="co">#&gt; [17] "Crime_parents"   "Infanticide"     "Donation_clergy" "Lottery"        </span></span>
-<span><span class="co">#&gt; [21] "Desertion"       "Instruction"     "Prostitutes"     "Distance"       </span></span>
-<span><span class="co">#&gt; [25] "Area"            "Pop1831"</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] "dept"            "Region"          "Department"      "Crime_pers"     </span></span>
+<span><span class="co">#&gt;  [5] "Crime_prop"      "Literacy"        "Donations"       "Infants"        </span></span>
+<span><span class="co">#&gt;  [9] "Suicides"        "MainCity"        "Wealth"          "Commerce"       </span></span>
+<span><span class="co">#&gt; [13] "Clergy"          "Crime_parents"   "Infanticide"     "Donation_clergy"</span></span>
+<span><span class="co">#&gt; [17] "Lottery"         "Desertion"       "Instruction"     "Prostitutes"    </span></span>
+<span><span class="co">#&gt; [21] "Distance"        "Area"            "Pop1831"</span></span></code></pre></div>
 <p>To simplify analyses, we extract the components to be used below.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span> <span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gfrance85</span><span class="op">)</span></span>
-<span> <span class="va">df</span>           <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">gfrance85</span><span class="op">)</span><span class="op">[</span>, <span class="fl">7</span><span class="op">:</span><span class="fl">12</span><span class="op">]</span>    <span class="co"># the 6 variables</span></span>
+<span> <span class="va">gdata</span> <span class="op">&lt;-</span> <span class="va">gfrance85</span><span class="op">@</span><span class="va">data</span>                          <span class="co"># the Guerry data.frame</span></span>
+<span> <span class="va">vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Crime_pers"</span>, <span class="st">"Crime_prop"</span>, <span class="st">"Literacy"</span>, <span class="st">"Donations"</span>, <span class="st">"Infants"</span>, <span class="st">"Suicides"</span><span class="op">)</span></span>
+<span> <span class="va">df</span>           <span class="op">&lt;-</span> <span class="va">gdata</span><span class="op">[</span>, <span class="va">vars</span><span class="op">]</span>                    <span class="co"># the 6 variables</span></span>
 <span> <span class="va">france.map</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/methods/as.html" class="external-link">as</a></span><span class="op">(</span><span class="va">gfrance85</span>, <span class="st">"SpatialPolygons"</span><span class="op">)</span> <span class="co"># the map</span></span>
 <span> <span class="va">xy</span>           <span class="op">&lt;-</span> <span class="fu"><a href="https://edzer.github.io/sp/reference/coordinates.html" class="external-link">coordinates</a></span><span class="op">(</span><span class="va">gfrance85</span><span class="op">)</span>           <span class="co"># spatial coordinates</span></span>
-<span> <span class="va">dep.names</span>    <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">gfrance85</span><span class="op">)</span><span class="op">[</span>, <span class="fl">6</span><span class="op">]</span>       <span class="co"># departement names</span></span>
-<span> <span class="va">region.names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="va">gfrance85</span><span class="op">)</span><span class="op">[</span>, <span class="fl">5</span><span class="op">]</span>       <span class="co"># region names</span></span>
+<span> <span class="va">dep.names</span>    <span class="op">&lt;-</span> <span class="va">gdata</span><span class="op">[</span>, <span class="st">"Department"</span><span class="op">]</span>            <span class="co"># departement names</span></span>
+<span> <span class="va">region.names</span> <span class="op">&lt;-</span> <span class="va">gdata</span><span class="op">[</span>, <span class="st">"Region"</span><span class="op">]</span>                <span class="co"># region names</span></span>
 <span> <span class="va">col.region</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/colors.html" class="external-link">colors</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">149</span>, <span class="fl">254</span>, <span class="fl">468</span>, <span class="fl">552</span>, <span class="fl">26</span><span class="op">)</span><span class="op">]</span> <span class="co"># colors for region</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -193,12 +197,12 @@ component and the variables.</p>
 <p>The biplot is simply obtained by</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/biplot.html" class="external-link">biplot</a></span><span class="op">(</span><span class="va">pca</span>, plabel.cex <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MultiSpat_files/figure-html/unnamed-chunk-2-1.png" width="288" style="display: block; margin: auto;"></p>
+<p><img src="MultiSpat_files/figure-html/unnamed-chunk-2-1.png" width="336" style="display: block; margin: auto;"></p>
 <p>The first two PCA dimensions account for 35.7% and 20% ,respectively,
 of the total variance.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pca</span><span class="op">$</span><span class="va">eig</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">pca</span><span class="op">$</span><span class="va">eig</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span></span>
-<span><span class="co">#&gt; [1] 35.674507 20.013665 18.367448 11.116102  9.144584  5.683694</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 35.505 20.680 18.335 10.793  8.877  5.810</span></span></code></pre></div>
 <p>Correlations between variables and principal components can be
 represented on a correlation circle. The first axis is negatively
 correlated to literacy and positively correlated to property crime,
@@ -206,17 +210,27 @@ suicides and illegitimate births. The second axis is aligned mainly with
 personal crime and donations to the poor.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/ade4/man/s.corcircle.html" class="external-link">s.corcircle</a></span><span class="op">(</span><span class="va">pca</span><span class="op">$</span><span class="va">co</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MultiSpat_files/figure-html/unnamed-chunk-4-1.png" width="288" style="display: block; margin: auto;"></p>
+<p><img src="MultiSpat_files/figure-html/corcircle-1.png" width="336" style="display: block; margin: auto;"></p>
 <p>Spatial information can be added on the factorial map representing
 the projections of départements on principal axes by coloring according
 to colors representing the different regions of France.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/ade4/man/s.label.html" class="external-link">s.label</a></span><span class="op">(</span><span class="va">pca</span><span class="op">$</span><span class="va">li</span>, ppoint.col <span class="op">=</span> <span class="va">col.region</span><span class="op">[</span><span class="va">region.names</span><span class="op">]</span>, plabel.optim <span class="op">=</span> <span class="cn">TRUE</span>, plabel.cex <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MultiSpat_files/figure-html/unnamed-chunk-5-1.png" width="384" style="display: block; margin: auto;"></p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/ade4/man/s.label.html" class="external-link">s.label</a></span><span class="op">(</span><span class="va">pca</span><span class="op">$</span><span class="va">li</span>, </span>
+<span>        ppoint.col <span class="op">=</span> <span class="va">col.region</span><span class="op">[</span><span class="va">region.names</span><span class="op">]</span>, </span>
+<span>        plabel.optim <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>        plabel.cex <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span></span></code></pre></div>
+<p><img src="MultiSpat_files/figure-html/unnamed-chunk-4-1.png" width="384" style="display: block; margin: auto;"></p>
+<p>Draw the map, colored by region:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/adegraphics/man/s.Spatial.html" class="external-link">s.Spatial</a></span><span class="op">(</span><span class="va">france.map</span>, col <span class="op">=</span> <span class="va">col.region</span><span class="op">[</span><span class="va">region.names</span><span class="op">]</span>, plabel.cex <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/ade4/man/s.class.html" class="external-link">s.class</a></span><span class="op">(</span><span class="va">xy</span>, <span class="va">region.names</span>, col <span class="op">=</span> <span class="va">col.region</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, ellipseSize <span class="op">=</span> <span class="fl">0</span>, starSize <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MultiSpat_files/figure-html/unnamed-chunk-5-2.png" width="384" style="display: block; margin: auto;"></p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/adegraphics/man/s.Spatial.html" class="external-link">s.Spatial</a></span><span class="op">(</span><span class="va">france.map</span>, </span>
+<span>          col <span class="op">=</span> <span class="va">col.region</span><span class="op">[</span><span class="va">region.names</span><span class="op">]</span>, </span>
+<span>          plabel.cex <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/ade4/man/s.class.html" class="external-link">s.class</a></span><span class="op">(</span><span class="va">xy</span>, </span>
+<span>        <span class="va">region.names</span>, </span>
+<span>        col <span class="op">=</span> <span class="va">col.region</span>, </span>
+<span>        add <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>        ellipseSize <span class="op">=</span> <span class="fl">0</span>, starSize <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
+<p><img src="MultiSpat_files/figure-html/unnamed-chunk-5-1.png" width="384" style="display: block; margin: auto;"></p>
 <p>For the first axis, the North and East are characterized by negative
 scores, corresponding to high levels of literacy and high rates of
 suicides, crimes against property and illegitimate births. The second
@@ -245,8 +259,11 @@ row-standardization (<code>style = "W"</code>):</p>
 <span><span class="va">lw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/spdep/reference/nb2listw.html" class="external-link">nb2listw</a></span><span class="op">(</span><span class="va">nb</span>, style <span class="op">=</span> <span class="st">"W"</span><span class="op">)</span></span></code></pre></div>
 <p>We can represent this neighborhood on the geographical map:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/adegraphics/man/s.Spatial.html" class="external-link">s.Spatial</a></span><span class="op">(</span><span class="va">france.map</span>, nb <span class="op">=</span> <span class="va">nb</span>, plabel.cex <span class="op">=</span> <span class="fl">0</span>, pSp.border <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MultiSpat_files/figure-html/unnamed-chunk-7-1.png" width="288" style="display: block; margin: auto;"></p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/adegraphics/man/s.Spatial.html" class="external-link">s.Spatial</a></span><span class="op">(</span><span class="va">france.map</span>, </span>
+<span>          nb <span class="op">=</span> <span class="va">nb</span>, </span>
+<span>          plabel.cex <span class="op">=</span> <span class="fl">0</span>, </span>
+<span>          pSp.border <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="MultiSpat_files/figure-html/unnamed-chunk-7-1.png" width="336" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level4">
 <h4 id="morans-coefficient">Moran’s Coefficient<a class="anchor" aria-label="anchor" href="#morans-coefficient"></a>
@@ -303,13 +320,13 @@ illegitimate births (Infants) covary least.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Adjustment method for multiple comparisons:   none </span></span>
 <span><span class="co">#&gt; Permutation number:   999 </span></span>
-<span><span class="co">#&gt;         Test       Obs   Std.Obs   Alter Pvalue</span></span>
-<span><span class="co">#&gt; 1 Crime_pers 0.4114597  6.119865 greater  0.001</span></span>
-<span><span class="co">#&gt; 2 Crime_prop 0.2635533  4.012029 greater  0.002</span></span>
-<span><span class="co">#&gt; 3   Literacy 0.7176053 10.195629 greater  0.001</span></span>
-<span><span class="co">#&gt; 4  Donations 0.3533613  5.145807 greater  0.001</span></span>
-<span><span class="co">#&gt; 5    Infants 0.2287241  3.705080 greater  0.002</span></span>
-<span><span class="co">#&gt; 6   Suicides 0.4016812  6.265266 greater  0.001</span></span></code></pre></div>
+<span><span class="co">#&gt;         Test    Obs Std.Obs   Alter Pvalue</span></span>
+<span><span class="co">#&gt; 1 Crime_pers 0.4118   6.126 greater  0.001</span></span>
+<span><span class="co">#&gt; 2 Crime_prop 0.2636   4.012 greater  0.002</span></span>
+<span><span class="co">#&gt; 3   Literacy 0.7176  10.195 greater  0.001</span></span>
+<span><span class="co">#&gt; 4  Donations 0.3534   5.146 greater  0.001</span></span>
+<span><span class="co">#&gt; 5    Infants 0.2332   3.781 greater  0.002</span></span>
+<span><span class="co">#&gt; 6   Suicides 0.4874   7.461 greater  0.001</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="moran-scatterplot">Moran scatterplot<a class="anchor" aria-label="anchor" href="#moran-scatterplot"></a>
@@ -376,11 +393,16 @@ Literacy) and <em>la France obscure</em>.</p>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Adjustment method for multiple comparisons:   none </span></span>
 <span><span class="co">#&gt; Permutation number:   999 </span></span>
-<span><span class="co">#&gt;    Test       Obs  Std.Obs   Alter Pvalue</span></span>
-<span><span class="co">#&gt; 1 Axis1 0.5506343 8.330755 greater  0.001</span></span>
-<span><span class="co">#&gt; 2 Axis2 0.5614030 8.010169 greater  0.001</span></span>
-<span><span class="co">#&gt; 3 Axis3 0.1805569 2.855507 greater  0.003</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/ade4/man/s.value.html" class="external-link">s.value</a></span><span class="op">(</span><span class="va">xy</span>, <span class="va">pca</span><span class="op">$</span><span class="va">li</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>, Sp <span class="op">=</span> <span class="va">france.map</span>, pSp.border <span class="op">=</span> <span class="st">"white"</span>, symbol <span class="op">=</span> <span class="st">"circle"</span>, pgrid.draw <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co">#&gt;    Test    Obs Std.Obs   Alter Pvalue</span></span>
+<span><span class="co">#&gt; 1 Axis1 0.5847   8.816 greater  0.001</span></span>
+<span><span class="co">#&gt; 2 Axis2 0.5614   7.988 greater  0.001</span></span>
+<span><span class="co">#&gt; 3 Axis3 0.1703   2.649 greater  0.006</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/ade4/man/s.value.html" class="external-link">s.value</a></span><span class="op">(</span><span class="va">xy</span>, </span>
+<span>        <span class="va">pca</span><span class="op">$</span><span class="va">li</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>, </span>
+<span>        Sp <span class="op">=</span> <span class="va">france.map</span>, </span>
+<span>        pSp.border <span class="op">=</span> <span class="st">"white"</span>, </span>
+<span>        symbol <span class="op">=</span> <span class="st">"circle"</span>, </span>
+<span>        pgrid.draw <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="MultiSpat_files/figure-html/unnamed-chunk-10-1.png" width="576" style="display: block; margin: auto;"></p>
 </div>
 </div>
@@ -411,7 +433,7 @@ corresponds to the between-regions variance (sum of the eigenvalues of
 BCA).</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bet</span><span class="op">$</span><span class="va">ratio</span></span>
-<span><span class="co">#&gt; [1] 0.288139</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 0.2942</span></span></code></pre></div>
 <p>The main graphical outputs are obtained by the generic
 <code>plot</code> function:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
@@ -422,27 +444,37 @@ interpreted. The first two BCA dimensions account for 59 % and 30.2 %,
 respectively, of the between-regions variance.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span> <span class="fu"><a href="https://rdrr.io/r/graphics/barplot.html" class="external-link">barplot</a></span><span class="op">(</span><span class="va">bet</span><span class="op">$</span><span class="va">eig</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MultiSpat_files/figure-html/unnamed-chunk-14-1.png" width="288" style="display: block; margin: auto;"></p>
+<p><img src="MultiSpat_files/figure-html/unnamed-chunk-14-1.png" width="336" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span> <span class="va">bet</span><span class="op">$</span><span class="va">eig</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">bet</span><span class="op">$</span><span class="va">eig</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span></span>
-<span><span class="co">#&gt; [1] 58.995823 30.159802  7.417445  3.426930</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 58.841 30.543  7.078  3.538</span></span></code></pre></div>
 <p>The coefficients used to construct the linear combinations of
 variables are represented:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/ade4/man/s.arrow.html" class="external-link">s.arrow</a></span><span class="op">(</span><span class="va">bet</span><span class="op">$</span><span class="va">c1</span>, plabel.cex <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MultiSpat_files/figure-html/unnamed-chunk-15-1.png" width="288" style="display: block; margin: auto;"></p>
+<p><img src="MultiSpat_files/figure-html/unnamed-chunk-15-1.png" width="336" style="display: block; margin: auto;"></p>
 <p>The first axis opposed literacy to property crime, suicides and
 illegitimate births. The second axis is mainly aligned with personal
 crime and donations to the poor.</p>
 <p>Projections of départements on the BCA axes can be represented on the
 factorial map:</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/ade4/man/s.label.html" class="external-link">s.label</a></span><span class="op">(</span><span class="va">bet</span><span class="op">$</span><span class="va">ls</span>, <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">dep.names</span><span class="op">)</span>, ppoint.cex <span class="op">=</span> <span class="fl">0</span>, plabel.optim <span class="op">=</span> <span class="cn">TRUE</span>, plabel.col <span class="op">=</span> <span class="va">col.region</span><span class="op">[</span><span class="va">region.names</span><span class="op">]</span>, plabel.cex <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/ade4/man/s.class.html" class="external-link">s.class</a></span><span class="op">(</span><span class="va">bet</span><span class="op">$</span><span class="va">ls</span>, fac <span class="op">=</span> <span class="va">region.names</span>, col <span class="op">=</span> <span class="va">col.region</span>, ellipse <span class="op">=</span> <span class="fl">0</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/ade4/man/s.label.html" class="external-link">s.label</a></span><span class="op">(</span><span class="va">bet</span><span class="op">$</span><span class="va">ls</span>, </span>
+<span>        <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">dep.names</span><span class="op">)</span>, </span>
+<span>        ppoint.cex <span class="op">=</span> <span class="fl">0</span>, </span>
+<span>        plabel.optim <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>        plabel.col <span class="op">=</span> <span class="va">col.region</span><span class="op">[</span><span class="va">region.names</span><span class="op">]</span>, plabel.cex <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/ade4/man/s.class.html" class="external-link">s.class</a></span><span class="op">(</span><span class="va">bet</span><span class="op">$</span><span class="va">ls</span>, </span>
+<span>        fac <span class="op">=</span> <span class="va">region.names</span>, </span>
+<span>        col <span class="op">=</span> <span class="va">col.region</span>, ellipse <span class="op">=</span> <span class="fl">0</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="MultiSpat_files/figure-html/unnamed-chunk-16-1.png" width="384" style="display: block; margin: auto;"></p>
 <p>The scores can be mapped to show the spatial aspects:</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/ade4/man/s.value.html" class="external-link">s.value</a></span><span class="op">(</span><span class="va">xy</span>, <span class="va">bet</span><span class="op">$</span><span class="va">ls</span>, symbol <span class="op">=</span> <span class="st">"circle"</span>, Sp <span class="op">=</span> <span class="va">france.map</span>, pSp.col <span class="op">=</span> <span class="va">col.region</span><span class="op">[</span><span class="va">region.names</span><span class="op">]</span>, pSp.border <span class="op">=</span> <span class="st">"transparent"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/ade4/man/s.value.html" class="external-link">s.value</a></span><span class="op">(</span><span class="va">xy</span>, </span>
+<span>        <span class="va">bet</span><span class="op">$</span><span class="va">ls</span>, </span>
+<span>        symbol <span class="op">=</span> <span class="st">"circle"</span>, </span>
+<span>        Sp <span class="op">=</span> <span class="va">france.map</span>, </span>
+<span>        pSp.col <span class="op">=</span> <span class="va">col.region</span><span class="op">[</span><span class="va">region.names</span><span class="op">]</span>, pSp.border <span class="op">=</span> <span class="st">"transparent"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="MultiSpat_files/figure-html/unnamed-chunk-17-1.png" width="576" style="display: block; margin: auto;"></p>
 <p>The results are very close to those obtained by PCA: the first axis
 contrasted the North and the East (<em>la France éclairée</em>) to the
@@ -488,9 +520,9 @@ The first two dimensions account for 51.4 % and 35.2 %, respectively, of
 the explained variance.</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">pcaiv.xy</span><span class="op">$</span><span class="va">eig</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">pca</span><span class="op">$</span><span class="va">eig</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span></span>
-<span><span class="co">#&gt; [1] 32.36025</span></span>
+<span><span class="co">#&gt; [1] 32.59</span></span>
 <span><span class="va">pcaiv.xy</span><span class="op">$</span><span class="va">eig</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">pcaiv.xy</span><span class="op">$</span><span class="va">eig</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span></span>
-<span><span class="co">#&gt; [1] 51.423264 35.152362  5.954475  4.799075  2.670825</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 51.888 35.392  5.375  4.828  2.517</span></span></code></pre></div>
 <p>The outputs of PCAIV-POLY (coefficients of variables, maps of
 départements scores, etc.) are very similar to those obtained by BCA.
 They can be represented easily by the generic <code>plot</code>
@@ -530,9 +562,9 @@ two dimensions account for 54.9 % and 26.3 %, respectively, of the
 explained variance.</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">pcaiv.mem</span><span class="op">$</span><span class="va">eig</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">pca</span><span class="op">$</span><span class="va">eig</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span></span>
-<span><span class="co">#&gt; [1] 44.11597</span></span>
+<span><span class="co">#&gt; [1] 44.97</span></span>
 <span><span class="va">pcaiv.mem</span><span class="op">$</span><span class="va">eig</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">pcaiv.mem</span><span class="op">$</span><span class="va">eig</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span></span>
-<span><span class="co">#&gt; [1] 54.928640 26.300082  9.042300  4.574408  3.532962  1.621607</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 55.569 26.394  8.682  4.444  3.383  1.528</span></span></code></pre></div>
 <p>The outputs of PCAIV-MEM (coefficients of variables, maps of
 départements scores, etc.) are very similar to those obtained by BCA.
 They can be represented easily by the generic <code>plot</code>
@@ -546,7 +578,7 @@ function:</p>
 <h3 id="spatial-graph-and-weighting-matrix">Spatial graph and weighting matrix<a class="anchor" aria-label="anchor" href="#spatial-graph-and-weighting-matrix"></a>
 </h3>
 <p>The MEM framework introduced the spatial information into
-multivariate analysis through the eigendecomposition of the spatial
+multivariate analysis through the eigen-decomposition of the spatial
 weighting matrix. Usually, we consider only a part of the information
 contained in this matrix because only a subset of MEM are used as
 regressors in PCAIV. In this section, we focus on multivariate methods
@@ -582,15 +614,15 @@ variance. The differences between the two methods are computed by the
 <span><span class="co">#&gt; Call: multispati(dudi = pca, listw = lw, scannf = FALSE)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Scores from the initial duality diagram:</span></span>
-<span><span class="co">#&gt;          var      cum     ratio     moran</span></span>
-<span><span class="co">#&gt; RS1 2.140470 2.140470 0.3567451 0.5506343</span></span>
-<span><span class="co">#&gt; RS2 1.200820 3.341290 0.5568817 0.5614030</span></span>
-<span><span class="co">#&gt; RS3 1.102047 4.443337 0.7405562 0.1805569</span></span>
+<span><span class="co">#&gt;       var   cum  ratio  moran</span></span>
+<span><span class="co">#&gt; RS1 2.130 2.130 0.3550 0.5847</span></span>
+<span><span class="co">#&gt; RS2 1.241 3.371 0.5619 0.5614</span></span>
+<span><span class="co">#&gt; RS3 1.100 4.471 0.7452 0.1703</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Multispati eigenvalues decomposition:</span></span>
-<span><span class="co">#&gt;           eig      var     moran</span></span>
-<span><span class="co">#&gt; CS1 1.2858683 2.017171 0.6374612</span></span>
-<span><span class="co">#&gt; CS2 0.6939887 1.176551 0.5898499</span></span></code></pre></div>
+<span><span class="co">#&gt;        eig   var  moran</span></span>
+<span><span class="co">#&gt; CS1 1.3356 2.032 0.6572</span></span>
+<span><span class="co">#&gt; CS2 0.7194 1.213 0.5933</span></span></code></pre></div>
 <p>Hence, there is a loss of variance compared to PCA (2.14 versus 2.017
 for axis 1; 1.201 versus 1.177 for axis 2) but a gain of spatial
 autocorrelation (0.551 versus 0.637 for axis 1; 0.561 versus 0.59 for
@@ -598,7 +630,7 @@ axis 2).</p>
 <p>Coefficients of variables allow to interpret the structures:</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/ade4/man/s.arrow.html" class="external-link">s.arrow</a></span><span class="op">(</span><span class="va">ms</span><span class="op">$</span><span class="va">c1</span>, plabel.cex <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span></span></code></pre></div>
-<p><img src="MultiSpat_files/figure-html/unnamed-chunk-29-1.png" width="288" style="display: block; margin: auto;"></p>
+<p><img src="MultiSpat_files/figure-html/unnamed-chunk-29-1.png" width="336" style="display: block; margin: auto;"></p>
 <p>The first axis opposes literacy to property crime, suicides and
 illegitimate births. The second axis is aligned mainly with personal
 crime and donations to the poor. The maps of the scores show that the
@@ -643,10 +675,12 @@ the geographical space. For the first two axes, we have:</p>
 <p>Even if the methods presented are quite different in their
 theoretical and practical viewpoints, their applications to Guerry’s
 dataset yield very similar results. We provided a quantitative measure
-of this similarity by computing Procrustes statistics [<span class="citation">Peres-Neto and Jackson (<a href="#ref-SD516">2001</a>)</span>;SD161] between the scores of the
-départements onto the first two axes for the different analyses. All the
-values of the statistic are very high and significant; this confirms the
-high concordance between the outputs of the different methods.</p>
+of this similarity by computing Procrustes statistics <span class="citation">(<a href="#ref-SD516">Peres-Neto and Jackson 2001</a>;
+<a href="#ref-SD161">Dray, Chessel, and Thioulouse 2003</a>)</span>
+between the scores of the départements onto the first two axes for the
+different analyses. All the values of the statistic are very high and
+significant; this confirms the high concordance between the outputs of
+the different methods.</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">4</span>, <span class="fl">4</span><span class="op">)</span></span>
 <span><span class="va">mat.names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"PCA"</span>, <span class="st">"BCA"</span>, <span class="st">"PCAIV-POLY"</span>, <span class="st">"PCAIV-MEM"</span>, <span class="st">"MULTISPATI"</span><span class="op">)</span></span>
@@ -665,16 +699,16 @@ high concordance between the outputs of the different methods.</p>
 <span><span class="va">mat</span><span class="op">[</span><span class="fl">4</span>, <span class="fl">4</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ade4/man/procuste.randtest.html" class="external-link">procuste.randtest</a></span><span class="op">(</span><span class="va">pcaiv.mem</span><span class="op">$</span><span class="va">ls</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>, <span class="va">ms</span><span class="op">$</span><span class="va">li</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">$</span><span class="va">obs</span></span>
 <span></span>
 <span><span class="va">mat</span></span>
-<span><span class="co">#&gt;                  PCA       BCA PCAIV-POLY PCAIV-MEM</span></span>
-<span><span class="co">#&gt; BCA        0.9788594        NA         NA        NA</span></span>
-<span><span class="co">#&gt; PCAIV-POLY 0.9791939 0.9897463         NA        NA</span></span>
-<span><span class="co">#&gt; PCAIV-MEM  0.9885944 0.9936217  0.9954116        NA</span></span>
-<span><span class="co">#&gt; MULTISPATI 0.9868799 0.9954034  0.9951133 0.9986471</span></span></code></pre></div>
+<span><span class="co">#&gt;               PCA    BCA PCAIV-POLY PCAIV-MEM</span></span>
+<span><span class="co">#&gt; BCA        0.9858     NA         NA        NA</span></span>
+<span><span class="co">#&gt; PCAIV-POLY 0.9762 0.9904         NA        NA</span></span>
+<span><span class="co">#&gt; PCAIV-MEM  0.9894 0.9942     0.9954        NA</span></span>
+<span><span class="co">#&gt; MULTISPATI 0.9877 0.9952     0.9947    0.9985</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-SD565" class="csl-entry">
 Anselin, L. 1995. <span>“Local Indicators of Spatial
 Association.”</span> <em>Geographical Analysis</em> 27: 93–115.
@@ -701,6 +735,11 @@ Composantes Stationnelles En Milieu Aquatique <span>I</span>-
 <span>D</span>escription d’un Plan d’observations Complet Par Projection
 de Variables.”</span> <em>Acta Oecologica - Oecologia Generalis</em> 8
 (3): 403–26.
+</div>
+<div id="ref-SD161" class="csl-entry">
+Dray, S., D. Chessel, and J. Thioulouse. 2003. <span>“Procrustean
+Co-Inertia Analysis for the Linking of Multivariate Data Sets.”</span>
+<em>Ecoscience</em> 10 (1): 110–19.
 </div>
 <div id="ref-SD966" class="csl-entry">
 Dray, S., and T. Jombart. 2011. <span>“Revisiting Guerry’s Data:

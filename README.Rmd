@@ -33,7 +33,8 @@ par(mar=c(3,3,1,1)+.1)
 
 # Guerry <img src="man/figures/logo.png" align="right" height="200px" />
 
-**Version**: `r packageVersion("Guerry")`
+**Version**: 1.8.4
+<!-- `r getNamespaceVersion("Guerry")` -->
 
 The `Guerry` package comprises maps of France in 1830, multivariate data from A.-M. Guerry and others, and statistical and 
 	graphic methods related to Guerry's *Moral Statistics of France*. The goal is to facilitate the exploration and
@@ -70,6 +71,7 @@ The Guerry package contains the following data sets:
 | `gfrance`  | Map of France in 1830 with the `Guerry` data. It is a `SpatialPolygonsDataFrame` object created with the `sp` package.|
 | `gfrance85`| The same for the 85 departments excluding Corsica|
 | `Guerry`   | A collection of 'moral variables' on the 86 departments of France around 1830 from Guerry (1833) and other sources.|
+| `Guerry_ranks` | Data in `Guerry` with all numeric variables converted to ranks.
 | `Angeville`| Data from d'Angeville (1836) on the population of France.|
 | `propensity` | Distribution of crimes against persons at different ages |
 
