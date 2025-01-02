@@ -64,7 +64,7 @@ reflect "morally better". Thus, four of the "bad" variables are recorded in the 
 
 The dataset `gfrance85` is actually a `SpatialPolygonsDataFrame` object created with the `sp` package.
 It contains the polygon boundaries of the map of France in 1830, as well the variables in the `Guerry` data frame.
-As an ordinary data.frame, it has these components
+As an ordinary `data.frame`, it has these components
 ```{r names}
 names(gfrance85)
 ```
@@ -73,11 +73,12 @@ To simplify analyses, we extract the components to be used below.
 
 ```{r components}
  data(gfrance85)
- df           <- data.frame(gfrance85)[, 7:12]    # the 6 variables
+ gdata <- gfrance85@data                          # the Guerry data.frame
+ df           <- gdata[, 4:9]                     # the 6 variables
  france.map   <- as(gfrance85, "SpatialPolygons") # the map
  xy           <- coordinates(gfrance85)           # spatial coordinates
- dep.names    <- data.frame(gfrance85)[, 6]       # departement names
- region.names <- data.frame(gfrance85)[, 5]       # region names
+ dep.names    <- gdata[, "Department"]            # departement names
+ region.names <- gdata[, "Region"]                # region names
  col.region   <- colors()[c(149, 254, 468, 552, 26)] # colors for region
 ```
 
