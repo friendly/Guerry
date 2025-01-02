@@ -17,7 +17,11 @@ Authors@R: c(
              person(given = "Roger", 
                    family = "Bivand", 
                    role="ctb",
-                   email = "Roger.Bivand@nhh.no")
+                   email = "Roger.Bivand@nhh.no"),
+             person(given = "Kathryn", 
+                   family = "DuBois", 
+                   role="ctb",
+                   email = "kathryn.dubois@wsu.edu")
             )
 Maintainer: Michael Friendly <friendly@yorku.ca>
 Encoding: UTF-8
