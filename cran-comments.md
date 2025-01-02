@@ -1,5 +1,5 @@
 ## Test environments
-* local Windows, 4.2.2 (2022-10-31 ucrt)
+* local Windows, 4.4.1 (2024-06-14 ucrt)
 * win-builder R Under development (unstable) (2023-10-23 r85401 ucrt)
 * R-hub: Windows Server 2022, R-devel, 64 bit; Ubuntu Linux 20.04.1 LTS, R-release, GCC
 
@@ -23,25 +23,15 @@ a loop. Please APPROVE the package re-submission.
 
 ## Reverse dependencies
 
-Only one package depends on Guerry as a `Suggests:`, because it uses the Guerry data in examples.
+There are no reverse dependencies
 
 > devtools::revdep()
-[1] "adegraphics"
+character(0)
 
+## Version 1.8.4 (2025-01-01)
 
-## Version 1.8.3 (2023-10-13)
+* Corrected numerous transcription errors in the Guerry data (thx: Kathryn DuBois)
+* Added `Guerry_ranks`, with all numeric variables ranked
+* Revised vignettes, using corrected data
 
-> CRAN repository db overrides:
-  X-CRAN-Comment: Archived on 2023-10-02 as check problems were not
-    corrected in time.
-
-
-A problem with the `adegraphics` package becoming archived triggered a warning on `Guerry`
-threatening the same fate. I did not reply in time, and so `Guerry` was archived.
-This re-submission fixes that and other issues found by win-builder.
-
-* Fix latin1 encoding issue
-* Add reference to Friendly (2022)
-* Moved a number of examples/ to demo/
-* The `demo/guerry_ggradar.R` used a non-CRAN package; this package has been removed from Suggests: and the example moved to `examples/`.
 

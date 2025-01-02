@@ -353,7 +353,7 @@ plot(pcaiv.mem)
 
 ## Spatial graph and  weighting matrix
 
-The MEM framework introduced the spatial information into multivariate analysis through the eigendecomposition of the spatial weighting matrix. Usually, we consider only a part of the information contained in this matrix because only a subset of MEM are used as regressors in PCAIV. In this section, we focus on multivariate methods that consider the spatial weighting matrix under its original form. 
+The MEM framework introduced the spatial information into multivariate analysis through the eigen-decomposition of the spatial weighting matrix. Usually, we consider only a part of the information contained in this matrix because only a subset of MEM are used as regressors in PCAIV. In this section, we focus on multivariate methods that consider the spatial weighting matrix under its original form. 
 
 @SD694 was the first to develop a multivariate analysis based on MC. His work considered only normed and centered variables (i.e., normed PCA) for the multivariate part and a binary symmetric connectivity matrix for the spatial aspect. @SD807 generalized Wartenberg's method by introducing a row-standardized spatial weighting matrix in the analysis of a statistical triplet. This approach is very general and allows us to define spatially-constrained versions of various methods (corresponding to different triplets) such as correspondence analysis or multiple correspondence analysis. MULTISPATI finds coefficients to obtain a linear combination of variables that maximizes a compromise between the classical multivariate analysis and a generalized version of Moran's coefficient. 
 

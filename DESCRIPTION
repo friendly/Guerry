@@ -51,7 +51,7 @@ Description: Contains maps of France in 1830 and multivariate datasets from A.-M
 	illustrate methods. The goal is to facilitate the exploration and
 	development of statistical and graphic methods for multivariate data in a geospatial context of historical interest.
 License: GPL
-URL: http://friendly.github.io/Guerry, https://github.com/friendly/Guerry
+URL: https://friendly.github.io/Guerry, https://github.com/friendly/Guerry
 BugReports: https://github.com/friendly/Guerry/issues
 LazyLoad: yes
 LazyData: yes
