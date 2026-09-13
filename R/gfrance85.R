@@ -10,10 +10,15 @@
 #' 
 #' @name gfrance85
 #' @docType data
-#' @format The format is: Formal class 'SpatialPolygonsDataFrame' [package
-#' "sp"] with 5 slots: \itemize{ \item `gfrance85@data`, \item
-#' `gfrance85@polygons`, \item `gfrance85@plotOrder`, \item
-#' `gfrance85@bbox`, \item `gfrance85@proj4string`. }
+#' @format The format is: Formal class 'SpatialPolygonsDataFrame' \[package
+#' "sp"\] with 5 slots:
+#' \itemize{
+#'  \item `gfrance85@data`,
+#'  \item `gfrance85@polygons`,
+#'  \item `gfrance85@plotOrder`,
+#'  \item `gfrance85@bbox`,
+#'  \item `gfrance85@proj4string`.
+#'  }
 #'
 #' The analysis variables are described in [`Guerry`]. See:
 #' [sp::SpatialPolygonsDataFrame()] for descriptions of some

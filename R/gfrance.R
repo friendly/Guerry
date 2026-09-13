@@ -8,8 +8,8 @@
 #' 
 #' @name gfrance
 #' @docType data
-#' @format The format is: Formal class 'SpatialPolygonsDataFrame' [package
-#' "sp"] with 5 slots: 
+#' @format The format is: Formal class 'SpatialPolygonsDataFrame' \[package
+#' "sp"\] with 5 slots:
 #' \itemize{ 
 #'  \item `gfrance@data`, 
 #'  \item `gfrance@polygons`, 
