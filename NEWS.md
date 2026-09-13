@@ -5,6 +5,8 @@
   Guerry's own light/dark color convention, illustrated with his 1833 `Instruction` map
 * Fixed a clipped variable label in the HE plot in `guerry-multivariate`
 * Added a pkgdown documentation-site badge, section icons and a dynamic version/build-date line to `README.Rmd`
+* Migrated dataset documentation from hand-written `man/*.Rd` files to roxygen2 (internal, no
+  user-facing changes to help pages)
 
 ## Version 1.8.4 (2025-01-01)
 
