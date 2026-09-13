@@ -117,7 +117,9 @@ col.region <- colors()[c(149, 254, 468, 552, 26)]  # same colors used in the REA
 
 ggplot(gf_sf) +
   geom_sf(aes(fill = Region), color = "white", linewidth = 0.3) +
-  geom_sf_text(aes(label = Department), size = 2.2, color = "white", check_overlap = TRUE) +
+  geom_sf_text(aes(label = Department, color = Region == "W"),
+               size = 2.2, check_overlap = TRUE) +
+  scale_color_manual(values = c(`FALSE` = "black", `TRUE` = "white"), guide = "none") +
   scale_fill_manual(values = col.region) +
   theme_void()
 ```
