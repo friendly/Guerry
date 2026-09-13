@@ -100,21 +100,43 @@ it’s simply the modern alternative for anyone building on
 <div class="section level2">
 <h2 id="converting-to-sf">Converting to <code>sf</code><a class="anchor" aria-label="anchor" href="#converting-to-sf"></a>
 </h2>
-<p>Converting the shipped <code>sp</code> object to <code>sf</code> is a
-single call to <code><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">sf::st_as_sf()</a></code>:</p>
+<p>Converting the package SpatialPolygons <code>sp</code> object to use
+the Simple Features, <code>sf</code>, representation is a single call to
+<code><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">sf::st_as_sf()</a></code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gf_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span><span class="va">gfrance85</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="va">gf_sf</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "sf"         "data.frame"</span></span></code></pre></div>
-<p>The result is an ordinary data frame with a <code>geometry</code>
-list-column, so it can be manipulated with usual tools
-(<code>dplyr</code>, <code>tidyr</code>, …) before plotting.</p>
+<span><span class="co">#&gt; [1] "sf"         "data.frame"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">gf_sf</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "dept"            "Region"          "Department"      "Crime_pers"     </span></span>
+<span><span class="co">#&gt;  [5] "Crime_prop"      "Literacy"        "Donations"       "Infants"        </span></span>
+<span><span class="co">#&gt;  [9] "Suicides"        "MainCity"        "Wealth"          "Commerce"       </span></span>
+<span><span class="co">#&gt; [13] "Clergy"          "Crime_parents"   "Infanticide"     "Donation_clergy"</span></span>
+<span><span class="co">#&gt; [17] "Lottery"         "Desertion"       "Instruction"     "Prostitutes"    </span></span>
+<span><span class="co">#&gt; [21] "Distance"        "Area"            "Pop1831"         "geometry"</span></span></code></pre></div>
+<p>The result is an ordinary data frame – all the usual
+<code>Guerry</code> variables are still there as columns – with one
+addition: a <code>geometry</code> list-column, where each row holds the
+polygon (or multi-polygon) boundary for that department as an
+<code>sfc</code> object, instead of a separate <code>@polygons</code>
+slot as in the <code>sp</code> representation.</p>
+<p>Because it’s just a data frame, it can be manipulated with the usual
+tools (<code>dplyr</code>, <code>tidyr</code>, …) before plotting, and
+<code><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf()</a></code> knows to look for a <code>geometry</code> column
+automatically.</p>
+<p>We’re using <code>gfrance85</code> here (rather than
+<code>gfrance</code>), so Corsica – geographically distant from the
+mainland and excluded from the <code>Region</code> classification – is
+not shown in any of the maps below.</p>
 </div>
 <div class="section level2">
 <h2 id="a-basic-map">A basic map<a class="anchor" aria-label="anchor" href="#a-basic-map"></a>
 </h2>
-<p><code><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf()</a></code> handles the geometry column automatically; no
-need to supply <code>x</code>/<code>y</code> aesthetics.</p>
+<p><code><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf()</a></code> handles the geometry column automatically to
+draw the map. There’s no need to supply <code>x</code>/<code>y</code>
+aesthetics. You can supply attributes like <code>fill</code> and
+<code>color</code>. For maps, <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void()</a></code> is often the
+most sensible choice for overall styling.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">gf_sf</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"grey90"</span>, color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -124,16 +146,42 @@ need to supply <code>x</code>/<code>y</code> aesthetics.</p>
 <div class="section level2">
 <h2 id="choropleth-maps">Choropleth maps<a class="anchor" aria-label="anchor" href="#choropleth-maps"></a>
 </h2>
-<p>Mapping a variable to <code>fill</code> gives a choropleth map. Here,
-<code>Literacy</code> (percent of military conscripts who could read and
-write), using the same <code>PuBu</code> palette used elsewhere in this
-package for “more is better” variables.</p>
+<p>Mapping a <strong>variable</strong> to <code>fill</code> gives a
+choropleth map, shading the departments according to the values of that
+variable. This is a good example of how the “Grammar of Graphics” (<span class="citation">Wilkinson (<a href="#ref-Wilkinson:99">1999</a>)</span>) helps you think about the
+task that Guerry worked on for each of his maps, laboriously translating
+the values of a moral variable into visible tints.</p>
+<p>In this example, <code>Literacy</code> (percent of military
+conscripts who could read and write) is mapped to a <code>PuBu</code>
+palette, the same one used elsewhere in this package.
+<code>Literacy</code> is one of the variables Guerry recorded so that a
+<strong>higher</strong> value is <strong>morally better</strong>;
+following the convention of his own (black-and-white) maps, where
+“worse” printed darker, <code>direction = -1</code> makes low (bad)
+values dark and high (good) values light.</p>
+<p>This isn’t just an assumed convention – it’s exactly what Guerry says
+himself. His original 1833 map of the closely related
+<code>Instruction</code> variable (Plate III of the <em>Statistique
+morale</em>) carries this footnote: <em>“Dans cette carte, l’obscurité
+des teintes correspond au minimum de l’instruction”</em> – “In this map,
+the darkness of the tints corresponds to the minimum of instruction
+[literacy]”:</p>
+<p><img src="../reference/figures/Guerry1833-instruction.jpg" class="r-plt" alt="" width="60%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">gf_sf</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">Literacy</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"white"</span>, linewidth <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html" class="external-link">scale_fill_distiller</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"PuBu"</span>, direction <span class="op">=</span> <span class="fl">1</span>, name <span class="op">=</span> <span class="st">"Literacy"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html" class="external-link">scale_fill_distiller</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"PuBu"</span>, direction <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, name <span class="op">=</span> <span class="st">"Literacy"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="guerry-sf-maps_files/figure-html/sf-choropleth-1.png" class="r-plt" alt="" width="576"></p>
+<p>The historically low-literacy departments of Brittany and central
+France stand out as the darkest; the generally more literate northeast
+is lightest – the same departments that are darkest in Guerry’s own
+hand-tinted map above.</p>
+<p>Note that the numbers on Guerry’s map are <em>his own</em> rank
+labels for <code>Instruction</code>, where 1 is the best (lightest)
+department – the opposite direction from <code>Guerry_ranks</code> in
+this package (see below), which is worth keeping in mind if you compare
+the two directly.</p>
 </div>
 <div class="section level2">
 <h2 id="small-multiples-of-the-main-variables">Small multiples of the main variables<a class="anchor" aria-label="anchor" href="#small-multiples-of-the-main-variables"></a>
@@ -141,8 +189,19 @@ package for “more is better” variables.</p>
 <p>The package README shows a static image of six choropleth maps of
 Guerry’s main “moral variables”. Here is a living, code-generated
 version of the same idea, using <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap()</a></code> and the
-pre-ranked <code>Guerry_ranks</code> data set (rank 1 = best, 86 = worst
-on each variable):</p>
+pre-ranked <code>Guerry_ranks</code> data set.</p>
+<p><code>Guerry_ranks</code> gives each variable’s plain ascending rank
+(<code><a href="https://dplyr.tidyverse.org/reference/row_number.html" class="external-link">dplyr::dense_rank()</a></code>, so ties share a rank and the maximum
+rank can be less than 86): rank 1 is always the
+<strong>smallest</strong> raw value, and the largest rank is the
+<strong>largest</strong> raw value. Because these variables are already
+recoded so that a larger raw value is morally better (as above), rank 1
+is the <em>worst</em> department on that variable, and the highest rank
+is the <em>best</em> – the reverse of the raw-value case, even though
+it’s the same underlying idea. To keep “worse = dark, better = light”
+consistent with the previous figure, <code>direction</code> has to flip
+along with it: <code>direction = -1</code> on the rank scale makes the
+low rank (worst) dark and the high rank (best) light.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">main_vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Crime_pers"</span>, <span class="st">"Crime_prop"</span>, <span class="st">"Literacy"</span>, <span class="st">"Donations"</span>, <span class="st">"Infants"</span>, <span class="st">"Suicides"</span><span class="op">)</span></span>
 <span></span>
@@ -158,6 +217,9 @@ on each variable):</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>strip.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">11</span>, face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="guerry-sf-maps_files/figure-html/sf-facet-1.png" class="r-plt" alt="" width="768"></p>
+<p>Comparing the <code>Literacy</code> panel here with the
+single-variable choropleth above confirms the two now agree: the same
+departments read dark (worse) and light (better) in both.</p>
 </div>
 <div class="section level2">
 <h2 id="region-map-with-department-labels">Region map with department labels<a class="anchor" aria-label="anchor" href="#region-map-with-department-labels"></a>
@@ -173,7 +235,7 @@ map in the README.</p>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">gf_sf</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">Region</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"white"</span>, linewidth <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">Department</span>, color <span class="op">=</span> <span class="va">Region</span> <span class="op">==</span> <span class="st">"W"</span><span class="op">)</span>,</span>
-<span>               size <span class="op">=</span> <span class="fl">2.2</span>, check_overlap <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>               size <span class="op">=</span> <span class="fl">3.2</span>, check_overlap <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>`FALSE` <span class="op">=</span> <span class="st">"black"</span>, `TRUE` <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span>, guide <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">col.region</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -185,6 +247,16 @@ map in the README.</p>
 <p>A themed, styled version of these maps using the historical color
 palettes and patterns of the <a href="https://github.com/friendly/ggCheysson" class="external-link"><code>ggCheysson</code></a>
 package is planned once that package reaches CRAN.</p>
+</div>
+<div class="section level2 unnumbered">
+<h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Wilkinson:99" class="csl-entry">
+Wilkinson, Leland. 1999. <em>The Grammar of Graphics</em>. New York:
+Springer.
+</div>
+</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
