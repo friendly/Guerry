@@ -12,8 +12,8 @@
 #' @docType data
 #' @format A data frame with 124 observations on the following 4 variables.
 #' \describe{
-#'   \item{`age`}{a character vector, with 7 age groups, \code{<21}, \code{21-30},
-#'     \code{30-40} ... \code{60-70}, \code{70-}}
+#'   \item{`age`}{a character vector, with 7 age groups, `"<21"`, `"21-30"`,
+#'     `"30-40"` ... `"60-70"`, `"70-"`}
 #'   \item{`rank`}{a numeric vector, rank of the crime within each age group}
 #'   \item{`crime`}{a character vector, label of the crime}
 #'   \item{`share`}{a numeric vector, share (frequency) of the crime in a

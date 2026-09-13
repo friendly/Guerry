@@ -9,12 +9,12 @@
 #' principles of graphic representation to national industrial and population
 #' data.
 #' 
-#' The collection of variables in the data frame \code{Angeville} is a small
+#' The collection of variables in the data frame `Angeville` is a small
 #' subset of over 120 columns presented in 8 tables and many graphic maps.
-#' 
-#' 
-#' ID codes for \code{dept} were modified from those in Angeville's tables to
-#' match those used in \code{\link{Guerry}}.
+#'
+#'
+#' ID codes for `dept` were modified from those in Angeville's tables to
+#' match those used in [`Guerry`].
 #' 
 #' Angeville's variables are recorded in a variety of different ways and some
 #' of these were calculated from other columns in his tables not included here.
@@ -27,8 +27,8 @@
 #' @format A data frame with 86 observations on the following 16 variables.
 #' \describe{
 #'   \item{`dept`}{a numeric vector}
-#'   \item{`Department`}{Department name: a factor with levels \code{Ain}
-#'     \code{Aisne} ... \code{Vosges} \code{Yonne}}
+#'   \item{`Department`}{Department name: a factor with levels `"Ain"`
+#'     `"Aisne"` ... `"Vosges"` `"Yonne"`}
 #'   \item{`Mortality`}{Mortality: Number of births to give 100 people at age 21
 #'     (T1:13)}
 #'   \item{`Marriages`}{Number of marriages per 1000 men aged 21 (T1:15)}

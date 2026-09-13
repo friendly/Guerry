@@ -1,8 +1,8 @@
 #' Map of France in 1830 with the Guerry data, excluding Corsica
 #' 
-#' \code{gfrance85} is a SpatialPolygonsDataFrame object created with the
-#' \code{sp} package, containing the polygon boundaries of the map of France as
-#' it was in 1830, together with the \code{\link{Guerry}} data frame.  This
+#' `gfrance85` is a SpatialPolygonsDataFrame object created with the
+#' `sp` package, containing the polygon boundaries of the map of France as
+#' it was in 1830, together with the [`Guerry`] data frame.  This
 #' version excludes Corsica, which is an outlier both in the map and in many
 #' analyses.
 #' 
@@ -11,12 +11,12 @@
 #' @name gfrance85
 #' @docType data
 #' @format The format is: Formal class 'SpatialPolygonsDataFrame' [package
-#' "sp"] with 5 slots: \itemize{ \item \code{gfrance85@data}, \item
-#' \code{gfrance85@polygons}, \item \code{gfrance85@plotOrder}, \item
-#' \code{gfrance85@bbox}, \item \code{gfrance85@proj4string}. }
-#' 
-#' The analysis variables are described in \code{\link{Guerry}}. See:
-#' \code{\link[sp]{SpatialPolygonsDataFrame}} for descriptions of some
+#' "sp"] with 5 slots: \itemize{ \item `gfrance85@data`, \item
+#' `gfrance85@polygons`, \item `gfrance85@plotOrder`, \item
+#' `gfrance85@bbox`, \item `gfrance85@proj4string`. }
+#'
+#' The analysis variables are described in [`Guerry`]. See:
+#' [sp::SpatialPolygonsDataFrame()] for descriptions of some
 #' components.
 #' @references Dray, S. and Jombart, T. (2009). A Revisit Of Guerry's Data:
 #' Introducing Spatial Constraints In Multivariate Analysis. Unpublished

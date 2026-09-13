@@ -8,7 +8,7 @@
 #' departments of France around 1830.  A few additional variables have been
 #' added from other sources.
 #' 
-#' Note that most of the variables (e.g., \code{Crime_pers}) are scaled so that
+#' Note that most of the variables (e.g., `Crime_pers`) are scaled so that
 #' 'more is better' morally.
 #' 
 #' Values for the quantitative variables displayed on Guerry's maps were taken
@@ -29,8 +29,8 @@
 #'   \item{`Region`}{Region of France ('N'='North', 'S'='South', 'E'='East',
 #'     'W'='West', 'C'='Central'). Corsica is coded as NA}
 #'   \item{`Department`}{Department name: Departments are named according to usage
-#'     in 1830, but without accents. A factor with levels \code{Ain} \code{Aisne}
-#'     \code{Allier} ... \code{Vosges} \code{Yonne}}
+#'     in 1830, but without accents. A factor with levels `"Ain"` `"Aisne"`
+#'     `"Allier"` ... `"Vosges"` `"Yonne"`}
 #'   \item{`Crime_pers`}{Population per Crime against persons. Source: A2 (Comptes
 #'     general, 1825-1830)}
 #'   \item{`Crime_prop`}{Population per Crime against property. Source: A2 (Compte
@@ -45,7 +45,7 @@
 #'   \item{`MainCity`}{Size of principal city ('1:Sm', '2:Med', '3:Lg'), used as a
 #'     surrogate for population density. Large refers to the top 10, small to the
 #'     bottom 10; all the rest are classed Medium. Source: A1. An ordered factor
-#'     with levels \code{1:Sm} < \code{2:Med} < \code{3:Lg}}
+#'     with levels `"1:Sm"` < `"2:Med"` < `"3:Lg"`}
 #'   \item{`Wealth`}{Per capita tax on personal property. A ranked index based on
 #'     taxes on personal and movable property per inhabitant. Source: A1}
 #'   \item{`Commerce`}{Commerce and Industry, measured by the rank of the number of
@@ -70,7 +70,7 @@
 #'     deficit produced by the insufficiency of available billets-- Average of the
 #'     years 1825-1827. Source: A1 (Compte du ministere du guerre, 1829 etat V)}
 #'   \item{`Instruction`}{Instruction. Ranks recorded from Guerry's map of
-#'     Instruction. Note: this is inversely related to \code{Literacy} (as defined
+#'     Instruction. Note: this is inversely related to `Literacy` (as defined
 #'     here)}
 #'   \item{`Prostitutes`}{Prostitutes in Paris. Number of prostitutes registered in
 #'     Paris from 1816 to 1834, classified by the department of their birth Source:
@@ -82,7 +82,7 @@
 #'   \item{`Pop1831`}{1831 population. Population in 1831, taken from Angeville
 #'     (1836), \emph{Essai sur la Statistique de la Population francaise}, in 1000s}
 #' }
-#' @seealso \code{\link{Angeville}} for other analysis variables
+#' @seealso [`Angeville`] for other analysis variables
 #' @references Dray, S., & Jombart, T. (2011).  Revisiting Guerry's data:
 #' Introducing spatial constraints in multivariate analysis.  \emph{Annals of
 #' Applied Statistics}, \bold{5}, 2278-2299

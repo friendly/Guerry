@@ -1,25 +1,25 @@
 #' Map of France in 1830 with the Guerry data
 #' 
-#' \code{gfrance} is a \code{SpatialPolygonsDataFrame} object created with the
-#' \code{sp} package, containing the polygon boundaries of the map of France as
-#' it was in 1830, together with the \code{\link{Guerry}} data frame.
+#' `gfrance` is a `SpatialPolygonsDataFrame` object created with the
+#' `sp` package, containing the polygon boundaries of the map of France as
+#' it was in 1830, together with the [`Guerry`] data frame.
 #' 
 #' In the present version, the PROJ4 projection is not specified.
 #' 
 #' @name gfrance
 #' @docType data
 #' @format The format is: Formal class 'SpatialPolygonsDataFrame' [package
-#' "sp"] with 5 slots: \itemize{ \item \code{gfrance@data}, \item
-#' \code{gfrance@polygons}, \item \code{gfrance@plotOrder}, \item
-#' \code{gfrance@bbox}, \item \code{gfrance@proj4string}. }
-#' 
-#' See: \code{\link[sp]{SpatialPolygonsDataFrame}} for descriptions of some
+#' "sp"] with 5 slots: \itemize{ \item `gfrance@data`, \item
+#' `gfrance@polygons`, \item `gfrance@plotOrder`, \item
+#' `gfrance@bbox`, \item `gfrance@proj4string`. }
+#'
+#' See: [sp::SpatialPolygonsDataFrame()] for descriptions of some
 #' components.
-#' 
-#' The analysis variables, represented in \code{gfrance@data} are described in
-#' \code{\link{Guerry}}.
-#' @seealso \code{\link{Guerry}} for description of the analysis variables
-#' \code{\link{Angeville}} for other analysis variables
+#'
+#' The analysis variables, represented in `gfrance@data` are described in
+#' [`Guerry`].
+#' @seealso [`Guerry`] for description of the analysis variables
+#' [`Angeville`] for other analysis variables
 #' @references Friendly, M. (2007). A.-M. Guerry's Moral Statistics of France:
 #' Challenges for Multivariable Spatial Analysis.  \emph{Statistical Science},
 #' 22, 368-399.
