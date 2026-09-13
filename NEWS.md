@@ -1,4 +1,4 @@
-## Version 1.8.5 (2026-09-13)
+## Version 1.8.5 
 
 * Added a new vignette, `guerry-sf-maps`, showing Guerry's maps with `sf` and `ggplot2::geom_sf()`,
   including a reproduction of the six main "moral variables" as small multiples and a discussion of
@@ -14,8 +14,8 @@
 
 ## Version 1.8.3 (2023-10-13)
 
-A problem with the adegraphics package becoming archived triggered a warning on Guerry
-threatening the same fate. I did not reply in time, and so Guerry was archived.
+A problem with the `adegraphics` package becoming archived triggered a warning on `Guerry`
+threatening the same fate. I did not reply in time, and so `Guerry` was archived.
 This re-submission fixes that and other issues found by win-builder.
 
 * Moved some examples to `demo/`
