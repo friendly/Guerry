@@ -17,7 +17,7 @@ Commit](https://img.shields.io/github/last-commit/friendly/Guerry)](https://gith
 
 <!-- explicit version number now dynamic -->
 
-Version 1.8.4; documentation built for `pkgdown` 2026-09-13
+Version 1.8.5; documentation built for `pkgdown` 2026-09-13
 
 The `Guerry` package comprises maps of France in 1830, multivariate data
 from A.-M. Guerry and others, and statistical and graphic methods

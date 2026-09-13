@@ -1,15 +1,23 @@
 # Changelog
 
+## Version 1.8.5 (2026-09-13)
+
+- Added a new vignette, `guerry-sf-maps`, showing Guerry’s maps with
+  `sf` and
+  [`ggplot2::geom_sf()`](https://ggplot2.tidyverse.org/reference/ggsf.html),
+  including a reproduction of the six main “moral variables” as small
+  multiples and a discussion of Guerry’s own light/dark color
+  convention, illustrated with his 1833 `Instruction` map
+- Fixed a clipped variable label in the HE plot in `guerry-multivariate`
+- Added a pkgdown documentation-site badge, section icons and a dynamic
+  version/build-date line to `README.Rmd`
+
 ## Version 1.8.4 (2025-01-01)
 
 - Corrected numerous transcription errors in the Guerry data (thx:
   Kathryn DuBois)
 - Added `Guerry_ranks`, with all numeric variables ranked
 - Revised vignettes, using corrected data
-- Added a new vignette, `guerry-sf-maps`, showing Guerry’s maps with
-  `sf` and
-  [`ggplot2::geom_sf()`](https://ggplot2.tidyverse.org/reference/ggsf.html)
-- Fixed a clipped variable label in the HE plot in `guerry-multivariate`
 
 ## Version 1.8.3 (2023-10-13)
 

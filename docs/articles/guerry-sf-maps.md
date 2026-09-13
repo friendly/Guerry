@@ -10,10 +10,11 @@ package, together with
 [`ggplot2::geom_sf()`](https://ggplot2.tidyverse.org/reference/ggsf.html).
 This short vignette shows how to work with Guerry’s map data that way.
 
-This doesn’t replace the `sp`/`spplot()` examples used elsewhere in the
-package – both remain fully supported – it’s simply the modern
-alternative for anyone building on `Guerry`’s map data in a `ggplot2`
-workflow.
+This doesn’t replace the
+`sp`/[`spplot()`](https://edzer.github.io/sp/reference/spplot.html)
+examples used elsewhere in the package – both remain fully supported –
+it’s simply the modern alternative for anyone building on `Guerry`’s map
+data in a `ggplot2` workflow.
 
 ``` r
 library(Guerry)
