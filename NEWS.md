@@ -3,6 +3,8 @@
 * Corrected numerous transcription errors in the Guerry data (thx: Kathryn DuBois)
 * Added `Guerry_ranks`, with all numeric variables ranked
 * Revised vignettes, using corrected data
+* Added a new vignette, `guerry-sf-maps`, showing Guerry's maps with `sf` and `ggplot2::geom_sf()`
+* Fixed a clipped variable label in the HE plot in `guerry-multivariate`
 
 ## Version 1.8.3 (2023-10-13)
 
