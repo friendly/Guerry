@@ -19,6 +19,10 @@ knitr::opts_chunk$set(
 par(mar=c(3,3,1,1)+.1)
 ```
 
+```{r, echo=FALSE}
+library(Guerry)
+```
+
 
 <!-- badges: start -->
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
@@ -26,15 +30,15 @@ par(mar=c(3,3,1,1)+.1)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/Guerry)](https://cran.r-project.org/package=Guerry)
 [![DOI](https://zenodo.org/badge/133678938.svg)](https://zenodo.org/badge/latestdoi/133678938)
 [![Last Commit](https://img.shields.io/github/last-commit/friendly/Guerry)](https://github.com/friendly/Guery)
-
+[![pkgdown](https://img.shields.io/badge/pkgdown%20site-blue)](https://friendly.github.io/Guerry/)
 
 <!-- badges: end -->
 
 
 # Guerry <img src="man/figures/logo.png" align="right" height="200px" />
 
-**Version**: 1.8.4
-<!-- `r getNamespaceVersion("Guerry")` -->
+<!-- explicit version number now dynamic -->
+Version `r getNamespaceVersion("Guerry")`; documentation built for `pkgdown` `r Sys.Date()`
 
 The `Guerry` package comprises maps of France in 1830, multivariate data from A.-M. Guerry and others, and statistical and 
 	graphic methods related to Guerry's *Moral Statistics of France*. The goal is to facilitate the exploration and
@@ -51,7 +55,7 @@ or are there laws to be discovered in his data?
 
 
 
-## Installation
+## 📂 Installation
 
 
 You can install Guerry from CRAN or the development version as follows:
@@ -63,7 +67,7 @@ You can install Guerry from CRAN or the development version as follows:
 | R-universe  | `install.packages('Guerry', repos = c('https://friendly.r-universe.dev'))` |
 
 
-## Data sets
+## 🗃️ Data sets
 
 The Guerry package contains the following data sets:
 
@@ -78,9 +82,9 @@ The Guerry package contains the following data sets:
 
 
 
-## Examples
+## 📊 Examples
 
-### Maps
+### 🗺️ Maps
 
 In Guerry's time, the map of France and his data contained 86 departments.
 The two base maps in this package are `gfrance` and `gfrance85`. They differ only in that Corsica,
@@ -156,7 +160,7 @@ text(xy, labels=dep.names, cex=0.5)
 ```
 
 
-### Plots
+### 📈 Plots
 
 Guerry was most interested in determining whether the occurrence of crimes
 was related to literacy or other "moral variables".  But the idea of
@@ -231,7 +235,7 @@ with(Guerry,{
 <!-- Old plot: -->
 <!-- <img src="man/figures/ex-bivar2.png" align="center" height="400px" /> -->
 
-## Vignettes
+## 📖 Vignettes
 
 The vignette, _Guerry data: Spatial Multivariate Analysis_, written by Stéphane Dray uses his packages
 `ade4` and `adegraphics` to illustrate methods for spatial multivariate data that focus on either
@@ -249,7 +253,7 @@ vignette("MultiSpat", package="Guerry")
 vignette("guerry-multivariate", package="Guerry")
 ```
 
-## Citation
+## 🔖 Citation
 
 ``` r
 To cite package ‘Guerry’ in publications use:
@@ -268,7 +272,7 @@ A BibTeX entry for LaTeX users is
   }
 ```
 
-## References
+## 📚 References
 
 Angeville, A. d' (1836).
 _Essai sur la Statistique de la Population francaise_, Paris: F. Darfour.

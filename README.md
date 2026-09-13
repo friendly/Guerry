@@ -9,12 +9,15 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 [![DOI](https://zenodo.org/badge/133678938.svg)](https://zenodo.org/badge/latestdoi/133678938)
 [![Last
 Commit](https://img.shields.io/github/last-commit/friendly/Guerry)](https://github.com/friendly/Guery)
+[![pkgdown](https://img.shields.io/badge/pkgdown%20site-blue)](https://friendly.github.io/Guerry/)
 
 <!-- badges: end -->
 
 # Guerry <img src="man/figures/logo.png" align="right" height="200px" />
 
-**Version**: 1.8.4 <!-- 1.8.3 -->
+<!-- explicit version number now dynamic -->
+
+Version 1.8.4; documentation built for `pkgdown` 2026-09-13
 
 The `Guerry` package comprises maps of France in 1830, multivariate data
 from A.-M. Guerry and others, and statistical and graphic methods
@@ -37,32 +40,32 @@ data?
 
 <img src="man/figures/Guerry-vars.png" align="center" />
 
-## Installation
+## 📂 Installation
 
 You can install Guerry from CRAN or the development version as follows:
 
-| Version | Command |
-|:---|:---|
-| CRAN | `install.packages("Guerry")` |
-| Devel | `remotes::install_github("friendly/Guerry")` |
+| Version    | Command                                                                    |
+|:-----------|:---------------------------------------------------------------------------|
+| CRAN       | `install.packages("Guerry")`                                               |
+| Devel      | `remotes::install_github("friendly/Guerry")`                               |
 | R-universe | `install.packages('Guerry', repos = c('https://friendly.r-universe.dev'))` |
 
-## Data sets
+## 🗃️ Data sets
 
 The Guerry package contains the following data sets:
 
-| Name | Description |
-|:---|:---|
-| `gfrance` | Map of France in 1830 with the `Guerry` data. It is a `SpatialPolygonsDataFrame` object created with the `sp` package. |
-| `gfrance85` | The same for the 85 departments excluding Corsica |
-| `Guerry` | A collection of ‘moral variables’ on the 86 departments of France around 1830 from Guerry (1833) and other sources. |
-| `Guerry_ranks` | Data in `Guerry` with all numeric variables converted to ranks. |
-| `Angeville` | Data from d’Angeville (1836) on the population of France. |
-| `propensity` | Distribution of crimes against persons at different ages |
+| Name           | Description                                                                                                            |
+|:---------------|:-----------------------------------------------------------------------------------------------------------------------|
+| `gfrance`      | Map of France in 1830 with the `Guerry` data. It is a `SpatialPolygonsDataFrame` object created with the `sp` package. |
+| `gfrance85`    | The same for the 85 departments excluding Corsica                                                                      |
+| `Guerry`       | A collection of ‘moral variables’ on the 86 departments of France around 1830 from Guerry (1833) and other sources.    |
+| `Guerry_ranks` | Data in `Guerry` with all numeric variables converted to ranks.                                                        |
+| `Angeville`    | Data from d’Angeville (1836) on the population of France.                                                              |
+| `propensity`   | Distribution of crimes against persons at different ages                                                               |
 
-## Examples
+## 📊 Examples
 
-### Maps
+### 🗺️ Maps
 
 In Guerry’s time, the map of France and his data contained 86
 departments. The two base maps in this package are `gfrance` and
@@ -97,7 +100,7 @@ library(sp)
 plot(gfrance)
 ```
 
-<img src="man/figures/README-gfrance1-1.png" width="100%" />
+<img src="man/figures/README-gfrance1-1.png" alt="" width="100%" />
 
 The `spplot` method produces a choropleth map, shaded by a given
 variable in `gfrance@data`
@@ -106,7 +109,7 @@ variable in `gfrance@data`
 spplot(gfrance, "Crime_pers")
 ```
 
-<img src="man/figures/README-gfrance2-1.png" width="100%" />
+<img src="man/figures/README-gfrance2-1.png" alt="" width="100%" />
 
 You can plot the maps for several variables together simply by listing
 their names in a vector.
@@ -117,7 +120,7 @@ spplot(gfrance, c("Crime_pers", "Crime_prop", "Literacy" ),
        layout=c(3,1), main="Guerry's moral variables")
 ```
 
-<img src="man/figures/README-gfrance3-1.png" width="100%" />
+<img src="man/figures/README-gfrance3-1.png" alt="" width="100%" />
 
 But there’s a problem here. `spplot` assumes all variables are on the
 same scale for comparative plots, so it is best to transform variables
@@ -136,7 +139,7 @@ spplot(gfrance, c("Crime_pers", "Crime_prop", "Literacy" ),
        layout=c(3,1), as.table=TRUE, main="Guerry's moral variables")
 ```
 
-<img src="man/figures/README-gfrance4-1.png" width="100%" />
+<img src="man/figures/README-gfrance4-1.png" alt="" width="100%" />
 
 For other purposes, you might want to produce the map, shaded by
 `Region` and adding labels for the names of the departments. This is
@@ -156,9 +159,9 @@ plot(gfrance85, col=col.region[region.names])
 text(xy, labels=dep.names, cex=0.5)
 ```
 
-<img src="man/figures/README-gfrance85-labels-1.png" width="100%" />
+<img src="man/figures/README-gfrance85-labels-1.png" alt="" width="100%" />
 
-### Plots
+### 📈 Plots
 
 Guerry was most interested in determining whether the occurrence of
 crimes was related to literacy or other “moral variables”. But the idea
@@ -185,7 +188,7 @@ legend(x="bottomright",
     col = as.factor(levels(Guerry$Region)))
 ```
 
-<img src="man/figures/README-ex-bivar1-1.png" width="60%" />
+<img src="man/figures/README-ex-bivar1-1.png" alt="" width="60%" />
 
 <!-- Old plot: -->
 <!-- <img src="man/figures/ex-bivar1.png" align="center" height="400px" /> -->
@@ -222,12 +225,12 @@ with(Guerry,{
     )
 ```
 
-<img src="man/figures/README-ex-bivar2-1.png" width="60%" />
+<img src="man/figures/README-ex-bivar2-1.png" alt="" width="60%" />
 
 <!-- Old plot: -->
 <!-- <img src="man/figures/ex-bivar2.png" align="center" height="400px" /> -->
 
-## Vignettes
+## 📖 Vignettes
 
 The vignette, *Guerry data: Spatial Multivariate Analysis*, written by
 Stéphane Dray uses his packages `ade4` and `adegraphics` to illustrate
@@ -245,7 +248,7 @@ vignette("MultiSpat", package="Guerry")
 vignette("guerry-multivariate", package="Guerry")
 ```
 
-## Citation
+## 🔖 Citation
 
 ``` r
 To cite package ‘Guerry’ in publications use:
@@ -264,7 +267,7 @@ A BibTeX entry for LaTeX users is
   }
 ```
 
-## References
+## 📚 References
 
 Angeville, A. d’ (1836). *Essai sur la Statistique de la Population
 francaise*, Paris: F. Darfour.
