@@ -1,7 +1,7 @@
 #' Map of France in 1830 with the Guerry data, excluding Corsica
 #' 
 #' `gfrance85` is a SpatialPolygonsDataFrame object created with the
-#' `sp` package, containing the polygon boundaries of the map of France as
+#' \pkg{sp} package, containing the polygon boundaries of the map of France as
 #' it was in 1830, together with the [`Guerry`] data frame.  This
 #' version excludes Corsica, which is an outlier both in the map and in many
 #' analyses.
