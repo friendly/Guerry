@@ -61,6 +61,7 @@ English translation of Guerry (1833) by Whitt and Reinking.
 Values for the ranked variables were taken from Table A1, with some corrections applied. 
 The maximum is indicated by rank 1, and the minimum by rank 86.
 
+Numerous errors in scanning and transcription were corrected by Kathryn Olivia DuBois, <kathryn.dubois@wsu.edu>
  
 }
 \source{

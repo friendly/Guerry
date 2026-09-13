@@ -26,7 +26,7 @@ Authors@R: c(
 Maintainer: Michael Friendly <friendly@yorku.ca>
 Encoding: UTF-8
 Language: en-US
-Depends: R (>= 3.5.0)
+Depends: R (>= 4.1.0)
 Imports: sp
 Suggests: knitr,
   sf,
