@@ -9,9 +9,14 @@
 #' @name gfrance
 #' @docType data
 #' @format The format is: Formal class 'SpatialPolygonsDataFrame' [package
-#' "sp"] with 5 slots: \itemize{ \item `gfrance@data`, \item
-#' `gfrance@polygons`, \item `gfrance@plotOrder`, \item
-#' `gfrance@bbox`, \item `gfrance@proj4string`. }
+#' "sp"] with 5 slots: 
+#' \itemize{ 
+#'  \item `gfrance@data`, 
+#'  \item `gfrance@polygons`, 
+#'  \item `gfrance@plotOrder`, 
+#'  \item `gfrance@bbox`, 
+#'  \item `gfrance@proj4string`. 
+#'  }
 #'
 #' See: [sp::SpatialPolygonsDataFrame()] for descriptions of some
 #' components.
