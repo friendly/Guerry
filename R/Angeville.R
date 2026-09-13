@@ -25,25 +25,30 @@
 #' @name Angeville
 #' @docType data
 #' @format A data frame with 86 observations on the following 16 variables.
-#' \describe{ \item{list("dept")}{a numeric vector}
-#' \item{list("Department")}{Department name: a factor with levels \code{Ain}
-#' \code{Aisne} ... \code{Vosges} \code{Yonne}}
-#' \item{list("Mortality")}{Mortality: Number of births to give 100 people at
-#' age 21 (T1:13)} \item{list("Marriages")}{Number of marriages per 1000 men
-#' aged 21 (T1:15)} \item{list("Legit_births")}{Annual no. of legitimate births
-#' (T2:17)} \item{list("Illeg_births")}{Annual no. of illegitimate births
-#' (T2:18)} \item{list("Recruits")}{Number of people registered for military
-#' recruitment from 1825-1833 (T3:32)} \item{list("Conscripts")}{Number of
-#' inhabitants per military conscript (T3:33)} \item{list("Exemptions")}{Number
-#' of military exemptions per 1000 all of physical causes (T3:47)}
-#' \item{list("Farmers")}{Number of farmers during the census in 1831 (T4:65)}
-#' \item{list("Recruits_ignorant")}{Average number of ignorant recruits per
-#' 1000 (T5:69)} \item{list("Schoolchildren")}{Number of schoolchildren per
-#' 1000 inhabitants (T5:71)} \item{list("Windows_doors")}{Number of windows &
-#' doors in houses per 100 inhabitants (T5:72).  This is sometimes taken as an
-#' indicator of household wealth.} \item{list("Primary_schools")}{"Number of
-#' primary schools (T5:74)} \item{list("Life_exp")}{Life expectancy in years
-#' (T1:9a,9b)} \item{list("Pop1831")}{Population in 1831} }
+#' \describe{
+#'   \item{`dept`}{a numeric vector}
+#'   \item{`Department`}{Department name: a factor with levels \code{Ain}
+#'     \code{Aisne} ... \code{Vosges} \code{Yonne}}
+#'   \item{`Mortality`}{Mortality: Number of births to give 100 people at age 21
+#'     (T1:13)}
+#'   \item{`Marriages`}{Number of marriages per 1000 men aged 21 (T1:15)}
+#'   \item{`Legit_births`}{Annual no. of legitimate births (T2:17)}
+#'   \item{`Illeg_births`}{Annual no. of illegitimate births (T2:18)}
+#'   \item{`Recruits`}{Number of people registered for military recruitment from
+#'     1825-1833 (T3:32)}
+#'   \item{`Conscripts`}{Number of inhabitants per military conscript (T3:33)}
+#'   \item{`Exemptions`}{Number of military exemptions per 1000 all of physical
+#'     causes (T3:47)}
+#'   \item{`Farmers`}{Number of farmers during the census in 1831 (T4:65)}
+#'   \item{`Recruits_ignorant`}{Average number of ignorant recruits per 1000
+#'     (T5:69)}
+#'   \item{`Schoolchildren`}{Number of schoolchildren per 1000 inhabitants (T5:71)}
+#'   \item{`Windows_doors`}{Number of windows & doors in houses per 100 inhabitants
+#'     (T5:72). This is sometimes taken as an indicator of household wealth.}
+#'   \item{`Primary_schools`}{"Number of primary schools (T5:74)}
+#'   \item{`Life_exp`}{Life expectancy in years (T1:9a,9b)}
+#'   \item{`Pop1831`}{Population in 1831}
+#' }
 #' @references Whitt, H. P. (2007). Modernism, internal colonialism, and the
 #' direction of violence: suicide and crimes against persons in France,
 #' 1825-1830.  Unpublished ms.

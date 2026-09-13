@@ -22,59 +22,66 @@
 #' 
 #' @name Guerry
 #' @docType data
-#' @format A data frame with 86 observations (the departments of France) on the
-#' following 23 variables.  \describe{ \item{list("dept")}{Department ID:
-#' Standard numbers for the departments, except for Corsica (200)}
-#' \item{list("Region")}{Region of France ('N'='North', 'S'='South',
-#' 'E'='East', 'W'='West', 'C'='Central'). Corsica is coded as NA }
-#' \item{list("Department")}{Department name: Departments are named according
-#' to usage in 1830, but without accents.  A factor with levels \code{Ain}
-#' \code{Aisne} \code{Allier} ... \code{Vosges} \code{Yonne}}
-#' \item{list("Crime_pers")}{Population per Crime against persons. Source: A2
-#' (Comptes general, 1825-1830)} \item{list("Crime_prop")}{Population per Crime
-#' against property. Source: A2 (Compte general, 1825-1830)}
-#' \item{list("Literacy")}{Percent Read & Write: Percent of military conscripts
-#' who can read and write. Source: A2 } \item{list("Donations")}{Donations to
-#' the poor. Source: A2 (Bulletin des lois)} \item{list("Infants")}{Population
-#' per illegitimate birth. Source: A2 (Bureau des Longitudes, 1817-1821)}
-#' \item{list("Suicides")}{Population per suicide. Source: A2 (Compte general,
-#' 1827-1830)} \item{list("MainCity")}{Size of principal city ('1:Sm', '2:Med',
-#' '3:Lg'), used as a surrogate for population density. Large refers to the top
-#' 10, small to the bottom 10; all the rest are classed Medium. Source: A1. An
-#' ordered factor with levels \code{1:Sm} < \code{2:Med} < \code{3:Lg}}
-#' \item{list("Wealth")}{Per capita tax on personal property. A ranked index
-#' based on taxes on personal and movable property per inhabitant. Source: A1}
-#' \item{list("Commerce")}{Commerce and Industry, measured by the rank of the
-#' number of patents / population. Source: A1}
-#' \item{list("Clergy")}{Distribution of clergy, measured by the rank of the
-#' number of Catholic priests in active service / population. Source: A1
-#' (Almanach officiel du clergy, 1829)} \item{list("Crime_parents")}{Crimes
-#' against parents, measured by the rank of the ratio of crimes against parents
-#' to all crimes-- Average for the years 1825-1830. Source: A1 (Compte general)
-#' } \item{list("Infanticide")}{Infanticides per capita. A ranked ratio of
-#' number of infanticides to population-- Average for the years 1825-1830.
-#' Source: A1 (Compte general) } \item{list("Donation_clergy")}{Donations to
-#' the clergy. A ranked ratio of the number of bequests and donations inter
-#' vivios to population-- Average for the years 1815-1824. Source: A1 (Bull.
-#' des lois, ordunn. d'autorisation) } \item{list("Lottery")}{Per capita wager
-#' on Royal Lottery. Ranked ratio of the proceeds bet on the royal lottery to
-#' population--- Average for the years 1822-1826. Source: A1 (Compte rendus par
-#' le ministre des finances)} \item{list("Desertion")}{Military desertion,
-#' ratio of the number of young soldiers accused of desertion to the force of
-#' the military contingent, minus the deficit produced by the insufficiency of
-#' available billets-- Average of the years 1825-1827. Source: A1 (Compte du
-#' ministere du guerre, 1829 etat V) } \item{list("Instruction")}{Instruction.
-#' Ranks recorded from Guerry's map of Instruction. Note: this is inversely
-#' related to \code{Literacy} (as defined here)}
-#' \item{list("Prostitutes")}{Prostitutes in Paris. Number of prostitutes
-#' registered in Paris from 1816 to 1834, classified by the department of their
-#' birth Source: Parent-Duchatelet (1836), \emph{De la prostitution en Paris}}
-#' \item{list("Distance")}{Distance to Paris (km). Distance of each department
-#' centroid to the centroid of the Seine (Paris) Source: calculated from
-#' department centroids } \item{list("Area")}{Area (1000 km^2). Source:
-#' Angeville (1836) } \item{list("Pop1831")}{1831 population. Population in
-#' 1831, taken from Angeville (1836), \emph{Essai sur la Statistique de la
-#' Population francaise}, in 1000s } }
+#' @format A data frame with 86 observations (the departments of France) on the following 23 variables.
+#' \describe{
+#'   \item{`dept`}{Department ID: Standard numbers for the departments, except for
+#'     Corsica (200)}
+#'   \item{`Region`}{Region of France ('N'='North', 'S'='South', 'E'='East',
+#'     'W'='West', 'C'='Central'). Corsica is coded as NA}
+#'   \item{`Department`}{Department name: Departments are named according to usage
+#'     in 1830, but without accents. A factor with levels \code{Ain} \code{Aisne}
+#'     \code{Allier} ... \code{Vosges} \code{Yonne}}
+#'   \item{`Crime_pers`}{Population per Crime against persons. Source: A2 (Comptes
+#'     general, 1825-1830)}
+#'   \item{`Crime_prop`}{Population per Crime against property. Source: A2 (Compte
+#'     general, 1825-1830)}
+#'   \item{`Literacy`}{Percent Read & Write: Percent of military conscripts who can
+#'     read and write. Source: A2}
+#'   \item{`Donations`}{Donations to the poor. Source: A2 (Bulletin des lois)}
+#'   \item{`Infants`}{Population per illegitimate birth. Source: A2 (Bureau des
+#'     Longitudes, 1817-1821)}
+#'   \item{`Suicides`}{Population per suicide. Source: A2 (Compte general,
+#'     1827-1830)}
+#'   \item{`MainCity`}{Size of principal city ('1:Sm', '2:Med', '3:Lg'), used as a
+#'     surrogate for population density. Large refers to the top 10, small to the
+#'     bottom 10; all the rest are classed Medium. Source: A1. An ordered factor
+#'     with levels \code{1:Sm} < \code{2:Med} < \code{3:Lg}}
+#'   \item{`Wealth`}{Per capita tax on personal property. A ranked index based on
+#'     taxes on personal and movable property per inhabitant. Source: A1}
+#'   \item{`Commerce`}{Commerce and Industry, measured by the rank of the number of
+#'     patents / population. Source: A1}
+#'   \item{`Clergy`}{Distribution of clergy, measured by the rank of the number of
+#'     Catholic priests in active service / population. Source: A1 (Almanach
+#'     officiel du clergy, 1829)}
+#'   \item{`Crime_parents`}{Crimes against parents, measured by the rank of the
+#'     ratio of crimes against parents to all crimes-- Average for the years
+#'     1825-1830. Source: A1 (Compte general)}
+#'   \item{`Infanticide`}{Infanticides per capita. A ranked ratio of number of
+#'     infanticides to population-- Average for the years 1825-1830. Source: A1
+#'     (Compte general)}
+#'   \item{`Donation_clergy`}{Donations to the clergy. A ranked ratio of the number
+#'     of bequests and donations inter vivios to population-- Average for the years
+#'     1815-1824. Source: A1 (Bull. des lois, ordunn. d'autorisation)}
+#'   \item{`Lottery`}{Per capita wager on Royal Lottery. Ranked ratio of the
+#'     proceeds bet on the royal lottery to population--- Average for the years
+#'     1822-1826. Source: A1 (Compte rendus par le ministre des finances)}
+#'   \item{`Desertion`}{Military desertion, ratio of the number of young soldiers
+#'     accused of desertion to the force of the military contingent, minus the
+#'     deficit produced by the insufficiency of available billets-- Average of the
+#'     years 1825-1827. Source: A1 (Compte du ministere du guerre, 1829 etat V)}
+#'   \item{`Instruction`}{Instruction. Ranks recorded from Guerry's map of
+#'     Instruction. Note: this is inversely related to \code{Literacy} (as defined
+#'     here)}
+#'   \item{`Prostitutes`}{Prostitutes in Paris. Number of prostitutes registered in
+#'     Paris from 1816 to 1834, classified by the department of their birth Source:
+#'     Parent-Duchatelet (1836), \emph{De la prostitution en Paris}}
+#'   \item{`Distance`}{Distance to Paris (km). Distance of each department centroid
+#'     to the centroid of the Seine (Paris) Source: calculated from department
+#'     centroids}
+#'   \item{`Area`}{Area (1000 km^2). Source: Angeville (1836)}
+#'   \item{`Pop1831`}{1831 population. Population in 1831, taken from Angeville
+#'     (1836), \emph{Essai sur la Statistique de la Population francaise}, in 1000s}
+#' }
 #' @seealso \code{\link{Angeville}} for other analysis variables
 #' @references Dray, S., & Jombart, T. (2011).  Revisiting Guerry's data:
 #' Introducing spatial constraints in multivariate analysis.  \emph{Annals of
