@@ -1,13 +1,8 @@
 # Ranks of Data from A.-M. Guerry, "Essay on the Moral Statistics of France"
 
-This is the same data as in `link{Guerry}`, except that all numberic
-variables have been converted to ranks.
-
-## Usage
-
-``` r
-data(Guerry_ranks)
-```
+This is the same data as in
+[`Guerry`](http://friendly.github.io/Guerry/reference/Guerry.md), except
+that all numeric variables have been converted to ranks.
 
 ## See also
 

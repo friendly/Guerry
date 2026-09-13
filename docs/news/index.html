@@ -38,12 +38,13 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.8.5" id="version-185-2026-09-13">Version 1.8.5 (2026-09-13)<a class="anchor" aria-label="anchor" href="#version-185-2026-09-13"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.8.5" id="version-185">Version 1.8.5<a class="anchor" aria-label="anchor" href="#version-185"></a></h2>
 <ul><li>Added a new vignette, <code>guerry-sf-maps</code>, showing Guerry’s maps with <code>sf</code> and <code><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">ggplot2::geom_sf()</a></code>, including a reproduction of the six main “moral variables” as small multiples and a discussion of Guerry’s own light/dark color convention, illustrated with his 1833 <code>Instruction</code> map</li>
 <li>Fixed a clipped variable label in the HE plot in <code>guerry-multivariate</code>
 </li>
 <li>Added a pkgdown documentation-site badge, section icons and a dynamic version/build-date line to <code>README.Rmd</code>
 </li>
+<li>Migrated dataset documentation from hand-written <code>man/*.Rd</code> files to roxygen2 (internal, no user-facing changes to help pages)</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.8.4" id="version-184-2025-01-01">Version 1.8.4 (2025-01-01)<a class="anchor" aria-label="anchor" href="#version-184-2025-01-01"></a></h2>
@@ -53,7 +54,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.8.3" id="version-183-2023-10-13">Version 1.8.3 (2023-10-13)<a class="anchor" aria-label="anchor" href="#version-183-2023-10-13"></a></h2><p class="text-muted">CRAN release: 2023-10-24</p>
-<p>A problem with the adegraphics package becoming archived triggered a warning on Guerry threatening the same fate. I did not reply in time, and so Guerry was archived. This re-submission fixes that and other issues found by win-builder.</p>
+<p>A problem with the <code>adegraphics</code> package becoming archived triggered a warning on <code>Guerry</code> threatening the same fate. I did not reply in time, and so <code>Guerry</code> was archived. This re-submission fixes that and other issues found by win-builder.</p>
 <ul><li>Moved some examples to <code>demo/</code>
 </li>
 <li>Edit example in <code>gfrance85.Rd</code>

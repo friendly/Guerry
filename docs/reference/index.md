@@ -9,6 +9,7 @@
 - [`gfrance85`](http://friendly.github.io/Guerry/reference/gfrance85.md)
   : Map of France in 1830 with the Guerry data, excluding Corsica
 - [`Guerry-package`](http://friendly.github.io/Guerry/reference/Guerry-package.md)
+  [`_PACKAGE`](http://friendly.github.io/Guerry/reference/Guerry-package.md)
   : Maps, Data and Methods Related to Guerry (1833) "Moral Statistics of
   France"
 - [`Guerry`](http://friendly.github.io/Guerry/reference/Guerry.md) :

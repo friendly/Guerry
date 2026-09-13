@@ -1,16 +1,10 @@
 # Map of France in 1830 with the Guerry data
 
-`gfrance` is a `SpatialPolygonsDataFrame` object created with the `sp`
+`gfrance` is a `SpatialPolygonsDataFrame` object created with the sp
 package, containing the polygon boundaries of the map of France as it
 was in 1830, together with the
 [`Guerry`](http://friendly.github.io/Guerry/reference/Guerry.md) data
 frame.
-
-## Usage
-
-``` r
-data(gfrance)
-```
 
 ## Format
 
@@ -28,21 +22,21 @@ with 5 slots:
 - `gfrance@proj4string`.
 
 See:
-[`SpatialPolygonsDataFrame`](https://edzer.github.io/sp/reference/SpatialPolygons.html)
+[`sp::SpatialPolygonsDataFrame()`](https://edzer.github.io/sp/reference/SpatialPolygons.html)
 for descriptions of some components.
 
 The analysis variables, represented in `gfrance@data` are described in
 [`Guerry`](http://friendly.github.io/Guerry/reference/Guerry.md).
-
-## Details
-
-In the present version, the PROJ4 projection is not specified.
 
 ## Source
 
 Friendly, M. (2007). Supplementary materials for Andre-Michel Guerry's
 Moral Statistics of France: Challenges for Multivariate Spatial
 Analysis, <http://www.datavis.ca/gallery/guerry/>.
+
+## Details
+
+In the present version, the PROJ4 projection is not specified.
 
 ## References
 

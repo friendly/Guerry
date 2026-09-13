@@ -1,17 +1,11 @@
 # Map of France in 1830 with the Guerry data, excluding Corsica
 
-`gfrance85` is a SpatialPolygonsDataFrame object created with the `sp`
+`gfrance85` is a SpatialPolygonsDataFrame object created with the sp
 package, containing the polygon boundaries of the map of France as it
 was in 1830, together with the
 [`Guerry`](http://friendly.github.io/Guerry/reference/Guerry.md) data
 frame. This version excludes Corsica, which is an outlier both in the
 map and in many analyses.
-
-## Usage
-
-``` r
-data(gfrance85)
-```
 
 ## Format
 
@@ -30,18 +24,18 @@ with 5 slots:
 
 The analysis variables are described in
 [`Guerry`](http://friendly.github.io/Guerry/reference/Guerry.md). See:
-[`SpatialPolygonsDataFrame`](https://edzer.github.io/sp/reference/SpatialPolygons.html)
+[`sp::SpatialPolygonsDataFrame()`](https://edzer.github.io/sp/reference/SpatialPolygons.html)
 for descriptions of some components.
-
-## Details
-
-In the present version, the PROJ4 projection is not specified.
 
 ## Source
 
 Friendly, M. (2007). Supplementary materials for Andre-Michel Guerry's
 Moral Statistics of France: Challenges for Multivariate Spatial
 Analysis, <http://datavis.ca/gallery/guerry/>.
+
+## Details
+
+In the present version, the PROJ4 projection is not specified.
 
 ## References
 
@@ -77,4 +71,5 @@ plot(gfrance85,col=col.region[region.names])
 text(xy, labels=dep.names, cex=0.6)
 
 par(op)
+
 ```

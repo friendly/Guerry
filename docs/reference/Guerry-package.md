@@ -9,6 +9,8 @@ rate of crime related to education or literacy? How does this vary over
 the departments of France? Are the rates of crime or suicide within
 departments stable over time?
 
+## Details
+
 In an age well before the idea of correlation had been invented, Guerry
 used graphics and statistical maps to try to shed light on such
 questions. In a later work (Guerry, 1864), he explicitly tried to
@@ -24,30 +26,42 @@ goal of providing these as an R package is to facilitate the exploration
 and development of statistical and graphic methods for multivariate data
 in a geo-spatial context.
 
-## Details
+Data sets included in the Guerry package are:
 
-The DESCRIPTION file: This package was not yet installed at build
-time.  
-Index: This package was not yet installed at build time.  
+- [`Guerry`](http://friendly.github.io/Guerry/reference/Guerry.md):
+
+  Data from A.-M. Guerry, "Essay on the Moral Statistics of France"
+
+- [`Guerry_ranks`](http://friendly.github.io/Guerry/reference/Guerry_ranks.md):
+
+  Ranks of Data from A.-M. Guerry, "Essay on the Moral Statistics of
+  France"
+
+- [`gfrance`](http://friendly.github.io/Guerry/reference/gfrance.md):
+
+  Map of France in 1830 with the Guerry data
+
+- [`gfrance85`](http://friendly.github.io/Guerry/reference/gfrance85.md):
+
+  Map of France in 1830 with the Guerry data, excluding Corsica
+
+- [`Angeville`](http://friendly.github.io/Guerry/reference/Angeville.md):
+
+  Data from d'Angeville (1836) on the population of France
+
+- [`propensity`](http://friendly.github.io/Guerry/reference/propensity.md):
+
+  Distribution of crimes against persons at different ages
 
 Data from Guerry and others is contained in the data frame
 [`Guerry`](http://friendly.github.io/Guerry/reference/Guerry.md).
 Because Corsica is often considered an outlier both spatially and
 statistically, the map of France circa 1830, together with the Guerry
-data is provided as `SpatialPolygonsDataFrame`s in two forms:
+data, is provided as `SpatialPolygonsDataFrame`s in two forms:
 [`gfrance`](http://friendly.github.io/Guerry/reference/gfrance.md) for
-all 86 departments, and and
+all 86 departments, and
 [`gfrance85`](http://friendly.github.io/Guerry/reference/gfrance85.md),
 for the 85 departments excluding Corsica.
-
-## Author
-
-Michael Friendly \[aut, cre\] (ORCID:
-\<https://orcid.org/0000-0002-3237-0941\>), Stephane Dray \[aut\]
-(ORCID: \<https://orcid.org/0000-0003-0153-1105\>), Roger Bivand
-\[ctb\], Kathryn DuBois \[ctb\]
-
-Maintainer: Michael Friendly \<friendly@yorku.ca\>
 
 ## References
 
@@ -73,14 +87,20 @@ Moral Statistics of France: Challenges for Multivariate Spatial
 Analysis, <http://www.datavis.ca/gallery/guerry/>.
 
 Friendly, M. (2022). The life and works of Andre-Michel Guerry,
-revisited. *Sociological Spectrum*, **42**, 233–259.
+revisited. *Sociological Spectrum*, **42**, 233-259.
 [doi:10.1080/02732173.2022.2078450](https://doi.org/10.1080/02732173.2022.2078450)
 
 Guerry, A.-M. (1833). *Essai sur la statistique morale de la France*
 Paris: Crochard. English translation: Hugh P. Whitt and Victor W.
 Reinking, Lewiston, N.Y.: Edwin Mellen Press, 2002.
 
-Guerry, A.-M. (1864). *Statistique morale de l'Angleterre compar?e avec
+Guerry, A.-M. (1864). *Statistique morale de l'Angleterre comparee avec
 la statistique morale de la France, d'apres les comptes de
 l'administration de la justice criminelle en Angleterre et en France,
 etc.* Paris: J.-B. Bailliere et fils.
+
+## Author
+
+Michael Friendly, Stephane Dray
+
+Maintainer: Michael Friendly <friendly@yorku.ca>

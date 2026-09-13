@@ -9,15 +9,6 @@ questions by Guerry, Angeville's *Essai* became the first broad and
 general application of principles of graphic representation to national
 industrial and population data.
 
-The collection of variables in the data frame `Angeville` is a small
-subset of over 120 columns presented in 8 tables and many graphic maps.
-
-## Usage
-
-``` r
-data(Angeville)
-```
-
 ## Format
 
 A data frame with 86 observations on the following 16 variables.
@@ -28,8 +19,8 @@ A data frame with 86 observations on the following 16 variables.
 
 - `Department`:
 
-  Department name: a factor with levels `Ain` `Aisne` ... `Vosges`
-  `Yonne`
+  Department name: a factor with levels `"Ain"` `"Aisne"` ... `"Vosges"`
+  `"Yonne"`
 
 - `Mortality`:
 
@@ -89,7 +80,20 @@ A data frame with 86 observations on the following 16 variables.
 
   Population in 1831
 
+## Source
+
+Angeville, A. d' (1836). *Essai sur la Statistique de la Population
+francaise*, Paris: F. Darfour.
+
+The data was digitally scanned from Angeville's tables using OCR
+software, then extensively edited to correct obvious errors and finally
+subjected to some consistency checks using the column totals and ranked
+values he provided.
+
 ## Details
+
+The collection of variables in the data frame `Angeville` is a small
+subset of over 120 columns presented in 8 tables and many graphic maps.
 
 ID codes for `dept` were modified from those in Angeville's tables to
 match those used in
@@ -101,16 +105,6 @@ included here. As well, the variable names and labels used here were
 often shortened from the more complete descriptions given by
 d'Angeville. The notation "(Tn:k)" indicates that the variable used here
 came from Table n, Column k.
-
-## Source
-
-Angeville, A. d' (1836). *Essai sur la Statistique de la Population
-francaise*, Paris: F. Darfour.
-
-The data was digitally scanned from Angeville's tables using OCR
-software, then extensively edited to correct obvious errors and finally
-subjected to some consistency checks using the column totals and ranked
-values he provided.
 
 ## References
 
@@ -150,6 +144,7 @@ spplot(gf,
        col.regions = my.palette, 
        cuts = 8, # col = "transparent",
        main="Angeville variables")
+
 
 
 ```

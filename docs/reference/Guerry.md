@@ -5,16 +5,6 @@ analyze social data on such things as crime, literacy and suicide with
 the view to determining social laws and the relations among these
 variables.
 
-The Guerry data frame comprises a collection of 'moral variables' on the
-86 departments of France around 1830. A few additional variables have
-been added from other sources.
-
-## Usage
-
-``` r
-data(Guerry)
-```
-
 ## Format
 
 A data frame with 86 observations (the departments of France) on the
@@ -33,8 +23,8 @@ following 23 variables.
 - `Department`:
 
   Department name: Departments are named according to usage in 1830, but
-  without accents. A factor with levels `Ain` `Aisne` `Allier` ...
-  `Vosges` `Yonne`
+  without accents. A factor with levels `"Ain"` `"Aisne"` `"Allier"` ...
+  `"Vosges"` `"Yonne"`
 
 - `Crime_pers`:
 
@@ -69,7 +59,7 @@ following 23 variables.
   Size of principal city ('1:Sm', '2:Med', '3:Lg'), used as a surrogate
   for population density. Large refers to the top 10, small to the
   bottom 10; all the rest are classed Medium. Source: A1. An ordered
-  factor with levels `1:Sm` \< `2:Med` \< `3:Lg`
+  factor with levels `"1:Sm"` \< `"2:Med"` \< `"3:Lg"`
 
 - `Wealth`:
 
@@ -145,20 +135,6 @@ following 23 variables.
   1831 population. Population in 1831, taken from Angeville (1836),
   *Essai sur la Statistique de la Population francaise*, in 1000s
 
-## Details
-
-Note that most of the variables (e.g., `Crime_pers`) are scaled so that
-'more is better' morally.
-
-Values for the quantitative variables displayed on Guerry's maps were
-taken from Table A2 in the English translation of Guerry (1833) by Whitt
-and Reinking. Values for the ranked variables were taken from Table A1,
-with some corrections applied. The maximum is indicated by rank 1, and
-the minimum by rank 86.
-
-Numerous errors in scanning and transcription were corrected by Kathryn
-Olivia DuBois, \<kathryn.dubois@wsu.edu\>
-
 ## Source
 
 Angeville, A. (1836). *Essai sur la Statistique de la Population
@@ -170,6 +146,24 @@ Reinking, Lewiston, N.Y. : Edwin Mellen Press, 2002.
 
 Parent-Duchatelet, A. (1836). *De la prostitution dans la ville de
 Paris*, 3rd ed, 1857, p. 32, 36
+
+## Details
+
+The Guerry data frame comprises a collection of 'moral variables' on the
+86 departments of France around 1830. A few additional variables have
+been added from other sources.
+
+Note that most of the variables (e.g., `Crime_pers`) are scaled so that
+'more is better' morally.
+
+Values for the quantitative variables displayed on Guerry's maps were
+taken from Table A2 in the English translation of Guerry (1833) by Whitt
+and Reinking. Values for the ranked variables were taken from Table A1,
+with some corrections applied. The maximum is indicated by rank 1, and
+the minimum by rank 86.
+
+Numerous errors in scanning and transcription were corrected by Kathryn
+Olivia DuBois, <kathryn.dubois@wsu.edu>
 
 ## References
 
@@ -239,5 +233,6 @@ with(Guerry,{
 
 library(corrgram)
 corrgram(Guerry[,4:9], upper=panel.ellipse, order=TRUE)
+
 
 ```
