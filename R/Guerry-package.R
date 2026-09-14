@@ -50,6 +50,7 @@
 #'
 #' @name Guerry-package
 #' @aliases Guerry-package _PACKAGE
+#' @importClassesFrom sp SpatialPolygonsDataFrame
 #' @author Michael Friendly, Stephane Dray
 #'
 #' Maintainer: Michael Friendly <friendly@yorku.ca>

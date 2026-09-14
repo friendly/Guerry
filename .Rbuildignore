@@ -18,3 +18,5 @@ README.md
 ^\.claude$
 ^man-old$
 ^issues$
+^revdep$
+^\.release_check_result\.rds$

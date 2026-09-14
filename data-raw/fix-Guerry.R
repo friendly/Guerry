@@ -54,15 +54,36 @@ Guerry <- Guerry |>
 save(Guerry, file = "data/Guerry.RData")
 str(Guerry)
 
+# NB (2026-09-13): the original version of this script did
+# `gfrance@data <- Guerry` / `gfrance85@data <- (Guerry |> filter(dept != 200))`,
+# which replaced the *entire* @data slot and silently dropped the shapefile
+# identifier columns CODE_DEPT/COUNT/AVE_ID_GEO that gfrance/gfrance85 (but not
+# plain Guerry) originally carried -- shifting every later column left by 3 and
+# breaking gfrance85.R's own @examples (`[,5]`/`[,7:12]` positional indexing)
+# plus adegraphics' reverse-dependency tests/vignette, which index gfrance85 the
+# same way. Restore those 3 columns from the pre-correction backups so the
+# column layout (and row names, which must match the polygon IDs) matches the
+# original shapefile-derived objects.
+
+load("data-raw/gfrance-old.RData")   # gfrance (pre-correction), for CODE_DEPT/COUNT/AVE_ID_GEO
+id_cols_france <- gfrance@data[, c("CODE_DEPT", "COUNT", "AVE_ID_GEO", "dept")]
+
 data(gfrance)
 str(gfrance@data)
-gfrance@data <- Guerry
-save(gfrance, file = "data/gfrance.RData")
+gfrance@data <- id_cols_france |>
+  left_join(Guerry, by = "dept")
+row.names(gfrance@data) <- sapply(gfrance@polygons, function(p) p@ID)
+save(gfrance, file = "data/gfrance.RData", compress = "xz")
+
+load("data-raw/gfrance85-old.RData") # gfrance85 (pre-correction), for CODE_DEPT/COUNT/AVE_ID_GEO
+id_cols_france85 <- gfrance85@data[, c("CODE_DEPT", "COUNT", "AVE_ID_GEO", "dept")]
 
 data(gfrance85)
 str(gfrance85@data)
-gfrance85@data <- (Guerry |> filter(dept != 200))
-save(gfrance85, file = "data/gfrance85.RData")
+gfrance85@data <- id_cols_france85 |>
+  left_join(Guerry |> filter(dept != 200), by = "dept")
+row.names(gfrance85@data) <- sapply(gfrance85@polygons, function(p) p@ID)
+save(gfrance85, file = "data/gfrance85.RData", compress = "xz")
 
 
 
