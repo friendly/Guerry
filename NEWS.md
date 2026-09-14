@@ -1,17 +1,24 @@
 ## Version 1.8.5 
 
+This release adds an `sf`/`ggplot2` mapping vignette, migrates dataset documentation to roxygen2, fixes a data-integrity bug in `gfrance`/`gfrance85`, and clears a long-standing `R CMD check` NOTE.
+
 * Added a new vignette, `guerry-sf-maps`, showing Guerry's maps with `sf` and `ggplot2::geom_sf()`,
   including a reproduction of the six main "moral variables" as small multiples and a discussion of
   Guerry's own light/dark color convention, illustrated with his 1833 `Instruction` map
+  
 * Fixed a clipped variable label in the HE plot in `guerry-multivariate`
+
 * Added a pkgdown documentation-site badge, section icons and a dynamic version/build-date line to `README.Rmd`
+
 * Migrated dataset documentation from hand-written `man/*.Rd` files to roxygen2 (internal, no
   user-facing changes to help pages)
+  
 * Restored the `CODE_DEPT`, `COUNT` and `AVE_ID_GEO` shapefile-identifier columns to `gfrance`
   and `gfrance85`, inadvertently dropped in the unreleased 1.8.4 data corrections. This had
   shifted every later column left by 3, silently breaking `gfrance85`'s own documented example
   (`[,5]`/`[,7:12]` positional indexing) and the `adegraphics` package's reverse-dependency tests
   and vignette, which index `gfrance85` the same way
+  
 * Added `@importClassesFrom sp SpatialPolygonsDataFrame`, clearing the long-standing "Namespace
   in Imports field not imported from: 'sp'" `R CMD check` NOTE (`gfrance`/`gfrance85`/`Angeville`
   are `sp`-class objects, so `sp` must stay a hard dependency, but nothing in `R/` code called it
