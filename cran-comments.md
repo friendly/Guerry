@@ -1,6 +1,6 @@
 ## Test environments
 * local Windows 11 x64, R 4.6.1 (2026-06-24 ucrt)
-* win-builder R-devel (submitted 2026-09-14; result pending)
+* win-builder R Under development (unstable) (2026-09-13 r90534 ucrt)
 
 ## R CMD check results
 0 error(s) | 0 warning(s) | 0 note(s)
