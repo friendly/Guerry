@@ -1,3 +1,10 @@
+## Guerry (development version)
+
+* Fixed the `guerry-sf-maps` vignette failing in reverse-dependency checks (e.g., for heplots),
+  where its code is rerun without the rest of the package source: it included an image by a
+  relative path into `man/figures/`. The image, and one used by `guerry-multivariate`, are now in
+  `vignettes/figures/`, like the vignettes' other images.
+
 ## Version 1.8.5 
 
 This release adds an `sf`/`ggplot2` mapping vignette, migrates dataset documentation to roxygen2, fixes a data-integrity bug in `gfrance`/`gfrance85`, and clears a long-standing `R CMD check` NOTE.

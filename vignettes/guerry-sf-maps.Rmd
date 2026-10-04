@@ -102,7 +102,7 @@ des teintes correspond au minimum de l'instruction"* -- "In this map, the darkne
 of the tints corresponds to the minimum of instruction [literacy]":
 
 ```{r guerry-instruction-map, echo=FALSE, out.width="60%", fig.align="center"}
-knitr::include_graphics("../man/figures/Guerry1833-instruction.jpg")
+knitr::include_graphics("figures/Guerry1833-instruction.jpg")
 ```
 
 ```{r sf-choropleth}

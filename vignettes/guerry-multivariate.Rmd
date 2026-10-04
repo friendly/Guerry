@@ -285,7 +285,7 @@ This is implemented in the `corrgram` package [@R-corrgram].
 The panels in the
 upper and lower triangles can be rendered differently, as shown below.
 
-![](../man/figures/corrgram-renderings.png)
+![](figures/corrgram-renderings.png)
 
 For the main Guerry variables it looks like this
 ```{r corrgram1}
